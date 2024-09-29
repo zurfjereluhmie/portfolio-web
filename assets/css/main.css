@@ -1,0 +1,29 @@
+:root {
+	--color-black: #343c42;
+	--color-white: #eff2f9;
+	--color-accent: #205c8d;
+	--color-grey: #6e7f8d;
+	--color-light-grey: #b5bfc6;
+
+	--max-width: 1200px;
+}
+
+html {
+	font-size: 16px;
+	font-family: "Avenir Next", sans-serif;
+	color: var(--color-black);
+	background-color: var(--color-white);
+}
+
+p {
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+a[href] {
+	cursor: pointer;
+	color: var(--color-accent);
+	text-decoration: none;
+}
