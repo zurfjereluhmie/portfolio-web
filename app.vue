@@ -1,3 +1,19 @@
+<script setup>
+useSeoMeta({
+	title: "Jérémie Zurflüh - Personal Portfolio",
+	description:
+		"Explore the portfolio of a passionate full-stack web developer and mediamatics technician, currently studying media engineering at HEIG-VD.",
+	ogTitle: "Jérémie Zurflüh - Personal Portfolio",
+	ogDescription:
+		"Full-stack web developer and mediamatics technician with a passion for creating dynamic, scalable applications and intuitive UI/UX designs. Currently pursuing media engineering studies at HEIG-VD, I blend technical expertise with a user-centered approach to deliver seamless digital experiences.",
+	// ogImage: "[og:image]",
+	// ogUrl: "[og:url]",
+	// twitterTitle: "[twitter:title]",
+	// twitterDescription: "[twitter:description]",
+	// twitterImage: "[twitter:image]",
+	// twitterCard: "summary",
+});
+</script>
 <template>
 	<!-- <div> -->
 	<NuxtPage />
