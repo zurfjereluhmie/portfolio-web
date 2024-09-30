@@ -1,5 +1,7 @@
 <template>
-	<TheNavBar currentPath="/portfolio" />
+	<header>
+		<TheNavBar currentPath="/portfolio" />
+	</header>
 	<main>
 		<div class="mt-6 flex flex-col items-center">
 			<AppBreadcrumb :max-width="603.195" />

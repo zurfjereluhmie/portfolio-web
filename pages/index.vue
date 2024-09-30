@@ -1,6 +1,9 @@
 <script setup></script>
 
 <template>
+	<header class="sr-only">
+		<TheNavBar />
+	</header>
 	<main>
 		<TheHeroSection />
 		<ThePersonalPresentation />

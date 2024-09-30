@@ -1,9 +1,11 @@
 <script setup></script>
 
 <template>
-	<TheNavBar currentPath="/portfolio" />
+	<header>
+		<TheNavBar currentPath="/portfolio" />
+	</header>
 	<main>
-		<div class="mt-6">
+		<div>
 			<AppBreadcrumb />
 			<h1>Portfolio</h1>
 			<div class="w-full flex justify-center">
@@ -27,12 +29,5 @@
 </template>
 
 <style scoped>
-main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-main > div {
-	width: min(var(--max-width), 100vw);
-}
+@import url("~/assets/css/normal-page.css");
 </style>

@@ -79,5 +79,6 @@ const commaSeparatedTags = computed(() => tags.value.join(", "));
 .read-more {
 	all: revert;
 	color: var(--color-accent);
+	cursor: pointer;
 }
 </style>

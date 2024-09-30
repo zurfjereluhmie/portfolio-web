@@ -13,8 +13,12 @@ import { AwesomeSocialButton } from "awesome-social-button";
 				>
 			</p>
 			<div id="socials">
-				<AwesomeSocialButton type="linkedin" :link="{ src: 'https://facebook.com' }" color="#205c8d" />
-				<AwesomeSocialButton type="github" :link="{ src: 'https://facebook.com' }" color="#205c8d" />
+				<AwesomeSocialButton
+					type="linkedin"
+					:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/' }"
+					color="#205c8d"
+				/>
+				<AwesomeSocialButton type="github" :link="{ href: 'https://github.com/zurfjereluhmie' }" color="#205c8d" />
 			</div>
 			<div id="call-to-action">
 				<NuxtLink
