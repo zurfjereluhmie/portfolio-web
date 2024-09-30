@@ -92,10 +92,20 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	margin-top: 2rem;
 }
 
+#socials > * {
+	cursor: pointer;
+}
+
 #call-to-action > a {
 	margin-top: 2rem;
 	color: var(--color-white);
 	background-color: var(--color-accent);
 	width: fit-content;
+}
+
+a[href] {
+	cursor: pointer;
+	color: var(--color-accent);
+	text-decoration: none;
 }
 </style>

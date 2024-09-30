@@ -4,6 +4,7 @@
 	<TheNavBar currentPath="/portfolio" />
 	<main>
 		<div class="mt-6">
+			<AppBreadcrumb />
 			<h1>Portfolio</h1>
 			<div class="w-full flex justify-center">
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
@@ -32,6 +33,6 @@ main {
 	align-items: center;
 }
 main > div {
-	width: var(--max-width);
+	width: min(var(--max-width), 100vw);
 }
 </style>

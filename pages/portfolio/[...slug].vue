@@ -2,7 +2,8 @@
 	<TheNavBar currentPath="/portfolio" />
 	<main>
 		<div class="mt-6 flex flex-col items-center">
-			<article class="prose">
+			<AppBreadcrumb :max-width="603.195" />
+			<article class="prose mx-2">
 				<ContentDoc />
 			</article>
 		</div>
@@ -16,6 +17,6 @@ main {
 	align-items: center;
 }
 main > div {
-	width: var(--max-width);
+	width: min(var(--max-width), 100vw);
 }
 </style>

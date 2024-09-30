@@ -24,6 +24,5 @@ p {
 
 a[href] {
 	cursor: pointer;
-	color: var(--color-accent);
 	text-decoration: none;
 }
