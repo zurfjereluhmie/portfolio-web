@@ -7,7 +7,7 @@ const props = defineProps({
 <template>
 	<div id="simple-card">
 		<div id="simple-card-header">
-			<p>{{ title }}</p>
+			<p class="big">{{ title }}</p>
 		</div>
 		<div id="simple-card-content">
 			<slot name="content"></slot>

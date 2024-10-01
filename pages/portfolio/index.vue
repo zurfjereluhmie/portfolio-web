@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const query = { path: "/portfolio", sort: [{ date: -1 }] };
+</script>
 
 <template>
 	<header>
@@ -10,7 +12,7 @@
 			<h1>Portfolio</h1>
 			<div class="w-full flex justify-center">
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
-					<ContentList path="/portfolio" v-slot="{ list }">
+					<ContentList :query v-slot="{ list }">
 						<AppCard
 							v-for="project in list"
 							:key="project._path"
@@ -26,6 +28,7 @@
 			</div>
 		</div>
 	</main>
+	<TheFooter />
 </template>
 
 <style scoped>

@@ -6,7 +6,7 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	<div id="personnal-presentation">
 		<div id="personnal">
 			<h1>Hey ! <NuxtLink to="/about">I’m Jérémie</NuxtLink></h1>
-			<p>
+			<p class="big">
 				A mediamatics technician currently pursuing my studies in media engineering
 				<a href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/" ref="noreferrer" target="_blank"
 					>at HEIG-VD</a

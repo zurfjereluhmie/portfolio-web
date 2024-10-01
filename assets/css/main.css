@@ -26,13 +26,34 @@ html {
 }
 
 p {
-	font-size: 1.5rem;
+	font-size: 1rem;
 	font-style: normal;
 	font-weight: 400;
-	line-height: normal;
+	line-height: 2rem;
+	word-spacing: 0.2rem;
+	@apply text-pretty;
+}
+
+p.big {
+	font-size: 1.5rem;
 }
 
 a[href] {
 	cursor: pointer;
 	text-decoration: none;
+	color: var(--color-accent);
+}
+
+.prose h2 a {
+	font-weight: 700 !important;
+}
+
+.prose h3 a,
+.prose h4 a {
+	font-weight: 600 !important;
+}
+
+a[href]:hover {
+	color: var(--color-black);
+	text-decoration: underline;
 }

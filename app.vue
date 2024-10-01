@@ -1,4 +1,9 @@
 <script setup>
+useHead({
+	htmlAttrs: {
+		lang: "en",
+	},
+});
 useSeoMeta({
 	title: "Jérémie Zurflüh - Personal Portfolio",
 	description:

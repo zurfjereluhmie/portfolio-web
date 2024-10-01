@@ -42,13 +42,13 @@ const commaSeparatedTags = computed(() => tags.value.join(", "));
 				<img
 					:src="`/img/${image}`"
 					:alt="`${title} image`"
-					class="transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
+					class="min-h-full transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
 				/>
 			</div>
 			<div class="p-4">
 				<div class="text-sm text-slate-500 mb-4">{{ commaSeparatedTags }}</div>
 				<h6 class="mb-2 text-slate-800 text-xl font-semibold">{{ title }}</h6>
-				<p v-if="excerpt" class="text-slate-600 leading-normal font-light text-base">
+				<p v-if="excerpt" class="excerpt text-slate-600 leading-normal font-light text-base">
 					{{ excerpt }}
 				</p>
 			</div>
@@ -80,5 +80,9 @@ const commaSeparatedTags = computed(() => tags.value.join(", "));
 	all: revert;
 	color: var(--color-accent);
 	cursor: pointer;
+}
+
+.excerpt {
+	height: 5rem;
 }
 </style>

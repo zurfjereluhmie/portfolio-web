@@ -43,7 +43,6 @@ const isActive = (path) => {
 <style scoped>
 nav {
 	width: 100%;
-	background-color: var(--color-light-grey);
 	padding: 1rem;
 }
 
@@ -57,14 +56,15 @@ ul {
 
 li a {
 	margin: 0 1rem;
-	color: var(--color-black);
+	color: var(--color-accent);
 }
 
 li a:hover {
-	color: var(--color-accent);
+	color: var(--color-black);
+	text-decoration: underline;
 }
 
 li a.active {
-	color: var(--color-accent);
+	color: var(--color-black);
 }
 </style>
