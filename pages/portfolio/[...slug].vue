@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute();
+const url = useRequestURL();
 
 const { data } = await useAsyncData(`content-${route.path}`, () =>
 	queryContent().where({ _path: route.path }).findOne()
@@ -7,6 +8,19 @@ const { data } = await useAsyncData(`content-${route.path}`, () =>
 
 const cover = ref(data.value.image);
 const toc = ref(data.value.body.toc);
+
+useSeoMeta({
+	title: data.value.title,
+	description: data.value.description,
+	ogTitle: data.value.title,
+	ogDescription: data.value.description,
+	ogImage: `${url.origin}/img/${cover.value}`,
+	ogUrl: url,
+	twitterTitle: data.value.title,
+	twitterDescription: data.value.description,
+	twitterImage: `${url.origin}/img/${cover.value}`,
+	twitterCard: "summary",
+});
 </script>
 <template>
 	<header>
@@ -22,7 +36,7 @@ const toc = ref(data.value.body.toc);
 					<NuxtImg
 						class="object-cover object-center w-full rounded-lg h-96"
 						:src="`/img/${cover}`"
-						:alt="`Cover image of the '${data.title}' article`"
+						:alt="`Cover image of the '${data.title}' project`"
 					/>
 				</div>
 				<ContentRenderer :value="data" />
