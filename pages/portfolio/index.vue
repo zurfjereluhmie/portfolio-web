@@ -7,7 +7,7 @@ const query = { path: "/portfolio", sort: [{ date: -1 }] };
 		<TheNavBar currentPath="/portfolio" />
 	</header>
 	<main>
-		<div>
+		<div class="px-6">
 			<AppBreadcrumb />
 			<h1>Portfolio</h1>
 			<div class="w-full flex justify-center">

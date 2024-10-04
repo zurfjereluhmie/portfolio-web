@@ -9,10 +9,22 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const showLightBox = ref(false);
+const imagesIndex = ref(0);
+
+const lightBoxImg = computed(() => {
+	return props.imagesUrl.map((image) => `${props.baseUrl}/${image}`);
+});
+
+const displayLightBox = (index) => {
+	imagesIndex.value = index;
+	showLightBox.value = true;
+};
 </script>
 
 <template>
-	<div class="gap-4 not-prose columns-2 sm:columns-3 md:columns-3">
+	<div class="not-prose columns-1 sm:columns-2 md:columns-2">
 		<NuxtImg
 			v-for="(image, i) in imagesUrl"
 			class="mb-4 size-full rounded-lg object-contain"
@@ -21,7 +33,11 @@ const props = defineProps({
 			loading="lazy"
 			placeholder
 			placeholder-class="animate-pulse"
+			@click="displayLightBox(i)"
 		/>
+	</div>
+	<div class="not-prose" v-if="showLightBox">
+		<AppLightBox :images="lightBoxImg" :startIndex="imagesIndex" @close="showLightBox = false" />
 	</div>
 </template>
 

@@ -15,6 +15,7 @@ footer {
 	color: var(--color-white);
 	text-align: center;
 	padding: 1rem;
+	margin-top: 4rem;
 }
 
 footer p {

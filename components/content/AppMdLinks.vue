@@ -28,7 +28,7 @@ const BASE_FAVICON_API = "https://www.google.com/s2/favicons?sz=32&domain_url=";
 			{{ link.host }}
 		</a>
 	</div>
-	<hr class="not-prose border-[0.1px] border-grey-200 my-3" />
+	<hr class="not-prose border-[0.1px] border-grey-200 my-3 mb-5" />
 </template>
 
 <style scoped></style>
