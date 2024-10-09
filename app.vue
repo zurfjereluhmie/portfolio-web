@@ -8,6 +8,7 @@ useHead({
 		{ rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
 		{ rel: "icon", type: "image/png", sizes: "64x64", href: "/favicon-64x64.png" },
 	],
+	meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
 });
 useSeoMeta({
 	title: "Jérémie Zurflüh - Personal Portfolio",

@@ -20,6 +20,12 @@ breadcrumbs.value.forEach((link, index) => {
 
 const isLast = (index) => index + 1 < breadcrumbs.value.length;
 const firstLetterUpper = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+const removeHash = (string) => string.split("#").at(0);
+const nameFormatter = (string) => {
+	let s = removeHash(string);
+	s = firstLetterUpper(s);
+	return s;
+};
 </script>
 
 <template>
@@ -36,10 +42,10 @@ const firstLetterUpper = (string) => string.charAt(0).toUpperCase() + string.sli
 					class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800"
 				>
 					<template v-if="isLast(index)">
-						<NuxtLink :to="buildLink.at(index) || '/'">{{ firstLetterUpper(link) || "Home" }}</NuxtLink>
+						<NuxtLink :to="buildLink.at(index) || '/'">{{ nameFormatter(link) || "Home" }}</NuxtLink>
 					</template>
 					<template v-else>
-						<span class="cursor-default">{{ firstLetterUpper(link) || "Home" }}</span>
+						<span class="cursor-default">{{ nameFormatter(link) || "Home" }}</span>
 					</template>
 					<span v-if="isLast(index)" class="pointer-events-none mx-2 text-slate-800">
 						{{ separator }}

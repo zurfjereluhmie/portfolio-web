@@ -2,11 +2,8 @@
 
 <template>
 	<div id="hero-container">
-		<div>
-			<div id="name">
-				<p>Jérémie <span>Zurflüh</span></p>
-			</div>
-			<h1>Personal Portfolio</h1>
+		<div id="name">
+			<p>Jérémie <span>Zurflüh</span></p>
 		</div>
 		<div id="pro-infos">
 			<p>BSc in Media Engineering</p>
