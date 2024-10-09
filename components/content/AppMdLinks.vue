@@ -10,7 +10,7 @@ const cleanLinks = computed(() => {
 	return props.links.map((link) => new URL(link));
 });
 
-const BASE_FAVICON_API = "https://www.google.com/s2/favicons?sz=32&domain_url=";
+const BASE_FAVICON_API = "https://icon.horse/icon/";
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const BASE_FAVICON_API = "https://www.google.com/s2/favicons?sz=32&domain_url=";
 			rel="no-referrer"
 			target="_blank"
 		>
-			<img :src="`${BASE_FAVICON_API}${link.origin}`" class="h-4 w-4" />
+			<img :src="`${BASE_FAVICON_API}${link.host}`" class="h-4 w-4" />
 
 			{{ link.host }}
 		</a>

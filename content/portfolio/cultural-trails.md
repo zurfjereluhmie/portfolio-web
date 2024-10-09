@@ -1,7 +1,7 @@
 ---
-image: "portfolio/gamepixel/GamePixel-Cover.png"
+image: "portfolio/cultural-trails/cover.png"
 title: "Cultural trails"
-description: "An interactive app visualizing video game graphic evolution, trends, and milestones using dynamic data."
+description: "A mobile-first web application that allows users to explore the cultural trails of the Canton of Vaud."
 date: 2024-07-12
 gallery-slug: "cultural-trails"
 tags: "Full-stack, App Architecture"
@@ -9,7 +9,7 @@ tags: "Full-stack, App Architecture"
 
 # {{ $doc.title }}
 
-::AppMdLinks{:links='["https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ", "https://sentiers-culturels-vd.ch/"]'}
+::AppMdLinks{:links='["https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ", "https://sentiers-culturels-vd.ch/home"]'}
 ::
 
 ## Context
@@ -78,7 +78,7 @@ The app was developed with a strong focus on user experience, emphasizing ease o
 
 ## Technologies Used
 
--  **Frontend**: Vue.js for the user interface and for the map I used maplibre-gl
+-  **Frontend**: Vue.js for the user interface and for the map maplibre-gl
 -  **Backend**: Laravel for the backend functionality and Inertia.js for seamless frontend/backend integration
 -  **Database**: MySQL for storing user data, trail information, and points of interest
 -  **API Integration**: Weather API for providing 3-day forecasts and OpenRouteService API for calculating trail distances and durations
@@ -103,3 +103,6 @@ The Cultural Trails app offers an engaging and interactive way for users to expl
 
 The Cultural Trails app is available [here](https://sentiers-culturels-vd.ch/) for a limited time.
 Or you can check the [GitHub repository](https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ) for more details.
+
+::AppGallery{baseUrl="/img/portfolio/cultural-trails" :imagesUrl='["SCVD-1.png", "SCVD-2.png", "SCVD-3.png", "SCVD-4.png", "SCVD-5.png", "SCVD-6.png", "SCVD-7.png"]'}
+::
