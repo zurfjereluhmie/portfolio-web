@@ -8,6 +8,10 @@ const props = defineProps({
 		type: Array,
 		required: true,
 	},
+	imagesAlt: {
+		type: Array,
+		required: false,
+	},
 });
 
 const showLightBox = ref(false);
@@ -34,10 +38,12 @@ const displayLightBox = (index) => {
 			placeholder
 			placeholder-class="animate-pulse"
 			@click="displayLightBox(i)"
+			:key="i"
+			:alt="imagesAlt && imagesAlt.at(i) ? imagesAlt.at(i) : undefined"
 		/>
 	</div>
 	<div class="not-prose" v-if="showLightBox">
-		<AppLightBox :images="lightBoxImg" :startIndex="imagesIndex" @close="showLightBox = false" />
+		<AppLightBox :images="lightBoxImg" :alts="imagesAlt" :startIndex="imagesIndex" @close="showLightBox = false" />
 	</div>
 </template>
 
