@@ -47,4 +47,8 @@ const displayLightBox = (index) => {
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(img) {
+	cursor: pointer;
+}
+</style>
