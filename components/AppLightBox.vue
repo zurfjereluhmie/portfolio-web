@@ -55,6 +55,7 @@ onUnmounted(() => {
 						:src="currentImage"
 						:imgAttrs="{ alt: alts && alts.at(imagesIndex) ? alts.at(imagesIndex) : undefined }"
 						:loading="lazy"
+						format="webp"
 					/>
 					<figcaption v-if="alts && alts.at(imagesIndex)">
 						{{ alts.at(imagesIndex) }}
@@ -68,6 +69,8 @@ onUnmounted(() => {
 						v-for="(image, i) in images"
 						:key="i"
 						:src="image"
+						quality="50"
+						format="webp"
 						:alt="alts && alts.at(i) ? alts.at(i) : undefined"
 						:loading="lazy"
 						:class="{ active: i === imagesIndex }"
