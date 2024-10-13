@@ -1,8 +1,8 @@
 <script setup>
 const props = defineProps({
 	maxWidth: {
-		type: Number,
-		default: -Infinity,
+		type: String,
+		default: null,
 	},
 });
 
@@ -18,7 +18,7 @@ breadcrumbs.value.forEach((link, index) => {
 	buildLink.value.push(`${buildLink.value.at(index - 1)}/${link}`);
 });
 
-const isLast = (index) => index + 1 < breadcrumbs.value.length;
+const isNotLast = (index) => index + 1 < breadcrumbs.value.length;
 const firstLetterUpper = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 const removeHash = (string) => string.split("#").at(0);
 const nameFormatter = (string) => {
@@ -33,21 +33,21 @@ const nameFormatter = (string) => {
 		aria-label="breadcrumb"
 		class="w-full"
 		:style="{
-			'max-width': maxWidth + 'px',
+			maxWidth,
 		}"
 	>
 		<ol class="flex w-full flex-wrap items-center rounded-md py-4 px-0">
 			<template v-for="(link, index) in breadcrumbs">
-				<li
-					class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800"
-				>
-					<template v-if="isLast(index)">
-						<NuxtLink :to="buildLink.at(index) || '/'">{{ nameFormatter(link) || "Home" }}</NuxtLink>
+				<li class="flex items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+					<template v-if="isNotLast(index)">
+						<NuxtLink :to="buildLink.at(index) || '/'" class="cursor-pointer">{{
+							nameFormatter(link) || "Home"
+						}}</NuxtLink>
 					</template>
 					<template v-else>
-						<span class="cursor-default">{{ nameFormatter(link) || "Home" }}</span>
+						<a class="cursor-default" aria-current="page">{{ nameFormatter(link) || "Home" }}</a>
 					</template>
-					<span v-if="isLast(index)" class="pointer-events-none mx-2 text-slate-800">
+					<span v-if="isNotLast(index)" class="pointer-events-none mx-2 text-slate-800">
 						{{ separator }}
 					</span>
 				</li>
@@ -57,12 +57,12 @@ const nameFormatter = (string) => {
 </template>
 
 <style scoped>
-a {
+a:not([aria-current="page"]):hover {
 	cursor: pointer;
-	color: var(--color-accent);
+	color: var(--color-black);
 }
 
-span {
+a[aria-current="page"] {
 	cursor: default;
 	color: var(--color-black);
 }

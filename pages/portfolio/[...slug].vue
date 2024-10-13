@@ -15,7 +15,7 @@ useSeoMeta({
 	ogTitle: data.value.title,
 	ogDescription: data.value.description,
 	ogImage: `${url.origin}/img/${cover.value}`,
-	ogUrl: url,
+	ogUrl: url.href,
 	twitterTitle: data.value.title,
 	twitterDescription: data.value.description,
 	twitterImage: `${url.origin}/img/${cover.value}`,
@@ -28,7 +28,7 @@ useSeoMeta({
 	</header>
 	<main>
 		<div class="mt-6 px-6 flex flex-col items-center relative">
-			<AppBreadcrumb :max-width="603.195" />
+			<AppBreadcrumb max-width="65ch" />
 			<article class="prose">
 				<div
 					class="not-prose mb-8 grid w-full min-h-[140px] place-items-center overflow-x-scroll rounded-lg lg:overflow-visible"

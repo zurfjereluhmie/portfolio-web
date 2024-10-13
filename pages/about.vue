@@ -1,5 +1,17 @@
 <script setup>
 import { AwesomeSocialButton } from "awesome-social-button";
+
+useSeoMeta({
+	title: "About Me",
+	description:
+		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
+	ogTitle: "About Me",
+	ogDescription:
+		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
+	twitterTitle: "About Me",
+	twitterDescription:
+		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
+});
 </script>
 
 <template>
@@ -8,7 +20,6 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	</header>
 	<main>
 		<div class="px-6">
-			<AppBreadcrumb />
 			<h1>About Me</h1>
 			<div class="about-container">
 				<div class="profile-description">

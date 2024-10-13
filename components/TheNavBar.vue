@@ -10,31 +10,13 @@ const isActive = (path) => {
 	<nav>
 		<ul>
 			<li>
-				<NuxtLink
-					to="/"
-					:class="{
-						active: isActive('/'),
-					}"
-					>Home</NuxtLink
-				>
+				<NuxtLink to="/" :aria-current="isActive('/') ? 'page' : null">Home</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink
-					to="/portfolio"
-					:class="{
-						active: isActive('/portfolio'),
-					}"
-					>Portfolio</NuxtLink
-				>
+				<NuxtLink to="/portfolio" :aria-current="isActive('/portfolio') ? 'page' : null">Portfolio</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink
-					to="/about"
-					:class="{
-						active: isActive('/about'),
-					}"
-					>About</NuxtLink
-				>
+				<NuxtLink to="/about" :aria-current="isActive('/about') ? 'page' : null">About</NuxtLink>
 			</li>
 		</ul>
 	</nav>
@@ -64,7 +46,7 @@ li a:hover {
 	text-decoration: underline;
 }
 
-li a.active {
+li a[aria-current="page"] {
 	color: var(--color-black);
 }
 </style>

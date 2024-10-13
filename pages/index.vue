@@ -25,11 +25,23 @@ onMounted(() => {
 		if (personalPresentationRef.value) observer.unobserve(personalPresentationRef.value);
 	});
 });
+
+useSeoMeta({
+	title: "Personal Portfolio",
+	description:
+		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
+	ogTitle: "Personal Portfolio",
+	ogDescription:
+		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
+	twitterTitle: "Personal Portfolio",
+	twitterDescription:
+		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
+});
 </script>
 
 <template>
 	<header>
-		<TheNavBar />
+		<TheNavBar currentPath="/" />
 	</header>
 	<main>
 		<TheHeroSection />

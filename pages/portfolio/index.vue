@@ -1,5 +1,17 @@
 <script setup>
 const query = { path: "/portfolio", sort: [{ date: -1 }] };
+
+useSeoMeta({
+	title: "Portfolio",
+	description:
+		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
+	ogTitle: "Portfolio",
+	ogDescription:
+		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
+	twitterTitle: "Portfolio",
+	twitterDescription:
+		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
+});
 </script>
 
 <template>
@@ -8,7 +20,6 @@ const query = { path: "/portfolio", sort: [{ date: -1 }] };
 	</header>
 	<main>
 		<div class="px-6">
-			<AppBreadcrumb />
 			<h1>Portfolio</h1>
 			<div class="w-full flex justify-center">
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">

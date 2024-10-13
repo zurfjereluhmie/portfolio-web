@@ -159,7 +159,7 @@ onUnmounted(() => {
 
 .picture-container :deep(img) {
 	max-width: 100%;
-	max-height: 100%;
+	max-height: 80vh;
 	object-fit: contain;
 	@apply rounded-md;
 }
