@@ -8,17 +8,26 @@ import { AwesomeSocialButton } from "awesome-social-button";
 			<h1>Hey ! <NuxtLink to="/about">I’m Jérémie</NuxtLink></h1>
 			<p class="big">
 				A mediamatics technician currently pursuing my studies in media engineering
-				<a href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/" ref="noreferrer" target="_blank"
+				<a
+					href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
+					ref="noreferrer"
+					target="_blank"
+					aria-label="HEIG-VD Media Engineering"
 					>at HEIG-VD</a
 				>
 			</p>
 			<div id="socials">
 				<AwesomeSocialButton
 					type="linkedin"
-					:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/' }"
+					:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/', target: '_blank' }"
+					color="#205c8d"
+					target="_blank"
+				/>
+				<AwesomeSocialButton
+					type="github"
+					:link="{ href: 'https://github.com/zurfjereluhmie', target: '_blank' }"
 					color="#205c8d"
 				/>
-				<AwesomeSocialButton type="github" :link="{ href: 'https://github.com/zurfjereluhmie' }" color="#205c8d" />
 			</div>
 			<div id="call-to-action">
 				<NuxtLink

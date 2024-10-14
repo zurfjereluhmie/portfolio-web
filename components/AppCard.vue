@@ -39,15 +39,19 @@ const commaSeparatedTags = computed(() => tags.value.join(", "));
 	>
 		<div class="relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg w-96">
 			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-				<img
+				<NuxtImg
 					:src="`/img/${image}`"
 					:alt="`${title} image`"
+					format="webp"
+					loading="lazy"
+					placeholder
+					placeholder-class="w-full h-full bg-slate-200"
 					class="min-h-full transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
 				/>
 			</div>
 			<div class="p-4">
 				<div class="text-sm text-slate-500 mb-4">{{ commaSeparatedTags }}</div>
-				<h6 class="mb-2 text-slate-800 text-xl font-semibold">{{ title }}</h6>
+				<h2 class="mb-2 text-slate-800 text-xl font-semibold">{{ title }}</h2>
 				<p v-if="excerpt" class="excerpt text-slate-600 leading-normal font-light text-base">
 					{{ excerpt }}
 				</p>

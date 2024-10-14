@@ -31,6 +31,7 @@ useSeoMeta({
 								href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
 								ref="noreferrer"
 								target="_blank"
+								aria-label="HEIG-VD Media Engineering"
 							>
 								Media Engineering at HEIG-VD</a
 							>, with a passion for both the technical and creative sides of web development. My journey started
@@ -43,6 +44,7 @@ useSeoMeta({
 								href="https://www.ict-berufsbildung.ch/formation-initiale/apprentissages-ict/mediamaticienne-cfc"
 								ref="noreferrer"
 								target="_blank"
+								aria-label="Mediamatics Technician at ICT Berufsbildung"
 								>Mediamatics Technician</a
 							>, gaining a solid foundation in web development, design, video editing, and IT.
 						</p>
@@ -60,10 +62,16 @@ useSeoMeta({
 							connecting with like-minded people. You can contact me via
 							<a
 								href="javascript:location='mailto:\u007a\u0075\u0072\u0066\u006c\u0075\u0068\u002e\u006a\u0065\u0072\u0065\u006d\u0069\u0065\u0040\u0067\u006d\u0061\u0069\u006c\u002e\u0063\u006f\u006d';void 0"
+								aria-label="Email Jérémie Zurflüh"
 								>email</a
 							>
 							or connect with me on
-							<a href="https://www.linkedin.com/in/jeremie-zurfluh/" ref="noreferrer" target="_blank">LinkedIn</a
+							<a
+								href="https://www.linkedin.com/in/jeremie-zurfluh/"
+								ref="noreferrer"
+								target="_blank"
+								aria-label="LinkedIn"
+								>LinkedIn</a
 							>. I look forward to hearing from you!
 						</p>
 					</div>
@@ -79,12 +87,12 @@ useSeoMeta({
 						<div class="flex flex-row gap-6 justify-center">
 							<AwesomeSocialButton
 								type="linkedin"
-								:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/' }"
+								:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/', target: '_blank' }"
 								color="#205c8d"
 							/>
 							<AwesomeSocialButton
 								type="github"
-								:link="{ href: 'https://github.com/zurfjereluhmie' }"
+								:link="{ href: 'https://github.com/zurfjereluhmie', target: '_blank' }"
 								color="#205c8d"
 							/>
 						</div>
