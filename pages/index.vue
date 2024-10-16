@@ -54,7 +54,7 @@ useSeoMeta({
 main {
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
-	height: 100vh;
+	height: 100dvh;
 	background-color: var(--color-white);
 }
 

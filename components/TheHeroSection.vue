@@ -16,7 +16,7 @@
 #hero-container {
 	position: relative;
 	background-color: #f0f0f0;
-	height: 100vh;
+	height: 100dvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -30,7 +30,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin-top: 15vh;
+	margin-top: 15dvh;
 }
 
 #name p {
@@ -39,6 +39,10 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+
+	/* Animation */
+	opacity: 0;
+	animation: enter 1s 0.5s forwards;
 }
 
 #name span {
@@ -48,6 +52,10 @@
 #pro-infos {
 	margin-left: 3rem;
 	margin-bottom: 3rem;
+
+	/* Animation */
+	opacity: 0;
+	animation: enter 1s 1.5s forwards;
 }
 
 #pro-infos *:first-child {

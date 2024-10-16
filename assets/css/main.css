@@ -57,9 +57,28 @@ p.big {
 }
 
 a[href] {
+	color: var(--color-accent);
 	cursor: pointer;
 	text-decoration: none;
+
+	/* Animation */
+	background-image: linear-gradient(var(--color-accent), var(--color-accent));
+	background-size: 0% 0.07em;
+	background-position-y: 100%;
+	background-position-x: 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.2s ease-in-out;
+}
+a[href]:hover,
+a[href]:focus,
+a[href]:active {
 	color: var(--color-accent);
+	background-size: 100% 0.07em;
+	background-position-x: 0%;
+}
+
+.awesome-social-button a {
+	background: none !important;
 }
 
 .prose h2 a {
@@ -71,7 +90,15 @@ a[href] {
 	font-weight: 600 !important;
 }
 
-a[href]:hover {
-	color: var(--color-black);
-	text-decoration: underline;
+/* Animation */
+
+@keyframes enter {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

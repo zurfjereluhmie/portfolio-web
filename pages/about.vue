@@ -161,5 +161,9 @@ useSeoMeta({
 
 .profile-card {
 	grid-area: profile-card;
+
+	/* Animation */
+	opacity: 0;
+	animation: enter 1s 0.5s forwards;
 }
 </style>

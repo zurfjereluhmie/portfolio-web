@@ -25,7 +25,7 @@ useSeoMeta({
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
 					<ContentList :query v-slot="{ list }">
 						<AppCard
-							v-for="project in list"
+							v-for="(project, i) in list"
 							:key="project._path"
 							:title="project.title"
 							:excerpt="project.description"
@@ -33,6 +33,7 @@ useSeoMeta({
 							:image="project.image"
 							:moreLink="project._path"
 							:date="project.date"
+							:delay-anim="`${i * 100}ms`"
 						/>
 					</ContentList>
 				</div>

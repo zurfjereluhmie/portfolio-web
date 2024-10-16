@@ -72,7 +72,7 @@ import { AwesomeSocialButton } from "awesome-social-button";
 
 <style scoped>
 #personnal-presentation {
-	min-height: 100vh;
+	min-height: 100dvh;
 	padding: 3rem;
 	margin-top: 10rem;
 	background-color: var(--color-white);
@@ -114,11 +114,5 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	color: var(--color-white);
 	background-color: var(--color-accent);
 	width: fit-content;
-}
-
-a[href] {
-	cursor: pointer;
-	color: var(--color-accent);
-	text-decoration: none;
 }
 </style>

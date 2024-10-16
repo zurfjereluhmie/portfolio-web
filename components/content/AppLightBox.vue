@@ -120,8 +120,8 @@ onUnmounted(() => {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100vw;
-	height: 100vh;
+	width: 100dvw;
+	height: 100dvh;
 	background-color: rgba(0, 0, 0, 0.8);
 	z-index: 999;
 }
@@ -142,8 +142,8 @@ onUnmounted(() => {
 	transform: translate(-50%, -50%);
 	z-index: 1000;
 
-	width: 80vw;
-	height: 80vh;
+	width: 80dvw;
+	height: 80dvh;
 
 	display: flex;
 	flex-direction: column;
@@ -159,7 +159,7 @@ onUnmounted(() => {
 
 .picture-container :deep(img) {
 	max-width: 100%;
-	max-height: 80vh;
+	max-height: 80dvh;
 	object-fit: contain;
 	@apply rounded-md;
 }

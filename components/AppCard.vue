@@ -12,6 +12,7 @@ const props = defineProps({
 		required: true,
 	},
 	date: String,
+	delayAnim: String,
 });
 
 const formattedDate = computed(() => {
@@ -30,12 +31,14 @@ const tags = computed(() => {
 });
 
 const commaSeparatedTags = computed(() => tags.value.join(", "));
+
+const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 </script>
 
 <template>
 	<NuxtLink
 		:to="moreLink"
-		class="cursor-pointer group shadow-sm border border-slate-200 rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
+		class="app-card cursor-pointer group shadow-sm border border-slate-200 rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
 	>
 		<div class="relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg w-96">
 			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
@@ -80,6 +83,10 @@ const commaSeparatedTags = computed(() => tags.value.join(", "));
 </template>
 
 <style scoped>
+.app-card {
+	animation: v-bind(animationStyle);
+}
+
 .read-more {
 	all: revert;
 	color: var(--color-accent);

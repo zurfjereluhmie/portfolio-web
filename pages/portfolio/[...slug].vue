@@ -56,7 +56,7 @@ main {
 	align-items: center;
 }
 main > div {
-	width: min(var(--max-width), 100vw);
+	width: min(var(--max-width), 100dvw);
 }
 
 aside.toc {
@@ -70,6 +70,6 @@ aside.toc {
 aside.toc :deep(.toc-container) {
 	position: sticky;
 	top: 40px;
-	margin-top: 15vh;
+	margin-top: 15dvh;
 }
 </style>

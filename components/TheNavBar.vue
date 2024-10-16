@@ -41,12 +41,8 @@ li a {
 	color: var(--color-accent);
 }
 
-li a:hover {
-	color: var(--color-black);
-	text-decoration: underline;
-}
-
 li a[aria-current="page"] {
 	color: var(--color-black);
+	background-image: linear-gradient(var(--color-black), var(--color-black));
 }
 </style>
