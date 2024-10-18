@@ -7,16 +7,16 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	<div id="personnal-presentation">
 		<div id="personnal">
 			<h1>
-				{{ t("hello") }} <NuxtLink :to="localePath('/about')">{{ t("imJeremie") }}</NuxtLink>
+				{{ t("index.hello") }} <NuxtLink :to="localePath('/about')">{{ t("index.imJeremie") }}</NuxtLink>
 			</h1>
 			<p class="big">
-				{{ t("oneSentencePres") }}
+				{{ t("index.oneSentencePres") }}
 				<a
 					href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
 					ref="noreferrer"
 					target="_blank"
 					aria-label="HEIG-VD Media Engineering"
-					>{{ t("at") }} HEIG-VD</a
+					>{{ t("index.at") }} HEIG-VD</a
 				>
 			</p>
 			<div id="socials">
@@ -37,7 +37,7 @@ import { AwesomeSocialButton } from "awesome-social-button";
 					:to="localePath('/portfolio')"
 					class="flex items-center rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 				>
-					{{ t("seeMyWork") }}
+					{{ t("index.seeMyWork") }}
 
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1.5">
 						<path
@@ -53,14 +53,14 @@ import { AwesomeSocialButton } from "awesome-social-button";
 			<AppSimpleCard title="Full-stack">
 				<template v-slot:content>
 					<p>
-						{{ t("fullStack") }}
+						{{ t("index.fullStack") }}
 					</p>
 				</template>
 			</AppSimpleCard>
 			<AppSimpleCard title="UI & UX">
 				<template v-slot:content>
 					<p>
-						{{ t("UIUX") }}
+						{{ t("index.UIUX") }}
 					</p>
 				</template>
 			</AppSimpleCard>

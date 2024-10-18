@@ -11,16 +11,16 @@ const isActive = (path) => {
 	<nav>
 		<ul>
 			<li>
-				<NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("home") }}</NuxtLink>
+				<NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("nav.home") }}</NuxtLink>
 			</li>
 			<li>
 				<NuxtLink :to="localePath('/portfolio')" :aria-current="isActive('/portfolio') ? 'page' : null">{{
-					t("portfolio")
+					t("nav.portfolio")
 				}}</NuxtLink>
 			</li>
 			<li>
 				<NuxtLink :to="localePath('/about')" :aria-current="isActive('/about') ? 'page' : null">{{
-					t("about")
+					t("nav.about")
 				}}</NuxtLink>
 			</li>
 		</ul>

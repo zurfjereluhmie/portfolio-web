@@ -1,12 +1,52 @@
 {
-	"home": "Home",
-	"portfolio": "Portfolio",
-	"about": "About",
-	"hello": "Hey !",
-	"imJeremie": "I'm Jérémie",
-	"oneSentencePres": "A mediamatics technician currently pursuing my studies in media engineering",
-	"at": "at",
-	"seeMyWork": "See some of my works",
-	"fullStack": "I have a deep passion for full-stack web development. From building scalable, responsive back-end systems to crafting engaging, intuitive front-end experiences, I thrive on turning creative ideas into dynamic web applications.",
-	"UIUX": "In addition to coding, I am equally invested in UI/UX design, ensuring that the user journey is seamless, visually appealing, and functional. By combining my development skills with a user-centered design approach, I aim to create products that not only meet technical requirements but also deliver a top-notch experience for users."
+	"index": {
+		"meta": {
+			"title": "Personal Portfolio",
+			"description": "Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design."
+		},
+		"hello": "Hey !",
+		"imJeremie": "I'm Jérémie",
+		"oneSentencePres": "A mediamatics technician currently pursuing my studies in media engineering",
+		"at": "at",
+		"seeMyWork": "See some of my works",
+		"fullStack": "I have a deep passion for full-stack web development. From building scalable, responsive back-end systems to crafting engaging, intuitive front-end experiences, I thrive on turning creative ideas into dynamic web applications.",
+		"UIUX": "In addition to coding, I am equally invested in UI/UX design, ensuring that the user journey is seamless, visually appealing, and functional. By combining my development skills with a user-centered design approach, I aim to create products that not only meet technical requirements but also deliver a top-notch experience for users."
+	},
+	"portfolio": {
+		"meta": {
+			"title": "Portfolio",
+			"description": "Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems."
+		},
+		"portfolio": "Portfolio"
+	},
+	"about": {
+		"meta": {
+			"title": "About Me",
+			"description": "Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights."
+		},
+		"aboutMe": "About me",
+		"helloImJeremie": "Hello ! I'm Jérémie",
+		"iStudy": "I’m studying",
+		"mediaEngineering": "Media Engineering at HEIG-VD",
+		"iStudy2": ", with a passion for both the technical and creative sides of web development. My journey started with a curiosity for how things work, which grew into a love for building websites that not only function well but look and feel great.",
+		"trainedAs": "Before this, I trained as a",
+		"mediamaticsTechnician": "Mediamatics Technician",
+		"mediamaticsTechnician2": ", gaining a solid foundation in web development, design, video editing, and IT.",
+		"loveAbout": "What I love about full-stack development is bringing ideas to life from start to finish — building efficient back-end systems while creating seamless, user-centered front-end experiences. It’s the blend of logic and creativity that drives me.",
+		"getInTouch": "Get in touch",
+		"getInTouch2": "If you’d like to collaborate on a project, have any questions, or just want to chat about web development or UI & UX, feel free to reach out! I’m always open to new opportunities and love connecting with like-minded people. You can contact me via",
+		"email": "email",
+		"connect": "or connect with me on",
+		"linkedin": "LinkedIn",
+		"connect2": ". I look forward to hearing from you!"
+	},
+	"nav": {
+		"home": "Home",
+		"portfolio": "Portfolio",
+		"about": "About"
+	},
+	"content": {
+		"readMore": "Read more",
+		"toc": "Table of contents"
+	}
 }

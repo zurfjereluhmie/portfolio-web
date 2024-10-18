@@ -1,17 +1,15 @@
 <script setup>
 const i18n = useI18n();
+const { t } = useI18n();
 const query = { path: `${i18n.locale.value}/portfolio`, sort: [{ date: -1 }] };
 
 useSeoMeta({
-	title: "Portfolio",
-	description:
-		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
-	ogTitle: "Portfolio",
-	ogDescription:
-		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
-	twitterTitle: "Portfolio",
-	twitterDescription:
-		"Explore Jérémie's portfolio of full-stack web projects, where creativity meets technical expertise. Discover innovative solutions, user-centered designs, and efficient back-end systems.",
+	title: t("portfolio.meta.title"),
+	description: t("portfolio.meta.description"),
+	ogTitle: t("portfolio.meta.title"),
+	ogDescription: t("portfolio.meta.description"),
+	twitterTitle: t("portfolio.meta.title"),
+	twitterDescription: t("portfolio.meta.description"),
 });
 </script>
 
@@ -21,7 +19,7 @@ useSeoMeta({
 	</header>
 	<main>
 		<div class="px-6">
-			<h1>Portfolio</h1>
+			<h1>{{ t("portfolio.portfolio") }}</h1>
 			<div class="w-full flex justify-center">
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
 					<ContentList :query v-slot="{ list }">

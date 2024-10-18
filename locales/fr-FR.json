@@ -1,12 +1,52 @@
 {
-	"home": "Accueil",
-	"portfolio": "Portfolio",
-	"about": "À propos",
-	"hello": "Salut !",
-	"imJeremie": "Je suis Jérémie",
-	"oneSentencePres": "Médiamaticien, je poursuis actuellement mes études en ingénierie des médias",
-	"at": "à",
-	"seeMyWork": "Voir quelques-unes de mes réalisations",
-	"fullStack": "J'ai une grande passion pour le développement web full-stack. De la construction de systèmes back-end évolutifs et réactifs à la création d'expériences front-end engageantes et intuitives, je m'épanouis en transformant des idées créatives en applications web dynamiques.",
-	"UIUX": "En plus de la programmation, je suis également intéressé par la conception UI/UX, en veillant à ce que le parcours de l'utilisateur soit fluide, visuellement attrayant et fonctionnel. En combinant mes compétences en développement avec une approche de conception centrée sur l'utilisateur, je vise à créer des produits qui non seulement répondent aux exigences techniques, mais offrent également une expérience de haute qualité aux utilisateurs."
+	"index": {
+		"meta": {
+			"title": "Portfolio personnel",
+			"description": "Bienvenue sur le site personnel de Jérémie, où il partage son parcours dans le développement web full-stack. Explorez ses projets, découvrez son expertise, et connectez-vous pour collaborer ou échanger sur le développement web et le design."
+		},
+		"hello": "Salut !",
+		"imJeremie": "Je suis Jérémie",
+		"oneSentencePres": "Médiamaticien, je poursuis actuellement mes études en ingénierie des médias",
+		"at": "à",
+		"seeMyWork": "Voir quelques-unes de mes réalisations",
+		"fullStack": "J'ai une grande passion pour le développement web full-stack. De la construction de systèmes back-end évolutifs et réactifs à la création d'expériences front-end engageantes et intuitives, je m'épanouis en transformant des idées créatives en applications web dynamiques.",
+		"UIUX": "En plus de la programmation, je suis également intéressé par la conception UI/UX, en veillant à ce que le parcours de l'utilisateur soit fluide, visuellement attrayant et fonctionnel. En combinant mes compétences en développement avec une approche de conception centrée sur l'utilisateur, je vise à créer des produits qui non seulement répondent aux exigences techniques, mais offrent également une expérience de haute qualité aux utilisateurs."
+	},
+	"portfolio": {
+		"meta": {
+			"title": "Portfolio",
+			"description": "Explorez le portfolio des projets full-stack de Jérémie, où la créativité rencontre l'expertise technique. Découvrez des solutions innovantes, des designs centrés sur l'utilisateur et des systèmes back-end performants."
+		},
+		"portfolio": "Portfolio"
+	},
+	"about": {
+		"meta": {
+			"title": "À propos de moi",
+			"description": "Jérémie, étudiant en ingénierie des médias à la HEIG-VD, crée des expériences web full-stack fluides grâce à un mélange de créativité et de compétences techniques. Contactez-le pour une collaboration ou des conseils en matière de développement web."
+		},
+		"aboutMe": "À propos de moi",
+		"helloImJeremie": "Salut ! Je suis Jérémie",
+		"iStudy": "Je suis étudiant en",
+		"mediaEngineering": "Ingénierie des médias à la HEIG-VD",
+		"iStudy2": ", avec une passion pour les aspects techniques et créatifs du développement web. Mon parcours a commencé avec la curiosité de comprendre comment les choses fonctionnent, qui s'est transformée en un goût pour la construction de sites web qui non seulement sont fonctionnels, mais aussi esthétiques et agréables à utiliser.",
+		"trainedAs": "Avant cela, je me suis formé en tant que",
+		"mediamaticsTechnician": "Médiamaticien",
+		"mediamaticsTechnician2": ", acquérant une solide base en développement web, design, montage vidéo et IT.",
+		"loveAbout": "Ce que j'aime dans le développement full-stack, c'est donner vie aux idées du début à la fin - construire des systèmes back-end efficaces tout en créant des expériences front-end fluides et centrées sur l'utilisateur. C'est le mélange de logique et de créativité qui me motive.",
+		"getInTouch": "Contactez-moi",
+		"getInTouch2": "Si vous souhaitez collaborer sur un projet, si vous avez des questions ou si vous voulez simplement discuter de développement web ou d'UI & UX, n'hésitez pas à me contacter ! Je suis toujours ouvert à de nouvelles opportunités et j'aime me joindre à des personnes qui partagent les mêmes idées. Vous pouvez me contacter via",
+		"email": "email",
+		"connect": "ou",
+		"linkedin": "LinkedIn",
+		"connect2": ". J'attends avec impatience vos commentaires !"
+	},
+	"nav": {
+		"home": "Accueil",
+		"portfolio": "Portfolio",
+		"about": "À propos"
+	},
+	"content": {
+		"readMore": "Lire la suite",
+		"toc": "Table des matières"
+	}
 }

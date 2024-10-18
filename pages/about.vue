@@ -1,16 +1,14 @@
 <script setup>
 import { AwesomeSocialButton } from "awesome-social-button";
+const { t } = useI18n();
 
 useSeoMeta({
-	title: "About Me",
-	description:
-		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
-	ogTitle: "About Me",
-	ogDescription:
-		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
-	twitterTitle: "About Me",
-	twitterDescription:
-		"Jérémie, a Media Engineering student at HEIG-VD, creates seamless full-stack web experiences with a blend of creativity and technical skills. Reach out for collaboration or web development insights.",
+	title: t("about.meta.title"),
+	description: t("about.meta.description"),
+	ogTitle: t("about.meta.title"),
+	ogDescription: t("about.meta.description"),
+	twitterTitle: t("about.meta.title"),
+	twitterDescription: t("about.meta.description"),
 });
 </script>
 
@@ -20,59 +18,53 @@ useSeoMeta({
 	</header>
 	<main>
 		<div class="px-6">
-			<h1>About Me</h1>
+			<h1>{{ t("about.aboutMe") }}</h1>
 			<div class="about-container">
 				<div class="profile-description">
 					<div class="hello">
-						<h2>Hello! I’m Jérémie</h2>
+						<h2>{{ t("about.helloImJeremie") }}</h2>
 						<p>
-							I’m studying
+							{{ t("about.iStudy") }}
 							<a
 								href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
 								ref="noreferrer"
 								target="_blank"
 								aria-label="HEIG-VD Media Engineering"
 							>
-								Media Engineering at HEIG-VD</a
-							>, with a passion for both the technical and creative sides of web development. My journey started
-							with a curiosity for how things work, which grew into a love for building websites that not only
-							function well but look and feel great.
+								{{ t("about.mediaEngineering") }}</a
+							>{{ t("about.iStudy2") }}
 						</p>
 						<p>
-							Before this, I trained as a
+							{{ t("about.trainedAs") }}
 							<a
 								href="https://www.ict-berufsbildung.ch/formation-initiale/apprentissages-ict/mediamaticienne-cfc"
 								ref="noreferrer"
 								target="_blank"
 								aria-label="Mediamatics Technician at ICT Berufsbildung"
-								>Mediamatics Technician</a
-							>, gaining a solid foundation in web development, design, video editing, and IT.
+								>{{ t("about.mediamaticsTechnician") }}</a
+							>{{ t("about.mediamaticsTechnician2") }}
 						</p>
 						<p>
-							What I love about full-stack development is bringing ideas to life from start to finish &mdash;
-							building efficient back-end systems while creating seamless, user-centered front-end experiences.
-							It’s the blend of logic and creativity that drives me.
+							{{ t("about.loveAbout") }}
 						</p>
 					</div>
 					<div class="get-in-touch">
-						<h2>Get in touch</h2>
+						<h2>{{ t("about.getInTouch") }}</h2>
 						<p>
-							If you’d like to collaborate on a project, have any questions, or just want to chat about web
-							development or UI & UX, feel free to reach out! I’m always open to new opportunities and love
-							connecting with like-minded people. You can contact me via
+							{{ t("about.getInTouch2") }}
 							<a
 								href="javascript:location='mailto:\u007a\u0075\u0072\u0066\u006c\u0075\u0068\u002e\u006a\u0065\u0072\u0065\u006d\u0069\u0065\u0040\u0067\u006d\u0061\u0069\u006c\u002e\u0063\u006f\u006d';void 0"
 								aria-label="Email Jérémie Zurflüh"
-								>email</a
+								>{{ t("about.email") }}</a
 							>
-							or connect with me on
+							{{ t("about.connect") }}
 							<a
 								href="https://www.linkedin.com/in/jeremie-zurfluh/"
 								ref="noreferrer"
 								target="_blank"
 								aria-label="LinkedIn"
-								>LinkedIn</a
-							>. I look forward to hearing from you!
+								>{{ t("about.linkedin") }}</a
+							>{{ t("about.connect2") }}
 						</p>
 					</div>
 				</div>

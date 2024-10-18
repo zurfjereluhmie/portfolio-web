@@ -1,5 +1,6 @@
 <script setup>
 const i18n = useI18n();
+const { t } = useI18n();
 const props = defineProps({
 	title: {
 		type: String,
@@ -65,7 +66,7 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 					class="cursor-pointer border border-transparent flex items-center text-center text-sm bg-transparent p-0"
 					type="button"
 				>
-					Read More
+					{{ t("content.readMore") }}
 
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1.5">
 						<path
