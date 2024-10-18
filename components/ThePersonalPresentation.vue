@@ -1,19 +1,22 @@
 <script setup>
+const { t } = useI18n();
 import { AwesomeSocialButton } from "awesome-social-button";
 </script>
 
 <template>
 	<div id="personnal-presentation">
 		<div id="personnal">
-			<h1>Hey ! <NuxtLink to="/about">I’m Jérémie</NuxtLink></h1>
+			<h1>
+				{{ t("hello") }} <NuxtLink :to="localePath('/about')">{{ t("imJeremie") }}</NuxtLink>
+			</h1>
 			<p class="big">
-				A mediamatics technician currently pursuing my studies in media engineering
+				{{ t("oneSentencePres") }}
 				<a
 					href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
 					ref="noreferrer"
 					target="_blank"
 					aria-label="HEIG-VD Media Engineering"
-					>at HEIG-VD</a
+					>{{ t("at") }} HEIG-VD</a
 				>
 			</p>
 			<div id="socials">
@@ -31,10 +34,10 @@ import { AwesomeSocialButton } from "awesome-social-button";
 			</div>
 			<div id="call-to-action">
 				<NuxtLink
-					to="/portfolio"
+					:to="localePath('/portfolio')"
 					class="flex items-center rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 				>
-					See some of my works
+					{{ t("seeMyWork") }}
 
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1.5">
 						<path
@@ -50,19 +53,14 @@ import { AwesomeSocialButton } from "awesome-social-button";
 			<AppSimpleCard title="Full-stack">
 				<template v-slot:content>
 					<p>
-						I have a deep passion for full-stack web development. From building scalable, responsive back-end
-						systems to crafting engaging, intuitive front-end experiences, I thrive on turning creative ideas into
-						dynamic web applications.
+						{{ t("fullStack") }}
 					</p>
 				</template>
 			</AppSimpleCard>
 			<AppSimpleCard title="UI & UX">
 				<template v-slot:content>
 					<p>
-						In addition to coding, I am equally invested in UI/UX design, ensuring that the user journey is
-						seamless, visually appealing, and functional. By combining my development skills with a user-centered
-						design approach, I aim to create products that not only meet technical requirements but also deliver a
-						top-notch experience for users.
+						{{ t("UIUX") }}
 					</p>
 				</template>
 			</AppSimpleCard>

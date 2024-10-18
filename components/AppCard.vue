@@ -1,4 +1,5 @@
 <script setup>
+const i18n = useI18n();
 const props = defineProps({
 	title: {
 		type: String,
@@ -18,7 +19,7 @@ const props = defineProps({
 const formattedDate = computed(() => {
 	if (!props.date) return "";
 	const date = new Date(props.date);
-	return date.toLocaleDateString("en-CH", {
+	return date.toLocaleDateString(i18n.locale.value, {
 		year: "numeric",
 		month: "long",
 		day: "numeric",
@@ -61,7 +62,7 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 			</div>
 			<div class="px-4 pb-4 pt-0 mt-2">
 				<button
-					class="border border-transparent flex items-center text-center text-sm bg-transparent p-0"
+					class="cursor-pointer border border-transparent flex items-center text-center text-sm bg-transparent p-0"
 					type="button"
 				>
 					Read More

@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n();
 const props = defineProps(["currentPath"]);
 
 const isActive = (path) => {
@@ -10,13 +11,17 @@ const isActive = (path) => {
 	<nav>
 		<ul>
 			<li>
-				<NuxtLink to="/" :aria-current="isActive('/') ? 'page' : null">Home</NuxtLink>
+				<NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("home") }}</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/portfolio" :aria-current="isActive('/portfolio') ? 'page' : null">Portfolio</NuxtLink>
+				<NuxtLink :to="localePath('/portfolio')" :aria-current="isActive('/portfolio') ? 'page' : null">{{
+					t("portfolio")
+				}}</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/about" :aria-current="isActive('/about') ? 'page' : null">About</NuxtLink>
+				<NuxtLink :to="localePath('/about')" :aria-current="isActive('/about') ? 'page' : null">{{
+					t("about")
+				}}</NuxtLink>
 			</li>
 		</ul>
 	</nav>

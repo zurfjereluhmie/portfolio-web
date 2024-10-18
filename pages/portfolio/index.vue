@@ -1,5 +1,6 @@
 <script setup>
-const query = { path: "/portfolio", sort: [{ date: -1 }] };
+const i18n = useI18n();
+const query = { path: `${i18n.locale.value}/portfolio`, sort: [{ date: -1 }] };
 
 useSeoMeta({
 	title: "Portfolio",

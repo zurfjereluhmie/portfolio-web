@@ -1,9 +1,10 @@
 <script setup>
+const i18n = useI18n();
 const route = useRoute();
 const url = useRequestURL();
 
-const { data } = await useAsyncData(`content-${route.path}`, () =>
-	queryContent().where({ _path: route.path }).findOne()
+const { data } = await useAsyncData(`content-${i18n.locale.value}-${route.path}`, () =>
+	queryContent(route.path).findOne()
 );
 
 const cover = ref(data.value.image);
