@@ -71,8 +71,7 @@ useSeoMeta({
 				<div class="profile-card justify-self-end">
 					<AppProfileCard
 						name="Jérémie Zurflüh"
-						role="Student in Media Engineering"
-						description="I’m a full-stack developer with a passion for building efficient back-end systems and seamless, user-centered front-end experiences."
+						:role="t('about.role')"
 						imageUrl="/img/me.jpg"
 						class="hidden xl:block"
 					>

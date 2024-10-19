@@ -38,7 +38,8 @@
 		"email": "email",
 		"connect": "ou",
 		"linkedin": "LinkedIn",
-		"connect2": ". J'attends avec impatience vos commentaires !"
+		"connect2": ". J'attends avec impatience vos commentaires !",
+		"role": "Étudiant en ingénierie des médias"
 	},
 	"nav": {
 		"home": "Accueil",

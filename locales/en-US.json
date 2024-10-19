@@ -38,7 +38,8 @@
 		"email": "email",
 		"connect": "or connect with me on",
 		"linkedin": "LinkedIn",
-		"connect2": ". I look forward to hearing from you!"
+		"connect2": ". I look forward to hearing from you!",
+		"role": "Student in Media Engineering"
 	},
 	"nav": {
 		"home": "Home",
