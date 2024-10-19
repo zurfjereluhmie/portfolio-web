@@ -1,7 +1,7 @@
 ---
 image: "portfolio/heig-social-network/heig-social-network-cover.png"
-title: "FR HEIG-VD Social Network"
-description: "Challenge: Enhancing the user experience through human research and innovative UX design."
+title: "HEIG-VD Réseau Social"
+description: "Défi : Améliorer l'expérience utilisateur grâce à la recherche humaine et à la conception UX innovante."
 date: 2024-05-12
 gallery-slug: "heig-social-network"
 tags: "UX, UI"
@@ -9,37 +9,39 @@ tags: "UX, UI"
 
 # {{ $doc.title }}
 
-The HEIG-VD contact page presented an outdated and underwhelming user experience. It lacked both interactivity and meaningful information, despite being one of the most visited pages on the school’s website. Our challenge was to turn this static, underutilized page into a dynamic, user-friendly platform that not only fulfills its core function of providing contact information but also adds value by offering a more engaging and informative experience.
+La page de contact de la HEIG-VD présentait une expérience utilisateur obsolète et peu attrayante. Elle manquait d'interactivité et d'informations utiles, malgré son statut de l'une des pages les plus visitées du site web de l'école. Notre défi était de transformer cette page statique et sous-exploitée en une plateforme dynamique et conviviale, qui non seulement fournit des informations de contact, mais qui ajoute également de la valeur en offrant une expérience plus engageante et informative.
 
-The goal was to design a new interface that meets multiple objectives:
+## Objectifs du projet
 
--  Introduce an agile search mechanism that caters to diverse user needs, such as finding staff, departments, or student groups quickly and efficiently.
--  Provide personalized profiles that offer more than just basic contact details—integrating insights into each person’s role, activities, and contributions to the school.
--  Incorporate information on the social life of the school, allowing users to stay updated on events, projects, and ongoing community engagement.
+L’objectif était de concevoir une nouvelle interface répondant à plusieurs besoins :
 
-## User Research and Insights
+-  Introduire un **mécanisme de recherche agile** répondant aux besoins variés des utilisateurs, comme la recherche rapide et efficace de membres du personnel, de départements ou de groupes d’étudiants.
+-  Offrir des **profils personnalisés** allant au-delà des simples coordonnées, en intégrant des informations sur le rôle, les activités et les contributions de chaque personne à l’école.
+-  **Incorporer des informations** sur la vie sociale de l’école, permettant aux utilisateurs de rester informés des événements, projets et engagements communautaires en cours.
 
-To achieve this, we conducted extensive user research, identifying various pain points and opportunities for improvement. This research informed the design of a new, intuitive interface that aligns with user expectations and behaviors. By understanding how different user groups interacted with the contact page, we developed features that better address their needs.
+## Recherche utilisateur et insights
 
-## Innovative Interaction Concept
+Pour atteindre ces objectifs, nous avons mené une recherche utilisateur approfondie afin d’identifier les points faibles et les opportunités d'amélioration. Cette recherche a guidé la conception d’une nouvelle interface intuitive alignée sur les attentes et comportements des utilisateurs. En comprenant comment différents groupes d’utilisateurs interagissaient avec la page de contact, nous avons développé des fonctionnalités répondant mieux à leurs besoins.
 
-One critical aspect of the project was developing an innovative interaction concept based on these findings. This unique interaction was designed to improve engagement with the platform, encouraging more dynamic use of the page and creating an experience that extends beyond simply finding contact details.
+## Concept d’interaction innovant
 
-## Iterative Design and Testing
+Un aspect essentiel du projet consistait à développer un **concept d’interaction innovant** basé sur ces conclusions. Ce concept visait à améliorer l’engagement avec la plateforme, encourageant une utilisation plus dynamique de la page et créant une expérience allant au-delà de la simple recherche de coordonnées.
 
-The user experience was optimized through an iterative design process, with each stage informed by user feedback and testing. This approach helped ensure the platform is not only functional but also motivating and easy to navigate, delivering a streamlined and enriching experience for all visitors.
+## Conception itérative et tests
 
-## Key improvements made throughout the testing process include:
+L’expérience utilisateur a été optimisée grâce à un processus de conception itératif, chaque étape étant informée par des retours et des tests utilisateurs. Cette approche a permis de garantir que la plateforme soit non seulement fonctionnelle, mais aussi agréable et facile à utiliser, offrant une expérience enrichissante pour tous les visiteurs.
 
--  **Search efficiency**: By adding filters for role, department, and project affiliation, we made the search tool significantly faster and more intuitive.
--  **Profile detail**: We expanded the amount of personal and professional information available on each profile, based on user demand for more context around each contact.
--  **Visual design**: Our final interface is clean, visually appealing, and easy to navigate, prioritizing both form and function.
+## Améliorations clés apportées au cours du processus de test :
 
-This iterative approach ensured that the platform delivered a streamlined, enjoyable user experience while remaining responsive to real-world needs.
+-  **Efficacité de la recherche** : En ajoutant des filtres pour le rôle, le département et l’affiliation à des projets, nous avons rendu l’outil de recherche plus rapide et plus intuitif.
+-  **Détails des profils** : Nous avons élargi la quantité d’informations personnelles et professionnelles disponibles sur chaque profil, en réponse à la demande des utilisateurs pour plus de contexte sur chaque contact.
+-  **Design visuel** : L’interface finale est épurée, visuellement attrayante et facile à naviguer, en donnant la priorité à la fois à la forme et à la fonction.
 
-## Prototyping
+Cette approche itérative a permis de fournir une expérience utilisateur fluide et agréable, tout en restant adaptable aux besoins réels des utilisateurs.
 
-To be able to further test our design, we created a high-fidelity prototype that allowed us to simulate the user experience and gather feedback on the platform’s functionality and usability. This prototype was instrumental in refining the design and ensuring that the final product met user expectations.
+## Prototypage
+
+Pour tester davantage notre conception, nous avons créé un **prototype haute fidélité** permettant de simuler l’expérience utilisateur et de recueillir des retours sur les fonctionnalités et l’utilisabilité de la plateforme. Ce prototype a joué un rôle crucial dans l'affinement du design, garantissant que le produit final répondait aux attentes des utilisateurs.
 
 ::AppGallery{baseUrl="/img/portfolio/heig-social-network" :imagesUrl='["heig-social-network-1.png", "heig-social-network-2.png", "heig-social-network-3.png"]'}
 ::

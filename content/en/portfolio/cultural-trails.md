@@ -19,6 +19,9 @@ It focuses on UX and UI, asking participants to create a compelling application 
 Students go through stages of planning, data modeling and technical implementation, while focusing on project management and teamwork. The final product demonstrates their technical skills and their ability to justify their design choices in a presentation to the teaching team and the customer.
 This project is an essential step in applying their knowledge and preparing them for future professional challenges.
 
+::AppGallery{baseUrl="/img/portfolio/cultural-trails" :imagesUrl='["SCVD-5.png"]'}
+::
+
 ## The team
 
 To complete the ProjArt 2024 project, the team was composed of the following members:

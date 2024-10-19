@@ -1,10 +1,10 @@
 ---
 image: "portfolio/cultural-trails/cover.png"
-title: "FR Cultural trails"
-description: "A mobile-first web application that allows users to explore the cultural trails of the Canton of Vaud."
+title: "Sentiers Culturels"
+description: "Développement d'une application web mobile pour découvrir les sentiers culturels du canton de Vaud."
 date: 2024-07-12
 gallery-slug: "cultural-trails"
-tags: "Full-stack, App Architecture"
+tags: "Full-stack, Architecture d'application"
 ---
 
 # {{ $doc.title }}
@@ -12,97 +12,100 @@ tags: "Full-stack, App Architecture"
 ::AppMdLinks{:links='["https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ", "https://sentiers-culturels-vd.ch/home"]'}
 ::
 
-## Context
+## Contexte
 
-The ProjArt 2024 project is a collaborative initiative where students develop a web application from a fictitious brief, simulating real-life conditions.
-It focuses on UX and UI, asking participants to create a compelling application that meets the customer's needs.
-Students go through stages of planning, data modeling and technical implementation, while focusing on project management and teamwork. The final product demonstrates their technical skills and their ability to justify their design choices in a presentation to the teaching team and the customer.
-This project is an essential step in applying their knowledge and preparing them for future professional challenges.
+Le projet ProjArt 2024 est une collaboration au travers de laquelle les étudiants développent une application web à partir d'un cahier des charges fictif, simulant des conditions de travail réelles.
+Le projet met l'accent sur l'UX et l'UI, en demandant aux participants de créer une application convaincante qui réponde aux besoins du client.
+Les étudiants passent par des étapes de planification, de modélisation des données et de mise en œuvre technique, tout en se concentrant sur la gestion de projet et le travail d'équipe. Le produit final démontre leurs compétences techniques et leur capacité à justifier leurs choix de conception lors d'une présentation à l'équipe enseignante et au client.
+Ce projet est une étape essentielle dans la mise en œuvre de leurs connaissances et les prépare aux défis professionnels futurs.
 
-## The team
+::AppGallery{baseUrl="/img/portfolio/cultural-trails" :imagesUrl='["SCVD-5.png"]'}
+::
 
-To complete the ProjArt 2024 project, the team was composed of the following members:
+## L'équipe
 
--  Project Manager: [Antoine Uldry](https://www.linkedin.com/in/antoineuldry/)
--  UX / Design Manager: [Steve Pasche](https://www.linkedin.com/in/steve-pasche/)
--  External Communication Manager / UX & UI: [Fabrice Regamey](https://www.linkedin.com/in/fabrice-regamey/)
--  Lead Frontend/Backend Developer: _myself_
+Pour mener à bien le projet ProjArt 2024, l'équipe était composée des membres suivants :
 
-## Project Overview
+-  Chef de projet : [Antoine Uldry](https://www.linkedin.com/in/antoineuldry/)
+-  Responsable UX / Design : [Steve Pasche](https://www.linkedin.com/in/steve-pasche/)
+-  Responsable communication externe / UX & UI : [Fabrice Regamey](https://www.linkedin.com/in/fabrice-regamey/)
+-  Développeur responsable Frontend/Backend : _Moi-même_
 
-We developed a mobile-first web application that allows users to explore the cultural trails of the Canton of Vaud. The app enhances local tourism by offering interactive, thematic trails, allowing users to engage with the region’s cultural heritage in a fun and immersive way. Designed for both residents and tourists, this project encourages physical activity while showcasing lesser-known areas and promoting the local economy.
+## Présentation du projet
 
-### Key Objectives
+Nous avons développé une application web mobile qui permet aux utilisateurs d'explorer les sentiers culturels du canton de Vaud. L'application renforce le tourisme local en proposant des parcours thématiques interactifs, permettant aux utilisateurs de s'engager dans le patrimoine culturel de la région d'une manière amusante et immersive. Conçu pour les résidents et les touristes, ce projet encourage l'activité physique tout en mettant en valeur des zones moins connues et en promouvant l'économie locale.
 
--  Promote Local Tourism: The app highlights the cultural and historical trails of the Canton of Vaud, encouraging both residents and visitors to discover the region’s rich heritage.
--  Encourage Physical Activity: By incorporating hiking routes into the app, users are motivated to explore the region’s natural and cultural landmarks on foot, promoting physical and mental well-being.
--  Mobile-First Experience: Designed with a focus on mobile usability, the app offers a smooth and engaging experience on smartphones, catering to the growing trend of mobile-based tourism.
+### Objectifs clés
 
-## Features & Functionality
+-  Promouvoir le tourisme local : L'application met en valeur les sentiers culturels et historiques du canton de Vaud, encourageant les résidents et les visiteurs à découvrir le riche patrimoine de la région.
+-  Encourager l'activité physique : En intégrant des itinéraires de randonnée dans l'application, les utilisateurs sont incités à explorer à pied les sites naturels et culturels de la région, ce qui favorise le bien-être physique et mental.
+-  Une expérience centrée sur le mobile : Conçue en mettant l'accent sur la convivialité mobile, l'application offre une expérience fluide et attrayante sur les smartphones, répondant ainsi à la tendance croissante du tourisme mobile.
 
-### 1. User-Centric Design:
+## Fonctionnalités
 
-The app was developed with a strong focus on user experience, emphasizing ease of use, accessibility, and interactivity. Key elements include:
+### 1. Conception centrée sur l'utilisateur :
 
--  **Navigation Bar**: Easy access to five primary sections: Home, Discovery, Map, Favorites, and Profile.
--  **Trail Suggestions**: Based on user location, the app provides recommended trails, highlighting popular and nearby options.
--  **Interactive Help**: Users can access detailed instructions to help them navigate the app’s features.
--  **Accessibility**: The app is designed to be accessible to all users, with features like text-to-speech functionality to describe the directions when completing a path.
+L'application a été développée avec un fort accent sur l'expérience utilisateur, mettant l'accent sur la facilité d'utilisation, l'accessibilité et l'interactivité. Les éléments clés incluent :
 
-### 2. Discovery & Exploration:
+-  **Barre de navigation** : Accès facile aux cinq sections principales : Accueil, Découverte, Carte, Favoris et Profil.
+-  **Suggestions de parcours** : En fonction de la localisation de l'utilisateur, l'application propose des parcours recommandés, en mettant en avant les options populaires et à proximité.
+-  **Aide interactive** : Les utilisateurs peuvent accéder à des instructions détaillées pour les aider à naviguer dans les fonctionnalités de l'application.
+-  **Accessibilité** : L'application est conçue pour être accessible à tous, avec des fonctionnalités comme la synthèse vocale pour décrire les directions lors de la réalisation d'un parcours.
 
--  **Cultural Trails and Points of Interest**: The app offers a wide variety of trails and points of interest, each with detailed descriptions, images, and ratings.
--  **Filter & Search**: Users can search trails by difficulty and apply filters to find specific points of interest or themes.
--  **Free Navigation Mode**: Users can freely explore the interactive map to discover nearby cultural points of interest without committing to a specific trail.
+### 2. Découverte et exploration :
 
-### 3. Gamification:
+-  **Parcours culturels et points d'intérêt** : L'application offre une grande variété de parcours et de points d'intérêt, chacun accompagné de descriptions détaillées, d'images et de notes.
+-  **Filtre et recherche** : Les utilisateurs peuvent rechercher des parcours par niveau de difficulté et appliquer des filtres pour trouver des points d'intérêt spécifiques ou des thèmes particuliers.
+-  **Mode navigation libre** : Les utilisateurs peuvent explorer librement la carte interactive pour découvrir des points d'intérêt culturels à proximité sans s'engager sur un parcours spécifique.
 
--  **Badge Collection**: Users are rewarded with badges for completing trails and visiting points of interest. Badges are grouped into thematic collections (e.g., Lavaux region) that encourage users to complete all associated trails.
--  **Achievements**: Users can earn badges for milestones like distance covered, the number of trails completed, or the number of points of interest visited.
+### 3. Gamification :
 
-### 4. Weather & Offline Access:
+-  **Collection de badges** : Les utilisateurs sont récompensés par des badges lorsqu'ils complètent des parcours et visitent des points d'intérêt. Les badges sont regroupés en collections thématiques (par exemple, la région de Lavaux) qui encouragent les utilisateurs à compléter tous les parcours associés.
+-  **Réalisations** : Les utilisateurs peuvent gagner des badges pour des jalons tels que la distance parcourue, le nombre de parcours terminés ou le nombre de points d'intérêt visités.
 
--  **Weather Integration**: Users can check a 3-day weather forecast to plan their hikes, ensuring they choose the best time for exploration.
--  **Offline Mode**: Trails can be downloaded, allowing users to access trail maps and details without requiring an active internet connection. <br> _Conceptual state only_
+### 4. Météo et accès hors ligne :
 
-### 5. Admin Access & Content Management:
+-  **Intégration météo** : Les utilisateurs peuvent consulter une prévision météo sur 3 jours pour planifier leurs randonnées et choisir le meilleur moment pour explorer.
+-  **Mode hors ligne** : Les parcours peuvent être téléchargés, permettant aux utilisateurs d'accéder aux cartes et détails des parcours sans nécessiter une connexion Internet active. <br> _État conceptuel uniquement_
 
--  **Back-Office Functionality**: Admin users can manage trails and points of interest directly through the desktop version of the app, with options to add, modify, or delete content.
--  **Admin Request Process**: Users can request admin access, subject to approval from the Canton of Vaud.
+### 5. Accès admin et gestion de contenu :
 
-## Development Highlights
+-  **Fonctionnalité back-office** : Les utilisateurs administrateurs peuvent gérer les parcours et points d'intérêt directement via la version de bureau de l'application, avec des options pour ajouter, modifier ou supprimer du contenu.
+-  **Processus de demande d'accès admin** : Les utilisateurs peuvent demander un accès administrateur, soumis à l'approbation du Canton de Vaud.
 
--  **Mobile-First Development**: Given the dominance of mobile devices in modern web usage, the app was developed with a mobile-first approach to ensure optimal performance on smartphones while maintaining compatibility with desktop usage for admin features.
--  **Interactive Map**: The core feature of the app, an interactive map, allows users to navigate trails, explore points of interest, and access route details with real-time positioning.
--  **Gamification and Engagement**: The badge system not only encourages users to explore more trails but also creates a sense of accomplishment, driving user engagement and repeat visits.
+## Points forts du développement
 
-## Technologies Used
+-  **Développement mobile-first** : Compte tenu de la domination des appareils mobiles dans l'utilisation actuelle du web, l'application a été développée selon une approche mobile-first, garantissant des performances optimales sur les smartphones tout en restant compatible avec les fonctionnalités de bureau pour les options administratives.
+-  **Carte interactive** : La fonctionnalité principale de l'application, une carte interactive, permet aux utilisateurs de naviguer dans les parcours, d'explorer les points d'intérêt et d'accéder aux détails des itinéraires avec une localisation en temps réel.
+-  **Gamification et engagement** : Le système de badges encourage non seulement les utilisateurs à explorer davantage de parcours, mais crée également un sentiment d'accomplissement, favorisant l'engagement des utilisateurs et les visites répétées.
 
--  **Frontend**: Vue.js for the user interface and for the map maplibre-gl
--  **Backend**: Laravel for the backend functionality and Inertia.js for seamless frontend/backend integration
--  **Database**: MySQL for storing user data, trail information, and points of interest
--  **API Integration**: Weather API for providing 3-day forecasts and OpenRouteService API for calculating trail distances and durations
--  **Responsive Design**: The app is fully responsive, ensuring a seamless experience on both mobile devices and desktop platforms
--  **PWA**: The app is a Progressive Web Application, allowing users to install it on their devices
+## Technologies utilisées
 
-## My Role
+-  **Frontend** : Vue.js pour l'interface utilisateur et maplibre-gl pour la carte interactive.
+-  **Backend** : Laravel pour les fonctionnalités backend et Inertia.js pour une intégration fluide entre le frontend et le backend.
+-  **Base de données** : MySQL pour stocker les données des utilisateurs, les informations sur les parcours et les points d'intérêt.
+-  **Intégration API** : API météo pour fournir des prévisions sur 3 jours et OpenRouteService API pour calculer les distances et durées des parcours.
+-  **Design réactif** : L'application est entièrement réactive, garantissant une expérience fluide sur les appareils mobiles et les plateformes de bureau.
+-  **PWA** : L'application est une Progressive Web App, permettant aux utilisateurs de l'installer sur leurs appareils.
 
-As the Lead Frontend/Backend Developer, my responsibilities included:
+## Mon rôle
 
--  **Technical Planning**: Collaborating with the team to define the technical requirements and architecture of the application.
--  **Frontend Development**: Implementing the user interface, interactive map, and gamification features using Vue.js and maplibre-gl.
--  **Backend Development**: Creating the backend functionality, database structure, and API integrations using Laravel and Inertia.js.
--  **Testing & Debugging**: Ensuring the application functions correctly across various devices and browsers, addressing any bugs or issues that arise.
--  **Documentation**: Providing detailed documentation for the codebase, API integrations, and overall application structure.
+En tant que développeur principal frontend/backend, mes responsabilités incluaient :
+
+-  **Planification technique** : Collaborer avec l'équipe pour définir les exigences techniques et l'architecture de l'application.
+-  **Développement frontend** : Implémenter l'interface utilisateur, la carte interactive et les fonctionnalités de gamification avec Vue.js et maplibre-gl.
+-  **Développement backend** : Créer les fonctionnalités backend, la structure de la base de données et les intégrations API avec Laravel et Inertia.js.
+-  **Tests et débogage** : Garantir le bon fonctionnement de l'application sur divers appareils et navigateurs, en résolvant les bugs ou problèmes rencontrés.
+-  **Documentation** : Fournir une documentation détaillée sur la base de code, les intégrations API et la structure générale de l'application.
 
 ## Conclusion
 
-The Cultural Trails app offers an engaging and interactive way for users to explore the cultural heritage of the Canton of Vaud. By combining elements of gamification, user-centric design, and mobile-first development, the app provides a unique experience that encourages users to discover new trails, learn about local history, and engage with the region’s cultural offerings. Whether you’re a resident looking to explore your surroundings or a tourist seeking an immersive experience, the Cultural Trails app offers a compelling way to engage with the rich heritage of the Canton of Vaud.
+L'application de sentiers culturels offre une manière engageante et interactive pour les utilisateurs d'explorer le patrimoine culturel du Canton de Vaud. En combinant des éléments de gamification, une conception centrée sur l'utilisateur et un développement mobile-first, l'application propose une expérience unique qui encourage les utilisateurs à découvrir de nouveaux parcours, à en apprendre davantage sur l'histoire locale et à interagir avec les richesses culturelles de la région. Que vous soyez un résident cherchant à explorer vos environs ou un touriste à la recherche d'une expérience immersive, l'application de sentiers culturels constitue une manière captivante de découvrir le riche patrimoine du Canton de Vaud.
 
-## Live Application
+## Application live
 
-The Cultural Trails app is available [here](https://sentiers-culturels-vd.ch/) for a limited time.
-Or you can check the [GitHub repository](https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ) for more details.
+L'application des sentiers culturels est disponible [ici](https://sentiers-culturels-vd.ch/) pour une durée limitée.
+Ou vous pouvez consulter le [dépôt GitHub](https://github.com/HEIG-COMEM/HEIG-VD_ProjArt_Sentiers-Culturels_ASFJ) pour plus de détails.
 
 ::AppGallery{baseUrl="/img/portfolio/cultural-trails" :imagesUrl='["SCVD-1.png", "SCVD-2.png", "SCVD-3.png", "SCVD-4.png", "SCVD-5.png", "SCVD-6.png", "SCVD-7.png"]'}
 ::
