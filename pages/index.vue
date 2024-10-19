@@ -11,9 +11,11 @@ onMounted(() => {
 		(entries) => {
 			entries.forEach((entry) => {
 				if (entry.intersectionRatio > 0) {
-					navBarRef.value.classList.add("animate");
+					navBarRef.value.classList.add("animate-in");
+					navBarRef.value.classList.remove("animate-out");
 				} else {
-					navBarRef.value.classList.remove("animate");
+					navBarRef.value.classList.remove("animate-in");
+					navBarRef.value.classList.add("animate-out");
 				}
 			});
 		},
@@ -71,8 +73,12 @@ header {
 	background-color: var(--color-white);
 }
 
-header.animate {
+header.animate-in {
 	animation: fadeIn 0.5s forwards;
+}
+
+header.animate-out {
+	/* animation: fadeOut 0.5s forwards; */
 }
 
 @keyframes fadeIn {
@@ -83,6 +89,17 @@ header.animate {
 	to {
 		top: 0;
 		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		top: 0;
+		opacity: 1;
+	}
+	to {
+		top: -100%;
+		opacity: 0;
 	}
 }
 </style>

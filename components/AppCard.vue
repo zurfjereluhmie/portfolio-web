@@ -98,4 +98,12 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 .excerpt {
 	height: 5rem;
 }
+
+button svg {
+	transition: transform 0.1s ease-in-out;
+}
+
+button:hover svg {
+	transform: translateX(0.25rem);
+}
 </style>

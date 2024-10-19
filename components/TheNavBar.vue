@@ -8,7 +8,7 @@ const isActive = (path) => {
 </script>
 
 <template>
-	<nav>
+	<nav class="shadow-lg sm:shadow-none">
 		<ul>
 			<li>
 				<NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("nav.home") }}</NuxtLink>
