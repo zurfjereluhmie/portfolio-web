@@ -8,8 +8,15 @@ const props = defineProps({
 
 const separator = ">";
 const route = useRoute();
+const i18n = useI18n();
+
+// remove the locale from the path
+const pathNoLocale = computed(() => {
+	return route.fullPath.replace(`/${i18n.locale.value}`, "");
+});
+
 const breadcrumbs = computed(() => {
-	return route.fullPath.split("/");
+	return pathNoLocale.value.split("/");
 });
 
 const buildLink = ref([""]);
@@ -40,7 +47,7 @@ const nameFormatter = (string) => {
 			<template v-for="(link, index) in breadcrumbs">
 				<li class="flex items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
 					<template v-if="isNotLast(index)">
-						<NuxtLink :to="buildLink.at(index) || '/'" class="cursor-pointer">{{
+						<NuxtLink :to="localePath(buildLink.at(index) || '/')" class="cursor-pointer">{{
 							nameFormatter(link) || "Home"
 						}}</NuxtLink>
 					</template>

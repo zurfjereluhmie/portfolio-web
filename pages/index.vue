@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n();
 const personalPresentationRef = ref(null);
 const navBarRef = ref(null);
 
@@ -10,9 +11,11 @@ onMounted(() => {
 		(entries) => {
 			entries.forEach((entry) => {
 				if (entry.intersectionRatio > 0) {
-					navBarRef.value.classList.add("animate");
+					navBarRef.value.classList.add("animate-in");
+					navBarRef.value.classList.remove("animate-out");
 				} else {
-					navBarRef.value.classList.remove("animate");
+					navBarRef.value.classList.remove("animate-in");
+					navBarRef.value.classList.add("animate-out");
 				}
 			});
 		},
@@ -27,15 +30,12 @@ onMounted(() => {
 });
 
 useSeoMeta({
-	title: "Personal Portfolio",
-	description:
-		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
-	ogTitle: "Personal Portfolio",
-	ogDescription:
-		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
-	twitterTitle: "Personal Portfolio",
-	twitterDescription:
-		"Welcome to Jérémie's personal site, where he shares his journey in full-stack web development. Explore his projects, learn about his expertise, and connect for collaboration or insights on web development and design.",
+	title: t("index.meta.title"),
+	description: t("index.meta.description"),
+	ogTitle: t("index.meta.title"),
+	ogDescription: t("index.meta.description"),
+	twitterTitle: t("index.meta.title"),
+	twitterDescription: t("index.meta.description"),
 });
 </script>
 
@@ -73,8 +73,12 @@ header {
 	background-color: var(--color-white);
 }
 
-header.animate {
+header.animate-in {
 	animation: fadeIn 0.5s forwards;
+}
+
+header.animate-out {
+	/* animation: fadeOut 0.5s forwards; */
 }
 
 @keyframes fadeIn {
@@ -85,6 +89,17 @@ header.animate {
 	to {
 		top: 0;
 		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		top: 0;
+		opacity: 1;
+	}
+	to {
+		top: -100%;
+		opacity: 0;
 	}
 }
 </style>

@@ -1,9 +1,10 @@
 <script setup>
+const i18n = useI18n();
 const route = useRoute();
 const url = useRequestURL();
 
-const { data } = await useAsyncData(`content-${route.path}`, () =>
-	queryContent().where({ _path: route.path }).findOne()
+const { data } = await useAsyncData(`content-${i18n.locale.value}-${route.path}`, () =>
+	queryContent(route.path).findOne()
 );
 
 const cover = ref(data.value.image);
@@ -30,9 +31,7 @@ useSeoMeta({
 		<div class="mt-6 px-6 flex flex-col items-center relative">
 			<AppBreadcrumb max-width="65ch" />
 			<article class="prose">
-				<div
-					class="not-prose mb-8 grid w-full min-h-[140px] place-items-center overflow-x-scroll rounded-lg lg:overflow-visible"
-				>
+				<div class="not-prose mb-8 grid w-full min-h-[140px] place-items-center rounded-lg">
 					<NuxtImg
 						class="object-cover object-center w-full rounded-lg h-96"
 						:src="`/img/${cover}`"
