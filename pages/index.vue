@@ -62,43 +62,32 @@ main > * {
 	scroll-snap-align: center;
 }
 
-header {
-	position: fixed;
-	top: -100%;
-	left: 0;
-	width: 100%;
-	z-index: 999;
+header * {
 	opacity: 0;
-
-	background-color: var(--color-white);
 }
 
-header.animate-in {
+header.animate-in * {
 	animation: fadeIn 0.5s forwards;
 }
 
-header.animate-out {
-	/* animation: fadeOut 0.5s forwards; */
+header.animate-out * {
+	top: -100%;
 }
 
 @keyframes fadeIn {
 	from {
-		top: -100%;
 		opacity: 0;
 	}
 	to {
-		top: 0;
 		opacity: 1;
 	}
 }
 
 @keyframes fadeOut {
 	from {
-		top: 0;
 		opacity: 1;
 	}
 	to {
-		top: -100%;
 		opacity: 0;
 	}
 }

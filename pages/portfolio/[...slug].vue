@@ -54,8 +54,10 @@ main {
 	flex-direction: column;
 	align-items: center;
 }
+
 main > div {
 	width: min(var(--max-width), 100dvw);
+	margin-top: 7rem;
 }
 
 aside.toc {

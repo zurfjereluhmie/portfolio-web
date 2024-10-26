@@ -40,10 +40,10 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 <template>
 	<NuxtLink
 		:to="moreLink"
-		class="app-card cursor-pointer group shadow-sm border border-slate-200 rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
+		class="app-card cursor-pointer group shadow-sm rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
 	>
-		<div class="relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+		<div class="relative flex flex-col shadow-sm rounded-lg w-96">
+			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden rounded-md">
 				<NuxtImg
 					:src="`/img/${image}`"
 					:alt="`${title} image`"
@@ -54,14 +54,14 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 					class="min-h-full transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
 				/>
 			</div>
-			<div class="p-4">
-				<div class="text-sm text-slate-500 mb-4">{{ commaSeparatedTags }}</div>
-				<h2 class="mb-2 text-slate-800 text-xl font-semibold">{{ title }}</h2>
-				<p v-if="excerpt" class="excerpt text-slate-600 leading-normal font-light text-base">
+			<div class="app-card-body p-4">
+				<div class="text-sm mb-4">{{ commaSeparatedTags }}</div>
+				<h2 class="mb-2 text-xl font-semibold">{{ title }}</h2>
+				<p v-if="excerpt" class="excerpt leading-normal font-light text-base">
 					{{ excerpt }}
 				</p>
 			</div>
-			<div class="px-4 pb-4 pt-0 mt-2">
+			<div class="app-card-c2a px-4 pb-4 pt-0 mt-2">
 				<button
 					class="cursor-pointer border border-transparent flex items-center text-center text-sm bg-transparent p-0"
 					type="button"
@@ -77,8 +77,8 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 					</svg>
 				</button>
 			</div>
-			<div class="mx-3 border-t border-slate-700 pb-3 pt-2 px-1 ml-auto">
-				<span class="text-sm text-slate-500 font-medium">{{ formattedDate }}</span>
+			<div class="app-card-date mx-3 pb-3 pt-2 px-1 ml-auto">
+				<span class="text-xs">{{ formattedDate }}</span>
 			</div>
 		</div>
 	</NuxtLink>
@@ -87,6 +87,26 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 <style scoped>
 .app-card {
 	animation: v-bind(animationStyle);
+}
+
+.app-card > div {
+	background-color: var(--white);
+}
+
+.app-card-body {
+	color: var(--text-secondary);
+}
+
+.app-card-body h2 {
+	color: var(--text-black);
+}
+
+.app-card-c2a * {
+	color: var(--text-black);
+}
+
+.app-card-date {
+	color: var(--text-secondary);
 }
 
 .read-more {

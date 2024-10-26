@@ -35,7 +35,7 @@ import { AwesomeSocialButton } from "awesome-social-button";
 			<div id="call-to-action">
 				<NuxtLink
 					:to="localePath('/portfolio')"
-					class="flex items-center rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="flex items-center rounded-md py-2 px-4 border border-transparent text-center text-sm shadow-sm"
 				>
 					{{ t("index.seeMyWork") }}
 
@@ -112,5 +112,13 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	color: var(--color-white);
 	background-color: var(--color-accent);
 	width: fit-content;
+}
+
+#call-to-action > a svg {
+	transition: transform 0.2s ease-in-out;
+}
+
+#call-to-action > a:hover svg {
+	transform: translateX(0.25rem);
 }
 </style>

@@ -1,9 +1,18 @@
 :root {
+	--white: #ffffff;
+	--black: #000000;
+
 	--color-black: #343c42;
 	--color-white: #eff2f9;
 	--color-accent: #205c8d;
 	--color-grey: #6e7f8d;
 	--color-light-grey: #b5bfc6;
+
+	--text-black: var(--color-black);
+	--text-white: var(--color-white);
+	--text-accent: var(--color-accent);
+	--text-grey: var(--color-grey);
+	--text-secondary: #475569;
 
 	--max-width: 1200px;
 }

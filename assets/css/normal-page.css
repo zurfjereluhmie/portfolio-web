@@ -5,7 +5,7 @@ main {
 }
 main > div {
 	width: min(var(--max-width), 100dvw);
-	margin-top: 1.5rem;
+	margin-top: 7rem;
 }
 
 h1 {
