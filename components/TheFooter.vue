@@ -11,8 +11,8 @@ const year = new Date().getFullYear();
 <style scoped>
 footer {
 	width: 100%;
-	background-color: var(--color-black);
-	color: var(--color-white);
+	background-color: var(--surface);
+	color: var(--on-surface);
 	text-align: center;
 	padding: 1rem;
 	margin-top: 4rem;
@@ -20,6 +20,6 @@ footer {
 
 footer p {
 	margin: 0;
-	font-size: 1rem;
+	font-size: 0.75rem;
 }
 </style>

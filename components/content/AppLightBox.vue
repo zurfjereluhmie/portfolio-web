@@ -133,7 +133,7 @@ onUnmounted(() => {
 	right: 2rem;
 	z-index: 1001;
 	cursor: pointer;
-	color: var(--color-white);
+	color: var(--surface);
 }
 
 .light-box {
@@ -179,29 +179,29 @@ onUnmounted(() => {
 }
 
 .miniatures .active {
-	border: 2px solid var(--color-accent);
+	border: 2px solid var(--primary);
 }
 
 :deep(figcaption) {
 	font-size: 0.5rem;
-	color: var(--color-white);
+	color: var(--surface);
 }
 
 button {
-	background-color: var(--color-white);
-	color: var(--color-black);
+	background-color: var(--surface);
+	color: var(--on-surface);
 	cursor: pointer;
 }
 
 button:hover {
-	color: var(--color-white);
+	color: var(--surface);
 }
 
 button svg {
-	fill: var(--color-black);
+	fill: var(--on-surface);
 }
 
 button:hover svg {
-	fill: var(--color-white);
+	fill: var(--surface);
 }
 </style>

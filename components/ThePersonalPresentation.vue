@@ -73,7 +73,7 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	min-height: 100dvh;
 	padding: 3rem;
 	margin-top: 10rem;
-	background-color: var(--color-white);
+	background-color: var(--surface);
 	display: grid;
 	gap: 3rem;
 	grid-auto-flow: column;
@@ -109,8 +109,8 @@ import { AwesomeSocialButton } from "awesome-social-button";
 
 #call-to-action > a {
 	margin-top: 2rem;
-	color: var(--color-white);
-	background-color: var(--color-accent);
+	color: var(--on-primary);
+	background-color: var(--primary);
 	width: fit-content;
 }
 

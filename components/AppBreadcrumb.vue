@@ -70,10 +70,10 @@ a:not([aria-current="page"]):hover {
 
 a[aria-current="page"] {
 	cursor: default;
-	color: var(--color-black);
+	color: var(--on-surface);
 }
 
 .separator {
-	color: var(--color-black);
+	color: var(--on-surface);
 }
 </style>

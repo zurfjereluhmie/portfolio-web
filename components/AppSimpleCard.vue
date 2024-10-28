@@ -19,11 +19,11 @@ const props = defineProps({
 #simple-card {
 	padding: 1rem;
 	border-radius: 0.75rem;
-	border: 1px solid var(--color-grey);
+	border: 1px solid var(--on-surface-tertiary);
 }
 
 #simple-card-header p {
-	color: var(--color-black);
+	color: var(--on-surface);
 	/* font-size: 2.25rem; */
 	font-style: normal;
 	font-weight: 600;

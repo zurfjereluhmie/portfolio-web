@@ -90,28 +90,28 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 }
 
 .app-card > div {
-	background-color: var(--white);
+	background-color: var(--surface-variant);
 }
 
 .app-card-body {
-	color: var(--text-secondary);
+	color: var(--on-surface-variant-secondary);
 }
 
 .app-card-body h2 {
-	color: var(--text-black);
+	color: var(--on-surface-variant);
 }
 
 .app-card-c2a * {
-	color: var(--text-black);
+	color: var(--on-surface-variant);
 }
 
 .app-card-date {
-	color: var(--text-secondary);
+	color: var(--on-surface-variant-secondary);
 }
 
 .read-more {
 	all: revert;
-	color: var(--color-accent);
+	color: var(--primary);
 	cursor: pointer;
 }
 

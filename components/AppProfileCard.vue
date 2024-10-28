@@ -37,14 +37,14 @@ const props = defineProps({
 
 <style scoped>
 .app-profile-card {
-	background-color: var(--white);
+	background-color: var(--surface-variant);
 }
 
 .app-card-body {
-	color: var(--text-secondary);
+	color: var(--on-surface-variant-secondary);
 }
 
 .app-card-body h4 {
-	color: var(--text-black);
+	color: var(--on-surface-variant);
 }
 </style>

@@ -15,14 +15,12 @@
 <style scoped>
 #hero-container {
 	position: relative;
-	background-color: #f0f0f0;
+	background-color: var(--surface);
 	height: 100dvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background: linear-gradient(180deg, #eff2f9 -34.81%, rgba(239, 242, 249, 0) 33.99%),
-		linear-gradient(180deg, rgba(239, 242, 249, 0) 49.96%, #eff2f9 100%),
-		url("/img/hero-bg.png") lightgray 50% / cover no-repeat;
+	background: var(--hero-bg);
 	background-size: cover;
 }
 
@@ -34,7 +32,7 @@
 }
 
 #name p {
-	color: var(--color-black);
+	color: var(--on-surface);
 	font-size: 3rem;
 	font-style: normal;
 	font-weight: 400;
@@ -59,7 +57,7 @@
 }
 
 #pro-infos *:first-child {
-	color: var(--color-black);
+	color: var(--on-surface);
 	font-size: 2rem;
 	font-style: normal;
 	font-weight: 400;
@@ -67,7 +65,7 @@
 }
 
 #pro-infos *:last-child {
-	color: var(--color-black);
+	color: var(--on-surface);
 	font-size: 2rem;
 	font-style: normal;
 	font-weight: 600;
@@ -84,7 +82,7 @@ h1::before {
 	display: block;
 	width: 100px;
 	height: 2px;
-	background-color: var(--color-black);
+	background-color: var(--on-surface);
 	margin: 0 auto;
 	margin-top: 1rem;
 }
