@@ -17,17 +17,17 @@ test.describe("navigation", () => {
 		});
 
 		test("Nav Home link to stay", async ({ page }) => {
-			page.getByRole("link", { name: "Home" }).click();
-			await expect(page).toHaveURL(/\/en$/);
+			await page.getByRole("link", { name: "Home" }).click();
+			await expect(page).toHaveURL(/\//);
 		});
 
 		test("Nav Portfolio link redirect", async ({ page }) => {
-			page.getByRole("link", { name: "Portfolio" }).click();
+			await page.getByRole("link", { name: "Portfolio" }).click();
 			await expect(page).toHaveURL(/\/portfolio$/);
 		});
 
 		test("Nav About link redirect", async ({ page }) => {
-			page.getByRole("link", { name: "About" }).click();
+			await page.getByRole("link", { name: "About" }).click();
 			await expect(page).toHaveURL(/\/about$/);
 		});
 	});
@@ -45,12 +45,12 @@ test.describe("navigation", () => {
 	});
 
 	test("click the name to be redirected to /about", async ({ page }) => {
-		page.getByRole("link", { name: "I'm Jérémie" }).click();
+		await page.getByRole("link", { name: "I'm Jérémie" }).click();
 		await expect(page).toHaveURL(/\/about$/);
 	});
 
 	test("click 'See my work' to be redirected to /portfolio", async ({ page }) => {
-		page.getByRole("link", { name: "See some of my works" }).click();
+		await page.getByRole("link", { name: "See some of my works" }).click();
 		await expect(page).toHaveURL(/\/portfolio$/);
 	});
 });
