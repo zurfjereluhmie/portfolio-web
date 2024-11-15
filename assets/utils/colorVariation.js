@@ -11,6 +11,5 @@ const getColorVariation = (time) => {
 }
 
 export const updateColor = (time) => {
-    // document.querySelector('html').dataset.theme = getColorVariation(time);
-    document.querySelector('html').dataset.theme = "night";
+    document.querySelector('html').dataset.theme = getColorVariation(time);
 }

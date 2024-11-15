@@ -101,7 +101,7 @@ useSeoMeta({
 .about-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
 	gap: 0 0;
 	grid-auto-flow: row;
 	grid-template-areas:

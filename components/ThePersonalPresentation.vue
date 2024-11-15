@@ -1,6 +1,7 @@
 <script setup>
-const { t } = useI18n();
 import { AwesomeSocialButton } from "awesome-social-button";
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -80,9 +81,18 @@ import { AwesomeSocialButton } from "awesome-social-button";
 	align-content: center;
 }
 
+#personnal,
+#interrests {
+	margin-top: 7rem;
+}
+
 @media (max-width: 980px) {
 	#personnal-presentation {
 		grid-auto-flow: row;
+	}
+
+	#interrests {
+		margin-top: 0;
 	}
 }
 

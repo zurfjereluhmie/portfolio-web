@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const { t } = useI18n();
+</script>
 
 <template>
 	<div id="hero-container">
@@ -6,8 +8,8 @@
 			<p>Jérémie <span>Zurflüh</span></p>
 		</div>
 		<div id="pro-infos">
-			<p>BSc in Media Engineering</p>
-			<p>Full-stack & UI/UX</p>
+			<p>{{ t("index.education") }}</p>
+			<p>{{ t("index.job") }}</p>
 		</div>
 	</div>
 </template>

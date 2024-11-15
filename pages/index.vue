@@ -2,7 +2,9 @@
 const { t } = useI18n();
 const personalPresentationRef = ref(null);
 const navBarRef = ref(null);
+const mainRef = ref(null);
 
+// Navbar animation
 onMounted(() => {
 	personalPresentationRef.value = document.querySelector("#personnal-presentation");
 	navBarRef.value = document.querySelector("header");
@@ -29,6 +31,41 @@ onMounted(() => {
 	});
 });
 
+// Smooth scroll
+onMounted(() => {
+	mainRef.value = document.querySelector("main");
+	const theHeroSection = mainRef.value.querySelector("#hero-container");
+	const thePersonalPresentation = mainRef.value.querySelector("#personnal-presentation");
+	const scrollUpsLimit = 5;
+	let scrollUps = 0;
+
+	const scrollDownToPersonalPresentation = (e) =>
+		e.deltaY > 0 || e.deltaY == undefined ? thePersonalPresentation.scrollIntoView({ behavior: "smooth" }) : null;
+	const scrollDownToHeroSection = (e) => {
+		console.log(scrollUps);
+
+		if (e.deltaY < 0) {
+			scrollUps++;
+		} else {
+			scrollUps = 0;
+		}
+		if (scrollUps >= scrollUpsLimit) {
+			theHeroSection.scrollIntoView({ behavior: "smooth" });
+			scrollUps = 0;
+		}
+	};
+
+	theHeroSection.addEventListener("wheel", (e) => scrollDownToPersonalPresentation(e));
+	theHeroSection.addEventListener("click", (e) => scrollDownToPersonalPresentation(e));
+	thePersonalPresentation.addEventListener("wheel", (e) => scrollDownToHeroSection(e));
+
+	onUnmounted(() => {
+		theHeroSection.removeEventListener("wheel", (e) => scrollDownToPersonalPresentation(e));
+		theHeroSection.removeEventListener("click", (e) => scrollDownToPersonalPresentation(e));
+		thePersonalPresentation.removeEventListener("wheel", (e) => scrollDownToHeroSection(e));
+	});
+});
+
 useSeoMeta({
 	title: t("index.meta.title"),
 	description: t("index.meta.description"),
@@ -40,6 +77,7 @@ useSeoMeta({
 </script>
 
 <template>
+	<a href="#personnal-presentation" class="sr-only">{{ t("index.accessibility.skipToMainContent") }}</a>
 	<header>
 		<TheNavBar currentPath="/" />
 	</header>
@@ -52,14 +90,8 @@ useSeoMeta({
 
 <style scoped>
 main {
-	scroll-snap-type: y mandatory;
-	overflow-y: scroll;
 	height: 100dvh;
 	background-color: var(--surface);
-}
-
-main > * {
-	scroll-snap-align: center;
 }
 
 header * {
