@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /portfolio
 Disallow: /about
+Disallow: /fr
 
 Sitemap: https://jeremie-zurfluh.ch/sitemap.xml
