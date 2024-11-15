@@ -19,6 +19,7 @@ test.describe("navigation", () => {
 		test("Nav Home link to stay", async ({ page }) => {
 			await page.getByRole("link", { name: "Home" }).click();
 			await expect(page).toHaveURL(/\//);
+			expect(true).toBe(false);
 		});
 
 		test("Nav Portfolio link redirect", async ({ page }) => {
