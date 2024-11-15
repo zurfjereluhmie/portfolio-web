@@ -2,7 +2,7 @@
 const error = useError();
 </script>
 <template>
-	<div class="h-screen w-screen overflow-hidden">
+	<main class="h-screen w-screen overflow-hidden">
 		<div class="flex flex-col items-center justify-center h-full w-full gap-5">
 			<template v-if="error.statusCode === 404">
 				<h1>Page not found</h1>
@@ -12,20 +12,25 @@ const error = useError();
 				<h1>Oups !</h1>
 				<p>Something went wrong.</p>
 			</template>
-			<NuxtLink to="/"
+			<NuxtLink :to="localePath('/')" class="no-animation"
 				><button
-					class="cursor-pointer rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="cursor-pointer rounded-md py-2 px-4 border border-transparent text-center text-sm transition-all shadow-md hover:shadow-lg"
 					type="button"
 				>
 					Go back home
 				</button></NuxtLink
 			>
 		</div>
-	</div>
+	</main>
 </template>
 <style scoped>
 h1 {
-	color: var(--color-black);
+	color: var(--on-surface);
 	font-size: 3rem;
+}
+
+button {
+	background-color: var(--primary);
+	color: var(--on-primary);
 }
 </style>

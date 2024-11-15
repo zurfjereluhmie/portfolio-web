@@ -8,8 +8,15 @@ const props = defineProps({
 
 const separator = ">";
 const route = useRoute();
+const i18n = useI18n();
+
+// remove the locale from the path
+const pathNoLocale = computed(() => {
+	return route.fullPath.replace(`/${i18n.locale.value}`, "");
+});
+
 const breadcrumbs = computed(() => {
-	return route.fullPath.split("/");
+	return pathNoLocale.value.split("/");
 });
 
 const buildLink = ref([""]);
@@ -38,16 +45,16 @@ const nameFormatter = (string) => {
 	>
 		<ol class="flex w-full flex-wrap items-center rounded-md py-4 px-0">
 			<template v-for="(link, index) in breadcrumbs">
-				<li class="flex items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+				<li class="flex items-center text-sm">
 					<template v-if="isNotLast(index)">
-						<NuxtLink :to="buildLink.at(index) || '/'" class="cursor-pointer">{{
+						<NuxtLink :to="localePath(buildLink.at(index) || '/')" class="cursor-pointer">{{
 							nameFormatter(link) || "Home"
 						}}</NuxtLink>
 					</template>
 					<template v-else>
 						<a class="cursor-default" aria-current="page">{{ nameFormatter(link) || "Home" }}</a>
 					</template>
-					<span v-if="isNotLast(index)" class="pointer-events-none mx-2 text-slate-800">
+					<span v-if="isNotLast(index)" class="separator pointer-events-none mx-2">
 						{{ separator }}
 					</span>
 				</li>
@@ -59,11 +66,14 @@ const nameFormatter = (string) => {
 <style scoped>
 a:not([aria-current="page"]):hover {
 	cursor: pointer;
-	color: var(--color-black);
 }
 
 a[aria-current="page"] {
 	cursor: default;
-	color: var(--color-black);
+	color: var(--on-surface);
+}
+
+.separator {
+	color: var(--on-surface);
 }
 </style>

@@ -45,14 +45,14 @@ onUnmounted(() => {
 .cursor-ball {
 	width: 8px;
 	height: 8px;
-	background-color: var(--color-black);
-	border: 1px solid var(--color-white);
+	background-color: var(--on-surface);
+	border: 1px solid var(--surface);
 }
 
 .cursor-outline {
 	width: 3rem;
 	height: 3rem;
-	border: 1px solid var(--color-black);
+	border: 1px solid var(--on-surface);
 	transition: all 0.2s ease;
 }
 
@@ -68,7 +68,7 @@ onUnmounted(() => {
 .cursor-mousedown {
 	width: 1.5rem;
 	height: 1.5rem;
-	border: 2px solid var(--color-black);
-	background-color: var(--color-accent);
+	border: 2px solid var(--on-surface);
+	background-color: var(--primary);
 }
 </style>

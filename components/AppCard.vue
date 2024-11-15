@@ -1,4 +1,6 @@
 <script setup>
+const i18n = useI18n();
+const { t } = useI18n();
 const props = defineProps({
 	title: {
 		type: String,
@@ -18,7 +20,7 @@ const props = defineProps({
 const formattedDate = computed(() => {
 	if (!props.date) return "";
 	const date = new Date(props.date);
-	return date.toLocaleDateString("en-CH", {
+	return date.toLocaleDateString(i18n.locale.value, {
 		year: "numeric",
 		month: "long",
 		day: "numeric",
@@ -38,10 +40,10 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 <template>
 	<NuxtLink
 		:to="moreLink"
-		class="app-card cursor-pointer group shadow-sm border border-slate-200 rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
+		class="app-card cursor-pointer group shadow-sm rounded-lg w-96 hover:shadow-lg transition-shadow duration-300"
 	>
-		<div class="relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+		<div class="relative flex flex-col shadow-sm rounded-lg w-96">
+			<div v-if="image" class="relative h-56 m-2.5 overflow-hidden rounded-md">
 				<NuxtImg
 					:src="`/img/${image}`"
 					:alt="`${title} image`"
@@ -52,19 +54,19 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 					class="min-h-full transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
 				/>
 			</div>
-			<div class="p-4">
-				<div class="text-sm text-slate-500 mb-4">{{ commaSeparatedTags }}</div>
-				<h2 class="mb-2 text-slate-800 text-xl font-semibold">{{ title }}</h2>
-				<p v-if="excerpt" class="excerpt text-slate-600 leading-normal font-light text-base">
+			<div class="app-card-body p-4">
+				<div class="text-sm mb-4">{{ commaSeparatedTags }}</div>
+				<h2 class="mb-2 text-xl font-semibold">{{ title }}</h2>
+				<p v-if="excerpt" class="excerpt leading-normal font-light text-base">
 					{{ excerpt }}
 				</p>
 			</div>
-			<div class="px-4 pb-4 pt-0 mt-2">
+			<div class="app-card-c2a px-4 pb-4 pt-0 mt-2">
 				<button
-					class="border border-transparent flex items-center text-center text-sm bg-transparent p-0"
+					class="cursor-pointer border border-transparent flex items-center text-center text-sm bg-transparent p-0"
 					type="button"
 				>
-					Read More
+					{{ t("content.readMore") }}
 
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1.5">
 						<path
@@ -75,8 +77,8 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 					</svg>
 				</button>
 			</div>
-			<div class="mx-3 border-t border-slate-700 pb-3 pt-2 px-1 ml-auto">
-				<span class="text-sm text-slate-500 font-medium">{{ formattedDate }}</span>
+			<div class="app-card-date mx-3 pb-3 pt-2 px-1 ml-auto">
+				<span class="text-xs">{{ formattedDate }}</span>
 			</div>
 		</div>
 	</NuxtLink>
@@ -87,13 +89,41 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 	animation: v-bind(animationStyle);
 }
 
+.app-card > div {
+	background-color: var(--surface-variant);
+}
+
+.app-card-body {
+	color: var(--on-surface-variant-secondary);
+}
+
+.app-card-body h2 {
+	color: var(--on-surface-variant);
+}
+
+.app-card-c2a * {
+	color: var(--on-surface-variant);
+}
+
+.app-card-date {
+	color: var(--on-surface-variant-secondary);
+}
+
 .read-more {
 	all: revert;
-	color: var(--color-accent);
+	color: var(--primary);
 	cursor: pointer;
 }
 
 .excerpt {
 	height: 5rem;
+}
+
+button svg {
+	transition: transform 0.1s ease-in-out;
+}
+
+button:hover svg {
+	transform: translateX(0.25rem);
 }
 </style>

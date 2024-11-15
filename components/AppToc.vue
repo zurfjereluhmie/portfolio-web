@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n();
 const props = defineProps({
 	toc: {
 		type: Object,
@@ -9,7 +10,7 @@ const props = defineProps({
 
 <template>
 	<div class="toc-container">
-		<p class="font-medium">Table of Contents</p>
+		<p class="font-medium">{{ t("content.toc") }}</p>
 		<ol class="list-none pl-0 mt-4">
 			<li v-for="header in toc.links">
 				<a :href="`#${header.id}`">{{ header.text }}</a>
