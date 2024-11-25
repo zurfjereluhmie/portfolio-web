@@ -6,6 +6,8 @@ const props = defineProps({
 	},
 });
 
+const localePath = useLocalePath();
+
 const separator = ">";
 const route = useRoute();
 const i18n = useI18n();

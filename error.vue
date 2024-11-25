@@ -1,5 +1,6 @@
 <script setup>
 const error = useError();
+const localePath = useLocalePath();
 </script>
 <template>
 	<main class="h-screen w-screen overflow-hidden">
