@@ -9,6 +9,7 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"test": "playwright test",
+		"test:update-screenshots": "playwright test --update-snapshots",
 		"test:ui": "playwright test --ui"
 	},
 	"dependencies": {

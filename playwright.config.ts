@@ -33,7 +33,8 @@ export default defineConfig({
 	},
 
 	webServer: {
-		command: "npm run dev",
+		// command: "npm run dev",
+		command: "npm run build && npm run preview",
 		url: "http://localhost:3000/",
 		timeout: 120000,
 	},
