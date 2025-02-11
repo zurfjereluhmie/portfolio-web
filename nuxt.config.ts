@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2024-04-03",
 	devtools: { enabled: true },
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/i18n"],
+	modules: ["@nuxt/image", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/i18n", "@nuxt/content"],
 	css: ["~/assets/css/reset.css", "~/assets/css/main.css", "~/assets/css/prose.css"],
 	i18n: {
 		locales: [
@@ -15,8 +15,15 @@ export default defineNuxtConfig({
 		lazy: true,
 		langDir: "locales/",
 	},
-	ogImage: {
-		enabled: false,
+	content: {
+		build: {
+			markdown: {
+				toc: {
+					searchDepth: 3,
+					depth: 3,
+				},
+			},
+		},
 	},
 	app: {
 		head: {
@@ -30,13 +37,27 @@ export default defineNuxtConfig({
 		url: "https://jeremie-zurfluh.ch",
 		name: "Jérémie Zurflüh",
 	},
+	ogImage: {
+		enabled: false,
+	},
+	sitemap: {
+		enabled: true,
+	},
+	robots: {
+		enabled: true,
+	},
+	seo: {
+		enabled: true,
+	},
+	schemaOrg: {
+		enabled: true,
+		identity: "Person",
+	},
 	linkChecker: {
+		enabled: true,
 		failOnError: false,
 		report: {
 			markdown: true,
 		},
-	},
-	schemaOrg: {
-		identity: "Person",
 	},
 });

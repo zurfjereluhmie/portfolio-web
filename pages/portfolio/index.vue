@@ -1,7 +1,9 @@
 <script setup>
 const i18n = useI18n();
 const { t } = useI18n();
-const query = { path: `${i18n.locale.value}/portfolio`, sort: [{ date: -1 }] };
+const { data } = await useAsyncData(`${i18n.locale.value}/portfolio`, () => {
+	return queryCollection("content").where("path", "LIKE", `%${i18n.locale.value}/portfolio%`).all();
+});
 
 useSeoMeta({
 	title: t("portfolio.meta.title"),
@@ -22,19 +24,17 @@ useSeoMeta({
 			<h1>{{ t("portfolio.portfolio") }}</h1>
 			<div class="w-full flex justify-center">
 				<div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
-					<ContentList :query v-slot="{ list }">
-						<AppCard
-							v-for="(project, i) in list"
-							:key="project._path"
-							:title="project.title"
-							:excerpt="project.description"
-							:tags="project.tags"
-							:image="project.image"
-							:moreLink="project._path"
-							:date="project.date"
-							:delay-anim="`${i * 100}ms`"
-						/>
-					</ContentList>
+					<AppCard
+						v-for="(project, i) in data"
+						:key="project.path"
+						:title="project.title"
+						:excerpt="project.description"
+						:tags="project.meta.tags"
+						:image="project.meta.image"
+						:moreLink="project.path"
+						:date="project.meta.date"
+						:delay-anim="`${i * 100}ms`"
+					/>
 				</div>
 			</div>
 		</div>

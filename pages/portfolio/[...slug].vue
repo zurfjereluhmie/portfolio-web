@@ -3,11 +3,11 @@ const i18n = useI18n();
 const route = useRoute();
 const url = useRequestURL();
 
-const { data } = await useAsyncData(`content-${i18n.locale.value}-${route.path}`, () =>
-	queryContent(route.path).findOne()
-);
+const { data } = await useAsyncData(`content-${i18n.locale.value}-${route.path}`, () => {
+	return queryCollection("content").path(route.path).first();
+});
 
-const cover = ref(data.value.image);
+const cover = ref(data.value.meta.image);
 const toc = ref(data.value.body.toc);
 
 useSeoMeta({
