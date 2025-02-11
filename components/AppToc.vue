@@ -14,6 +14,13 @@ const props = defineProps({
 		<ol class="list-none pl-0 mt-4">
 			<li v-for="header in toc.links">
 				<a :href="`#${header.id}`">{{ header.text }}</a>
+				<template v-if="header.children"
+					><ol class="list-none pl-3 mt-2">
+						<li v-for="children in header.children">
+							<a :href="`#${children.id}`">{{ children.text }}</a>
+						</li>
+					</ol></template
+				>
 			</li>
 		</ol>
 	</div>
