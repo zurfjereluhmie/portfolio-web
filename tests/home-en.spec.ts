@@ -34,12 +34,12 @@ test.describe("navigation", () => {
 
 	test.describe("social links", () => {
 		test("check Github link", async ({ page }) => {
-			const href = await page.locator(".awesome-social-button.github a").getAttribute("href");
+			const href = await page.locator(".social-button.github a").getAttribute("href");
 			expect(href).toBe("https://github.com/zurfjereluhmie");
 		});
 
 		test("check LinkedIn link", async ({ page }) => {
-			const href = await page.locator(".awesome-social-button.linkedin a").getAttribute("href");
+			const href = await page.locator(".social-button.linkedin a").getAttribute("href");
 			expect(href).toBe("https://www.linkedin.com/in/jeremie-zurfluh/");
 		});
 	});

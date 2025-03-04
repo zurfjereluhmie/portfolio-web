@@ -1,5 +1,4 @@
 <script setup>
-import { AwesomeSocialButton } from "awesome-social-button";
 const localePath = useLocalePath();
 const { t } = useI18n();
 </script>
@@ -21,17 +20,8 @@ const { t } = useI18n();
 				>
 			</p>
 			<div id="socials">
-				<AwesomeSocialButton
-					type="linkedin"
-					:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/', target: '_blank' }"
-					color="#205c8d"
-					target="_blank"
-				/>
-				<AwesomeSocialButton
-					type="github"
-					:link="{ href: 'https://github.com/zurfjereluhmie', target: '_blank' }"
-					color="#205c8d"
-				/>
+				<AppSocialButton href="https://www.linkedin.com/in/jeremie-zurfluh/" brand="linkedin" />
+				<AppSocialButton href="https://github.com/zurfjereluhmie" brand="github" />
 			</div>
 			<div id="call-to-action">
 				<NuxtLink

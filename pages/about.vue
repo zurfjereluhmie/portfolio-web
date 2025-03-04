@@ -1,5 +1,4 @@
 <script setup>
-import { AwesomeSocialButton } from "awesome-social-button";
 const { t } = useI18n();
 
 useSeoMeta({
@@ -76,16 +75,8 @@ useSeoMeta({
 						class="hidden xl:block"
 					>
 						<div class="flex flex-row gap-6 justify-center">
-							<AwesomeSocialButton
-								type="linkedin"
-								:link="{ href: 'https://www.linkedin.com/in/jeremie-zurfluh/', target: '_blank' }"
-								color="#205c8d"
-							/>
-							<AwesomeSocialButton
-								type="github"
-								:link="{ href: 'https://github.com/zurfjereluhmie', target: '_blank' }"
-								color="#205c8d"
-							/>
+							<AppSocialButton href="https://www.linkedin.com/in/jeremie-zurfluh/" brand="linkedin" />
+							<AppSocialButton href="https://github.com/zurfjereluhmie" brand="github" />
 						</div>
 					</AppProfileCard>
 				</div>

@@ -1,4 +1,6 @@
 @import "themes.css";
+@import "../fontawesome/css/fontawesome.min.css";
+@import "../fontawesome/css/brands.min.css";
 
 :root {
 	--max-width: 1200px;
@@ -72,10 +74,6 @@ a[href]:active:not(.no-animation) {
 	color: var(--primary);
 	background-size: 100% 0.07em;
 	background-position-x: 0%;
-}
-
-.awesome-social-button a {
-	background: none !important;
 }
 
 .prose h2 a {
