@@ -11,7 +11,7 @@ test("has title", async ({ page }) => {
 });
 
 test.describe("portfolio", () => {
-	test.skip("check all article links", async ({ page }) => {
+	test("check all article links", async ({ page }) => {
 		const links = await page.locator(".app-card").all();
 		const linksHref = await Promise.all(links.map(async (link) => await link.getAttribute("href")));
 		const englishLinksCount = linksHref.length;
