@@ -2,7 +2,10 @@
 const i18n = useI18n();
 const { t } = useI18n();
 const { data } = await useAsyncData(`${i18n.locale.value}/portfolio`, () => {
-	return queryCollection("content").where("path", "LIKE", `%${i18n.locale.value}/portfolio%`).all();
+	return queryCollection("content")
+		.where("path", "LIKE", `%${i18n.locale.value}/portfolio%`)
+		.order("date", "DESC")
+		.all();
 });
 
 useSeoMeta({
@@ -32,7 +35,7 @@ useSeoMeta({
 						:tags="project.meta.tags"
 						:image="project.meta.image"
 						:moreLink="project.path"
-						:date="project.meta.date"
+						:date="project.date"
 						:delay-anim="`${i * 100}ms`"
 					/>
 				</div>
