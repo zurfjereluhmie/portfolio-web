@@ -22,12 +22,12 @@
 
 html[data-theme="night"] {
 	--surface: #0d2030;
-	--on-surface: #e0e3e6;
+	--on-surface: #c8c8c8;
 	--on-surface-secondary: #475569;
 	--on-surface-tertiary: #6e7f8d;
 
 	--surface-variant: #0b1a28;
-	--on-surface-variant: #e0e3e6;
+	--on-surface-variant: #c8c8c8;
 	--on-surface-variant-secondary: #6e7f8d;
 
 	--primary: #3b81ba;

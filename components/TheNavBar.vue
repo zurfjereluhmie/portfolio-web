@@ -9,31 +9,31 @@ const isActive = (path) => {
 	return props.currentPath === path ? "active" : "";
 };
 
-// const timeOutId = ref(null);
+const timeOutId = ref(null);
 
-// const updateClock = () => {
-// 	const now = new Date();
-// 	const seconds = now.getSeconds();
-// 	const minutes = now.getMinutes();
-// 	const hours = now.getHours();
+const updateClock = () => {
+	const now = new Date();
+	const seconds = now.getSeconds();
+	const minutes = now.getMinutes();
+	const hours = now.getHours();
 
-// 	const minuteAngle = (minutes / 60) * 360 + (seconds / 60) * 6;
-// 	const hourAngle = (hours / 12) * 360 + (minutes / 60) * 30;
+	const minuteAngle = (minutes / 60) * 360 + (seconds / 60) * 6;
+	const hourAngle = (hours / 12) * 360 + (minutes / 60) * 30;
 
-// 	document.querySelector("#minute-hand").style.transform = `rotate(${minuteAngle}deg)`;
-// 	document.querySelector("#hour-hand").style.transform = `rotate(${hourAngle}deg)`;
+	document.querySelector("#minute-hand").style.transform = `rotate(${minuteAngle}deg)`;
+	document.querySelector("#hour-hand").style.transform = `rotate(${hourAngle}deg)`;
 
-// 	updateColor(hours);
-// };
+	updateColor(hours);
+};
 
-// onMounted(() => {
-// 	updateClock();
-// 	timeOutId.value = setInterval(updateClock, 1000);
-// });
+onMounted(() => {
+	updateClock();
+	timeOutId.value = setInterval(updateClock, 1000);
+});
 
-// onUnmounted(() => {
-// 	clearInterval(timeOutId.value);
-// });
+onUnmounted(() => {
+	clearInterval(timeOutId.value);
+});
 </script>
 
 <template>
@@ -56,7 +56,7 @@ const isActive = (path) => {
 			</li>
 		</ul>
 	</nav>
-	<!-- <div class="time-widget">
+	<div class="time-widget sm:hidden md:block">
 		<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M464 256C464 311.165 442.086 364.071 403.078 403.078C364.071 442.086 311.165 464 256 464C200.835 464 147.929 442.086 108.922 403.078C69.9142 364.071 48 311.165 48 256C48 200.835 69.9142 147.929 108.922 108.922C147.929 69.9142 200.835 48 256 48C311.165 48 364.071 69.9142 403.078 108.922C442.086 147.929 464 200.835 464 256ZM0 256C0 323.895 26.9714 389.01 74.9807 437.019C122.99 485.029 188.105 512 256 512C323.895 512 389.01 485.029 437.019 437.019C485.029 389.01 512 323.895 512 256C512 188.105 485.029 122.99 437.019 74.9807C389.01 26.9714 323.895 0 256 0C188.105 0 122.99 26.9714 74.9807 74.9807C26.9714 122.99 0 188.105 0 256Z"
@@ -64,7 +64,7 @@ const isActive = (path) => {
 			<rect id="minute-hand" x="232" y="95" width="48" height="185" rx="24" />
 			<rect id="hour-hand" x="232" y="160" width="48" height="120" rx="24" />
 		</svg>
-	</div> -->
+	</div>
 </template>
 
 <style scoped>
@@ -85,6 +85,10 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+li {
+	align-content: center;
 }
 
 li a {
