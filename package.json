@@ -12,7 +12,7 @@
 		"test:ui": "playwright test --ui"
 	},
 	"dependencies": {
-		"@nuxt/content": "^3.2.2",
+		"@nuxt/content": "^3.5.1",
 		"@nuxt/image": "^1.10.0",
 		"@nuxtjs/i18n": "^9.3.1",
 		"@nuxtjs/seo": "^3.0.3",
