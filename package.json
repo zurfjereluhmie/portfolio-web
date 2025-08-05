@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@intlify/core-base": "^11.1.11",
 		"@intlify/shared": "^11.1.11",
-		"@nuxt/content": "^3.5.1",
+		"@nuxt/content": "^3.6.3",
 		"@nuxt/image": "^1.10.0",
 		"@nuxtjs/i18n": "^9.5.6",
 		"@nuxtjs/seo": "^3.0.3",
