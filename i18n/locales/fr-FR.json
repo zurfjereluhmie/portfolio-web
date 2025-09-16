@@ -10,13 +10,13 @@
 		},
 		"hello": "Salut !",
 		"imJeremie": "Je suis Jérémie",
-		"oneSentencePres": "Médiamaticien, je poursuis actuellement mes études en ingénierie des médias",
+		"oneSentencePres": "Médiamaticien CFC, diplômé d’un Bachelor en Ingénierie des Médias",
 		"at": "à",
 		"seeMyWork": "Voir quelques-unes de mes réalisations",
 		"fullStack": "J'ai une grande passion pour le développement web full-stack. De la construction de systèmes back-end évolutifs et réactifs à la création d'expériences front-end engageantes et intuitives, je m'épanouis en transformant des idées créatives en applications web dynamiques.",
 		"UIUX": "En plus de la programmation, je suis également intéressé par la conception UI/UX, en veillant à ce que le parcours de l'utilisateur soit fluide, visuellement attrayant et fonctionnel. En combinant mes compétences en développement avec une approche de conception centrée sur l'utilisateur, je vise à créer des produits qui non seulement répondent aux exigences techniques, mais offrent également une expérience de haute qualité aux utilisateurs.",
-		"education": "BSc en Ingénierie des Médias",
-		"job": "Full-stack & UX/UI Designer"
+		"education": "BSc HES-SO en Ingénierie des médias",
+		"job": "Application Engineer"
 	},
 	"portfolio": {
 		"meta": {
@@ -32,9 +32,9 @@
 		},
 		"aboutMe": "À propos de moi",
 		"helloImJeremie": "Salut ! Je suis Jérémie",
-		"iStudy": "Je suis étudiant en",
+		"iStudy": "Diplômé d'un Bachelor en",
 		"mediaEngineering": "Ingénierie des médias à la HEIG-VD",
-		"iStudy2": ", avec une passion pour les aspects techniques et créatifs du développement web. Mon parcours a commencé avec la curiosité de comprendre comment les choses fonctionnent, qui s'est transformée en un goût pour la construction de sites web qui non seulement sont fonctionnels, mais aussi esthétiques et agréables à utiliser.",
+		"iStudy2": ", avec une passion pour les aspects techniques et créatifs du développement web. Mon parcours a commencé avec la curiosité de comprendre comment les choses fonctionnent, qui s'est transformée en un goût pour la construction de sites web qui soient non seulement sont fonctionnels, mais aussi esthétiques et agréables à utiliser.",
 		"trainedAs": "Avant cela, je me suis formé en tant que",
 		"mediamaticsTechnician": "Médiamaticien",
 		"mediamaticsTechnician2": ", acquérant une solide base en développement web, design, montage vidéo et IT.",
@@ -45,7 +45,7 @@
 		"connect": "ou",
 		"linkedin": "LinkedIn",
 		"connect2": ". J'attends avec impatience vos commentaires !",
-		"role": "Étudiant en ingénierie des médias"
+		"role": "BSc HES-SO en Ingénierie des médias"
 	},
 	"nav": {
 		"home": "Accueil",

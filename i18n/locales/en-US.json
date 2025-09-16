@@ -10,13 +10,13 @@
 		},
 		"hello": "Hey !",
 		"imJeremie": "I'm Jérémie",
-		"oneSentencePres": "A mediamatics technician currently pursuing my studies in media engineering",
+		"oneSentencePres": "VET Mediamatics Technician, graduated with a Bachelor's degree in Media Engineering",
 		"at": "at",
 		"seeMyWork": "See some of my works",
 		"fullStack": "I have a deep passion for full-stack web development. From building scalable, responsive back-end systems to crafting engaging, intuitive front-end experiences, I thrive on turning creative ideas into dynamic web applications.",
 		"UIUX": "In addition to coding, I am equally invested in UI/UX design, ensuring that the user journey is seamless, visually appealing, and functional. By combining my development skills with a user-centered design approach, I aim to create products that not only meet technical requirements but also deliver a top-notch experience for users.",
-		"education": "BSc in Media Engineering",
-		"job": "Full-stack & UX/UI Designer"
+		"education": "BSc HES-SO in Media Engineering",
+		"job": "Application Engineer"
 	},
 	"portfolio": {
 		"meta": {
@@ -32,7 +32,7 @@
 		},
 		"aboutMe": "About me",
 		"helloImJeremie": "Hello ! I'm Jérémie",
-		"iStudy": "I’m studying",
+		"iStudy": "Graduated with a Bachelor's degree in",
 		"mediaEngineering": "Media Engineering at HEIG-VD",
 		"iStudy2": ", with a passion for both the technical and creative sides of web development. My journey started with a curiosity for how things work, which grew into a love for building websites that not only function well but look and feel great.",
 		"trainedAs": "Before this, I trained as a",
@@ -45,7 +45,7 @@
 		"connect": "or connect with me on",
 		"linkedin": "LinkedIn",
 		"connect2": ". I look forward to hearing from you!",
-		"role": "Student in Media Engineering"
+		"role": "BSc HES-SO in Media Engineering"
 	},
 	"nav": {
 		"home": "Home",
