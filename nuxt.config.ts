@@ -2,7 +2,14 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2024-04-03",
 	devtools: { enabled: true },
-	modules: ["@nuxt/image", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/i18n", "@nuxt/content"],
+	modules: [
+		"@nuxt/image",
+		"@nuxtjs/tailwindcss",
+		"@nuxtjs/seo",
+		"@nuxtjs/i18n",
+		"@nuxt/content",
+		"@nuxtjs/color-mode",
+	],
 	css: ["~/assets/css/reset.css", "~/assets/css/main.css", "~/assets/css/prose.css"],
 	i18n: {
 		locales: [
@@ -14,6 +21,9 @@ export default defineNuxtConfig({
 		strategy: "prefix_and_default",
 		lazy: true,
 		langDir: "locales/",
+		bundle: {
+			optimizeTranslationDirective: false,
+		},
 	},
 	content: {
 		build: {
@@ -41,7 +51,8 @@ export default defineNuxtConfig({
 		enabled: false,
 	},
 	sitemap: {
-		enabled: true,
+		enabled: false,
+		credits: false,
 	},
 	robots: {
 		enabled: true,
