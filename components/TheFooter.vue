@@ -1,25 +1,25 @@
-<script setup>
+<script setup lang="ts">
 const year = new Date().getFullYear();
 </script>
 
 <template>
-	<footer>
-		<p>&copy; {{ year }} Jérémie Zurflüh</p>
-	</footer>
+  <footer>
+    <p>&copy; {{ year }} Jérémie Zurflüh</p>
+  </footer>
 </template>
 
 <style scoped>
 footer {
-	width: 100%;
-	background-color: var(--surface);
-	color: var(--on-surface);
-	text-align: center;
-	padding: 1rem;
-	margin-top: 4rem;
+  width: 100%;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 4rem;
 }
 
 footer p {
-	margin: 0;
-	font-size: 0.75rem;
+  margin: 0;
+  font-size: 0.75rem;
 }
 </style>
