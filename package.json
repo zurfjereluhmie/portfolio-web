@@ -15,7 +15,7 @@
     "@intlify/core-base": "^11.1.11",
     "@intlify/shared": "^11.1.11",
     "@nuxt/content": "^3.5.1",
-    "@nuxt/image": "^1.10.0",
+    "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "^9.5.6",
     "@nuxtjs/seo": "^3.0.3",
