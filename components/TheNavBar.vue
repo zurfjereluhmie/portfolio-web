@@ -1,120 +1,117 @@
-<script setup>
+<script setup lang="ts">
 import { Sun, Moon } from "lucide-vue-next";
 
 const { t } = useI18n();
 const localePath = useLocalePath();
-const props = defineProps(["currentPath"]);
+const props = defineProps<{
+  currentPath?: string;
+}>();
 
-const isActive = (path) => {
-	return props.currentPath === path ? "active" : "";
+const isActive = (path: string) => {
+  return props.currentPath === path ? "active" : "";
 };
 
 const colorMode = useColorMode();
 
-const updateColor = (mode) => {
-	document.querySelector("html").dataset.theme = mode;
+const updateColor = (mode: string) => {
+  document.querySelector("html")!.dataset.theme = mode;
 };
 
 onMounted(() => {
-	watchEffect(
-		() => {
-			updateColor(colorMode.value);
-		},
-		{ immediate: true }
-	);
+  watchEffect(() => {
+    updateColor(colorMode.value);
+  });
 });
 </script>
 
 <template>
-	<nav>
-		<ul>
-			<li>
-				<NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{
-					t("nav.home")
-				}}</NuxtLink>
-			</li>
-			<li>
-				<NuxtLink :to="localePath('/portfolio')" :aria-current="isActive('/portfolio') ? 'page' : null">{{
-					t("nav.portfolio")
-				}}</NuxtLink>
-			</li>
-			<li>
-				<NuxtLink :to="localePath('/about')" :aria-current="isActive('/about') ? 'page' : null">{{
-					t("nav.about")
-				}}</NuxtLink>
-			</li>
-		</ul>
-	</nav>
-	<div class="time-widget sm:hidden md:block">
-		<Moon
-			v-if="colorMode.value === 'dark'"
-			@click="colorMode.value = 'light'"
-			class="h-6"
-			role="button"
-			aria-label="Switch to light mode"
-			tabindex="0"
-		/>
-		<Sun
-			v-else-if="colorMode.value === 'light'"
-			@click="colorMode.value = 'dark'"
-			class="h-6"
-			role="button"
-			aria-label="Switch to dark mode"
-			tabindex="0"
-		/>
-	</div>
+  <nav>
+    <ul>
+      <li>
+        <NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("nav.home") }}</NuxtLink>
+      </li>
+      <li>
+        <NuxtLink :to="localePath('/portfolio')" :aria-current="isActive('/portfolio') ? 'page' : null">{{
+          t("nav.portfolio")
+        }}</NuxtLink>
+      </li>
+      <li>
+        <NuxtLink :to="localePath('/about')" :aria-current="isActive('/about') ? 'page' : null">{{
+          t("nav.about")
+        }}</NuxtLink>
+      </li>
+    </ul>
+  </nav>
+  <div class="time-widget sm:hidden md:block">
+    <Moon
+      v-if="colorMode.value === 'dark'"
+      @click="colorMode.value = 'light'"
+      class="h-6"
+      role="button"
+      aria-label="Switch to light mode"
+      tabindex="0"
+    />
+    <Sun
+      v-else-if="colorMode.value === 'light'"
+      @click="colorMode.value = 'dark'"
+      class="h-6"
+      role="button"
+      aria-label="Switch to dark mode"
+      tabindex="0"
+    />
+  </div>
 </template>
 
 <style scoped>
 nav {
-	position: fixed;
-	left: 50%;
-	top: 1rem;
-	transform: translateX(-50%);
-	background-color: var(--nav-background);
-	padding: 1rem;
-	z-index: 1000;
-	@apply rounded-xl backdrop-blur-sm shadow-lg;
+  position: fixed;
+  left: 50%;
+  top: 1rem;
+  transform: translateX(-50%);
+  background-color: var(--nav-background);
+  padding: 1rem;
+  z-index: 1000;
+  @apply rounded-xl backdrop-blur-sm shadow-lg;
 }
 
 ul {
-	display: flex;
-	justify-content: center;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-	align-content: center;
+  align-content: center;
 }
 
 li a {
-	margin: 0 1rem;
-	color: var(--primary);
+  margin: 0 1rem;
+  color: var(--primary);
 }
 
 li a[aria-current="page"] {
-	color: var(--on-surface) !important;
-	background-image: linear-gradient(var(--on-surface), var(--on-surface));
+  color: var(--on-surface) !important;
+  background-image: linear-gradient(var(--on-surface), var(--on-surface));
 }
 
 .time-widget {
-	position: fixed;
-	top: 1rem;
-	left: 50%;
-	transform: translateX(calc(-50% + 12rem));
-	background-color: var(--nav-background);
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(calc(-50% + 12rem));
+  background-color: var(--nav-background);
 
-	height: calc(3.5rem);
-	width: calc(3.5rem);
+  height: calc(3.5rem);
+  width: calc(3.5rem);
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-	z-index: 1000;
+  z-index: 1000;
 
-	@apply rounded-xl backdrop-blur-sm shadow-lg hidden sm:flex;
+  @apply rounded-xl backdrop-blur-sm shadow-lg hidden sm:flex;
 }
 </style>
