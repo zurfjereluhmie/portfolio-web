@@ -11,7 +11,11 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxt/eslint",
   ],
-  css: ["~/assets/css/reset.css", "~/assets/css/main.css", "~/assets/css/prose.css"],
+  css: [
+    "~/assets/css/reset.css",
+    "~/assets/css/main.css",
+    "~/assets/css/prose.css",
+  ],
   i18n: {
     locales: [
       { code: "en", language: "en-US", file: "en-US.json" },

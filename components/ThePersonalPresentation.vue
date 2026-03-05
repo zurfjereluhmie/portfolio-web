@@ -7,21 +7,30 @@ const { t } = useI18n();
   <div id="personnal-presentation">
     <div id="personnal">
       <h1>
-        {{ t("index.hello") }} <NuxtLink :to="localePath('/about')">{{ t("index.imJeremie") }}</NuxtLink>
+        {{ t("index.hello") }}
+        <NuxtLink :to="localePath('/about')">{{
+          t("index.imJeremie")
+        }}</NuxtLink>
       </h1>
       <p class="big">
         {{ t("index.oneSentencePres") }}
         <a
-          href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
           ref="noreferrer"
+          href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
           target="_blank"
           aria-label="HEIG-VD Media Engineering"
           >{{ t("index.at") }} HEIG-VD</a
         >
       </p>
       <div id="socials">
-        <AppSocialButton href="https://www.linkedin.com/in/jeremie-zurfluh/" brand="linkedin" />
-        <AppSocialButton href="https://github.com/zurfjereluhmie" brand="github" />
+        <AppSocialButton
+          href="https://www.linkedin.com/in/jeremie-zurfluh/"
+          brand="linkedin"
+        />
+        <AppSocialButton
+          href="https://github.com/zurfjereluhmie"
+          brand="github"
+        />
       </div>
       <div id="call-to-action">
         <NuxtLink
@@ -30,7 +39,12 @@ const { t } = useI18n();
         >
           {{ t("index.seeMyWork") }}
 
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-4 h-4 ml-1.5"
+          >
             <path
               fill-rule="evenodd"
               d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
@@ -42,14 +56,14 @@ const { t } = useI18n();
     </div>
     <div id="interrests">
       <AppSimpleCard title="Full-stack">
-        <template v-slot:content>
+        <template #content>
           <p>
             {{ t("index.fullStack") }}
           </p>
         </template>
       </AppSimpleCard>
       <AppSimpleCard title="UI & UX">
-        <template v-slot:content>
+        <template #content>
           <p>
             {{ t("index.UIUX") }}
           </p>

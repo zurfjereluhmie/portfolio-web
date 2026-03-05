@@ -7,8 +7,12 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="app-profile-card flex flex-col shadow-sm rounded-lg my-6 w-72 pt-[.1px]">
-    <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
+  <div
+    class="app-profile-card flex flex-col shadow-sm rounded-lg my-6 w-72 pt-[.1px]"
+  >
+    <div
+      class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center"
+    >
       <NuxtImg
         class="w-full h-full object-cover object-top"
         format="webp"

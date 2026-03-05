@@ -82,17 +82,30 @@ export default class Keyboard {
     callbackSet.delete(callback);
   }
 
-  onKey(key: string, callback: KeyboardCallback, downOrUp: "down" | "up" = "down"): () => void {
+  onKey(
+    key: string,
+    callback: KeyboardCallback,
+    downOrUp: "down" | "up" = "down",
+  ): () => void {
     if (!this.caseSensitive) key = key.toUpperCase();
     return this.on(`keyboard:${key}:${downOrUp}`, callback);
   }
 
-  onceKey(key: string, callback: KeyboardCallback, downOrUp: "down" | "up" = "down"): () => void {
+  onceKey(
+    key: string,
+    callback: KeyboardCallback,
+    downOrUp: "down" | "up" = "down",
+  ): () => void {
     if (!this.caseSensitive) key = key.toUpperCase();
     return this.once(`keyboard:${key}:${downOrUp}`, callback);
   }
 
-  onKeys(keys: string[], callback: KeyboardCallback, downOrUp: "down" | "up" = "down", once = false): () => void {
+  onKeys(
+    keys: string[],
+    callback: KeyboardCallback,
+    downOrUp: "down" | "up" = "down",
+    once = false,
+  ): () => void {
     if (!this.caseSensitive) keys = keys.map((key) => key.toUpperCase());
     const callbackHandler = (keyPressed: string) => {
       if (!keys.includes(keyPressed)) return;
@@ -103,7 +116,11 @@ export default class Keyboard {
     return this.on(`keyboard:${downOrUp}`, callbackHandler);
   }
 
-  onceKeys(keys: string[], callback: KeyboardCallback, downOrUp: "down" | "up" = "down"): () => void {
+  onceKeys(
+    keys: string[],
+    callback: KeyboardCallback,
+    downOrUp: "down" | "up" = "down",
+  ): () => void {
     return this.onKeys(keys, callback, downOrUp, true);
   }
 

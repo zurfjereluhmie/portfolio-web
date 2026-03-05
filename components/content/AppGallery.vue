@@ -23,15 +23,15 @@ const displayLightBox = (index: number) => {
     <div class="not-prose">
       <NuxtImg
         v-for="(image, i) in imagesUrl"
+        :key="i"
         class="mb-4 size-full rounded-lg object-contain"
         :src="`${baseUrl}/${image}`"
         format="webp"
         loading="lazy"
         placeholder
         placeholder-class="animate-pulse"
-        @click="displayLightBox(i)"
-        :key="i"
         :alt="imagesAlt && imagesAlt.at(i) ? imagesAlt.at(i) : undefined"
+        @click="displayLightBox(i)"
       />
     </div>
   </template>
@@ -39,20 +39,25 @@ const displayLightBox = (index: number) => {
     <div class="not-prose columns-1 sm:columns-2 md:columns-2">
       <NuxtImg
         v-for="(image, i) in imagesUrl"
+        :key="i"
         class="mb-4 size-full rounded-lg object-contain"
         :src="`${baseUrl}/${image}`"
         format="webp"
         loading="lazy"
         placeholder
         placeholder-class="animate-pulse"
-        @click="displayLightBox(i)"
-        :key="i"
         :alt="imagesAlt && imagesAlt.at(i) ? imagesAlt.at(i) : undefined"
+        @click="displayLightBox(i)"
       />
     </div>
   </template>
-  <div class="not-prose" v-if="showLightBox">
-    <AppLightBox :images="lightBoxImg" :alts="imagesAlt" :startIndex="imagesIndex" @close="showLightBox = false" />
+  <div v-if="showLightBox" class="not-prose">
+    <AppLightBox
+      :images="lightBoxImg"
+      :alts="imagesAlt"
+      :start-index="imagesIndex"
+      @close="showLightBox = false"
+    />
   </div>
 </template>
 

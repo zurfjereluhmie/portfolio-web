@@ -20,13 +20,15 @@ useSeoMeta({
 
 <template>
   <header>
-    <TheNavBar currentPath="/portfolio" />
+    <TheNavBar current-path="/portfolio" />
   </header>
   <main>
     <div class="px-6">
       <h1>{{ t("portfolio.portfolio") }}</h1>
       <div class="w-full flex justify-center">
-        <div class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]">
+        <div
+          class="flex flex-row flex-wrap justify-center gap-6 max-w-[1200px]"
+        >
           <AppCard
             v-for="(project, i) in data"
             :key="project.path"
@@ -34,7 +36,7 @@ useSeoMeta({
             :excerpt="project.description"
             :tags="project.meta.tags"
             :image="project.meta.image"
-            :moreLink="project.path"
+            :more-link="project.path"
             :date="project.date"
             :delay-anim="`${i * 100}ms`"
           />
