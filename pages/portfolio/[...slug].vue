@@ -3,9 +3,12 @@ const i18n = useI18n();
 const route = useRoute();
 const url = useRequestURL();
 
-const { data } = await useAsyncData(`content-${i18n.locale.value}-${route.path}`, () => {
-  return queryCollection("content").path(route.path).first();
-});
+const { data } = await useAsyncData(
+  `content-${i18n.locale.value}-${route.path}`,
+  () => {
+    return queryCollection("content").path(route.path).first();
+  },
+);
 
 const cover = ref(data.value!.meta.image as string);
 const toc = ref(data.value!.body.toc);
@@ -25,13 +28,15 @@ useSeoMeta({
 </script>
 <template>
   <header>
-    <TheNavBar currentPath="/portfolio" />
+    <TheNavBar current-path="/portfolio" />
   </header>
   <main>
     <div class="mt-6 px-6 flex flex-col items-center relative">
       <AppBreadcrumb max-width="65ch" />
       <article class="prose">
-        <div class="not-prose mb-8 grid w-full min-h-[140px] place-items-center rounded-lg">
+        <div
+          class="not-prose mb-8 grid w-full min-h-[140px] place-items-center rounded-lg"
+        >
           <NuxtImg
             class="object-cover object-center w-full rounded-lg h-96"
             :src="`/img/${cover}`"

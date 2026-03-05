@@ -21,8 +21,11 @@ const imagesIndex = ref(props.startIndex);
 const currentImage = computed(() => props.images[imagesIndex.value]);
 const showCarousel = computed(() => props.images.length > 1);
 
-const nextImage = () => (imagesIndex.value = (imagesIndex.value + 1) % props.images.length);
-const previousImage = () => (imagesIndex.value = (imagesIndex.value - 1 + props.images.length) % props.images.length);
+const nextImage = () =>
+  (imagesIndex.value = (imagesIndex.value + 1) % props.images.length);
+const previousImage = () =>
+  (imagesIndex.value =
+    (imagesIndex.value - 1 + props.images.length) % props.images.length);
 const close = () => emit("close");
 
 const { keyboard } = useKeyboard();
@@ -45,8 +48,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div @scroll.prevent class="absolute top-0 left-0 w-screen h-screen">
-    <div @click="close()" class="close">
+  <div class="absolute top-0 left-0 w-screen h-screen" @scroll.prevent>
+    <div class="close" @click="close()">
       <button
         type="button"
         class="rounded-md py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg hover:bg-slate-700 active:shadow-none"
@@ -59,7 +62,10 @@ onUnmounted(() => {
         <figure>
           <NuxtImg
             :src="currentImage"
-            :imgAttrs="{ alt: alts && alts.at(imagesIndex) ? alts.at(imagesIndex) : undefined }"
+            :img-attrs="{
+              alt:
+                alts && alts.at(imagesIndex) ? alts.at(imagesIndex) : undefined,
+            }"
             :loading="lazy"
             format="webp"
           />
@@ -68,13 +74,17 @@ onUnmounted(() => {
           </figcaption>
         </figure>
       </div>
-      <div class="controls" v-if="showCarousel">
+      <div v-if="showCarousel" class="controls">
         <button
           class="rounded-md py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg hover:bg-slate-700 active:shadow-none"
           type="button"
           @click="previousImage()"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
@@ -100,7 +110,11 @@ onUnmounted(() => {
           type="button"
           @click="nextImage()"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
             <path
               fill-rule="evenodd"
               d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"

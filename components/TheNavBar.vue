@@ -28,36 +28,44 @@ onMounted(() => {
   <nav>
     <ul>
       <li>
-        <NuxtLink :to="localePath('/')" :aria-current="isActive('/') ? 'page' : null">{{ t("nav.home") }}</NuxtLink>
+        <NuxtLink
+          :to="localePath('/')"
+          :aria-current="isActive('/') ? 'page' : null"
+          >{{ t("nav.home") }}</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink :to="localePath('/portfolio')" :aria-current="isActive('/portfolio') ? 'page' : null">{{
-          t("nav.portfolio")
-        }}</NuxtLink>
+        <NuxtLink
+          :to="localePath('/portfolio')"
+          :aria-current="isActive('/portfolio') ? 'page' : null"
+          >{{ t("nav.portfolio") }}</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink :to="localePath('/about')" :aria-current="isActive('/about') ? 'page' : null">{{
-          t("nav.about")
-        }}</NuxtLink>
+        <NuxtLink
+          :to="localePath('/about')"
+          :aria-current="isActive('/about') ? 'page' : null"
+          >{{ t("nav.about") }}</NuxtLink
+        >
       </li>
     </ul>
   </nav>
   <div class="time-widget sm:hidden md:block">
     <Moon
       v-if="colorMode.value === 'dark'"
-      @click="colorMode.value = 'light'"
       class="h-6"
       role="button"
       aria-label="Switch to light mode"
       tabindex="0"
+      @click="colorMode.value = 'light'"
     />
     <Sun
       v-else-if="colorMode.value === 'light'"
-      @click="colorMode.value = 'dark'"
       class="h-6"
       role="button"
       aria-label="Switch to dark mode"
       tabindex="0"
+      @click="colorMode.value = 'dark'"
     />
   </div>
 </template>

@@ -6,7 +6,9 @@ const mainRef = ref<HTMLElement | null>(null);
 
 // Navbar animation
 onMounted(() => {
-  personalPresentationRef.value = document.querySelector<HTMLElement>("#personnal-presentation");
+  personalPresentationRef.value = document.querySelector<HTMLElement>(
+    "#personnal-presentation",
+  );
   navBarRef.value = document.querySelector<HTMLElement>("header");
 
   const observer = new IntersectionObserver(
@@ -24,18 +26,23 @@ onMounted(() => {
     { threshold: 0 },
   );
 
-  if (personalPresentationRef.value) observer.observe(personalPresentationRef.value);
+  if (personalPresentationRef.value)
+    observer.observe(personalPresentationRef.value);
 
   onUnmounted(() => {
-    if (personalPresentationRef.value) observer.unobserve(personalPresentationRef.value);
+    if (personalPresentationRef.value)
+      observer.unobserve(personalPresentationRef.value);
   });
 });
 
 // Smooth scroll
 onMounted(() => {
   mainRef.value = document.querySelector<HTMLElement>("main");
-  const theHeroSection = mainRef.value!.querySelector<HTMLElement>("#hero-container")!;
-  const thePersonalPresentation = mainRef.value!.querySelector<HTMLElement>("#personnal-presentation")!;
+  const theHeroSection =
+    mainRef.value!.querySelector<HTMLElement>("#hero-container")!;
+  const thePersonalPresentation = mainRef.value!.querySelector<HTMLElement>(
+    "#personnal-presentation",
+  )!;
   const scrollUpsLimit = 5;
   let scrollUps = 0;
 
@@ -57,14 +64,26 @@ onMounted(() => {
     }
   };
 
-  theHeroSection.addEventListener("wheel", (e) => scrollDownToPersonalPresentation(e));
-  theHeroSection.addEventListener("click", (e) => scrollDownToPersonalPresentation(e));
-  thePersonalPresentation.addEventListener("wheel", (e) => scrollDownToHeroSection(e));
+  theHeroSection.addEventListener("wheel", (e) =>
+    scrollDownToPersonalPresentation(e),
+  );
+  theHeroSection.addEventListener("click", (e) =>
+    scrollDownToPersonalPresentation(e),
+  );
+  thePersonalPresentation.addEventListener("wheel", (e) =>
+    scrollDownToHeroSection(e),
+  );
 
   onUnmounted(() => {
-    theHeroSection.removeEventListener("wheel", (e) => scrollDownToPersonalPresentation(e));
-    theHeroSection.removeEventListener("click", (e) => scrollDownToPersonalPresentation(e));
-    thePersonalPresentation.removeEventListener("wheel", (e) => scrollDownToHeroSection(e));
+    theHeroSection.removeEventListener("wheel", (e) =>
+      scrollDownToPersonalPresentation(e),
+    );
+    theHeroSection.removeEventListener("click", (e) =>
+      scrollDownToPersonalPresentation(e),
+    );
+    thePersonalPresentation.removeEventListener("wheel", (e) =>
+      scrollDownToHeroSection(e),
+    );
   });
 });
 
@@ -79,9 +98,11 @@ useSeoMeta({
 </script>
 
 <template>
-  <a href="#personnal-presentation" class="sr-only">{{ t("index.accessibility.skipToMainContent") }}</a>
+  <a href="#personnal-presentation" class="sr-only">{{
+    t("index.accessibility.skipToMainContent")
+  }}</a>
   <header>
-    <TheNavBar currentPath="/" />
+    <TheNavBar current-path="/" />
   </header>
   <main>
     <TheHeroSection />

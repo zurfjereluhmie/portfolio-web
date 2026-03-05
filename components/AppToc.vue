@@ -14,7 +14,7 @@ interface Toc {
 }
 
 const { t } = useI18n();
-const props = defineProps<{
+defineProps<{
   toc: Toc;
 }>();
 </script>
@@ -23,11 +23,11 @@ const props = defineProps<{
   <div class="toc-container">
     <p class="font-medium">{{ t("content.toc") }}</p>
     <ol class="list-none pl-0 mt-4">
-      <li v-for="header in toc.links">
+      <li v-for="header in toc.links" :key="header.id">
         <a :href="`#${header.id}`">{{ header.text }}</a>
         <template v-if="header.children"
           ><ol class="list-none pl-3 mt-2">
-            <li v-for="children in header.children">
+            <li v-for="children in header.children" :key="children.id">
               <a :href="`#${children.id}`">{{ children.text }}</a>
             </li>
           </ol></template

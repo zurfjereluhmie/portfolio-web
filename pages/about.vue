@@ -13,7 +13,7 @@ useSeoMeta({
 
 <template>
   <header>
-    <TheNavBar currentPath="/about" />
+    <TheNavBar current-path="/about" />
   </header>
   <main>
     <div class="px-6">
@@ -25,8 +25,8 @@ useSeoMeta({
             <p>
               {{ t("about.iStudy") }}
               <a
-                href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
                 ref="noreferrer"
+                href="https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
                 target="_blank"
                 aria-label="HEIG-VD Media Engineering"
               >
@@ -36,8 +36,8 @@ useSeoMeta({
             <p>
               {{ t("about.trainedAs") }}
               <a
-                href="https://www.ict-berufsbildung.ch/formation-initiale/apprentissages-ict/mediamaticienne-cfc"
                 ref="noreferrer"
+                href="https://www.ict-berufsbildung.ch/formation-initiale/apprentissages-ict/mediamaticienne-cfc"
                 target="_blank"
                 aria-label="Mediamatics Technician at ICT Berufsbildung"
                 >{{ t("about.mediamaticsTechnician") }}</a
@@ -58,8 +58,8 @@ useSeoMeta({
               >
               {{ t("about.connect") }}
               <a
-                href="https://www.linkedin.com/in/jeremie-zurfluh/"
                 ref="noreferrer"
+                href="https://www.linkedin.com/in/jeremie-zurfluh/"
                 target="_blank"
                 aria-label="LinkedIn"
                 >{{ t("about.linkedin") }}</a
@@ -68,10 +68,21 @@ useSeoMeta({
           </div>
         </div>
         <div class="profile-card justify-self-end">
-          <AppProfileCard name="Jérémie Zurflüh" :role="t('about.role')" imageUrl="/img/me.jpg" class="hidden xl:block">
+          <AppProfileCard
+            name="Jérémie Zurflüh"
+            :role="t('about.role')"
+            image-url="/img/me.jpg"
+            class="hidden xl:block"
+          >
             <div class="flex flex-row gap-6 justify-center">
-              <AppSocialButton href="https://www.linkedin.com/in/jeremie-zurfluh/" brand="linkedin" />
-              <AppSocialButton href="https://github.com/zurfjereluhmie" brand="github" />
+              <AppSocialButton
+                href="https://www.linkedin.com/in/jeremie-zurfluh/"
+                brand="linkedin"
+              />
+              <AppSocialButton
+                href="https://github.com/zurfjereluhmie"
+                brand="github"
+              />
             </div>
           </AppProfileCard>
         </div>

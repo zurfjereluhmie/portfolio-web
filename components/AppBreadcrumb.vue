@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(
+withDefaults(
   defineProps<{
     maxWidth?: string;
   }>(),
@@ -30,7 +30,8 @@ breadcrumbs.value.forEach((link, index) => {
 });
 
 const isNotLast = (index: number) => index + 1 < breadcrumbs.value.length;
-const firstLetterUpper = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
+const firstLetterUpper = (string: string) =>
+  string.charAt(0).toUpperCase() + string.slice(1);
 const removeHash = (string: string): string => string.split("#").at(0) ?? "";
 const nameFormatter = (string: string) => {
   let s = removeHash(string);
@@ -48,17 +49,24 @@ const nameFormatter = (string: string) => {
     }"
   >
     <ol class="flex w-full flex-wrap items-center rounded-md py-4 px-0">
-      <template v-for="(link, index) in breadcrumbs">
+      <template v-for="(link, index) in breadcrumbs" :key="index">
         <li class="flex items-center text-sm">
           <template v-if="isNotLast(index)">
-            <NuxtLink :to="localePath(buildLink.at(index) || '/')" class="cursor-pointer">{{
-              nameFormatter(link) || "Home"
-            }}</NuxtLink>
+            <NuxtLink
+              :to="localePath(buildLink.at(index) || '/')"
+              class="cursor-pointer"
+              >{{ nameFormatter(link) || "Home" }}</NuxtLink
+            >
           </template>
           <template v-else>
-            <a class="cursor-default" aria-current="page">{{ nameFormatter(link) || "Home" }}</a>
+            <a class="cursor-default" aria-current="page">{{
+              nameFormatter(link) || "Home"
+            }}</a>
           </template>
-          <span v-if="isNotLast(index)" class="separator pointer-events-none mx-2">
+          <span
+            v-if="isNotLast(index)"
+            class="separator pointer-events-none mx-2"
+          >
             {{ separator }}
           </span>
         </li>

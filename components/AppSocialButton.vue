@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(
+withDefaults(
   defineProps<{
     href: string;
     brand: string;
@@ -13,7 +13,8 @@ const props = withDefaults(
 
 <template>
   <div :class="`social-button ${brand}`" role="button">
-    <i :class="`fa-brands fa-${brand}`"></i><a :href :target class="no-animation"></a>
+    <i :class="`fa-brands fa-${brand}`"></i
+    ><a :href :target class="no-animation"></a>
   </div>
 </template>
 
@@ -39,7 +40,12 @@ const props = withDefaults(
   line-height: 1;
   width: 40px;
   color: #36597d;
-  background: linear-gradient(var(--on-primary), var(--on-primary) 50%, var(--primary) 50%, var(--primary));
+  background: linear-gradient(
+    var(--on-primary),
+    var(--on-primary) 50%,
+    var(--primary) 50%,
+    var(--primary)
+  );
   background-size: 100% 200%;
 
   &:hover {
