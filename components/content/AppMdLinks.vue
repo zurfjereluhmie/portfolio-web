@@ -15,6 +15,7 @@ const BASE_FAVICON_API = "https://www.google.com/s2/favicons?domain=https://";
   <div class="flex flex-row flex-wrap gap-4">
     <a
       v-for="link in cleanLinks"
+      :key="link.href"
       class="not-prose flex items-center gap-2"
       :href="link.href"
       rel="no-referrer"

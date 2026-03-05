@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(
+withDefaults(
   defineProps<{
     maxWidth?: string;
   }>(),
@@ -49,7 +49,7 @@ const nameFormatter = (string: string) => {
     }"
   >
     <ol class="flex w-full flex-wrap items-center rounded-md py-4 px-0">
-      <template v-for="(link, index) in breadcrumbs">
+      <template v-for="(link, index) in breadcrumbs" :key="index">
         <li class="flex items-center text-sm">
           <template v-if="isNotLast(index)">
             <NuxtLink
