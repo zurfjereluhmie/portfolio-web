@@ -12,7 +12,15 @@ test.describe("navigation", () => {
   test.describe("nav", () => {
     test.beforeEach(async ({ page }) => {
       await page.evaluate(() => {
-        document.querySelector("#personnal-presentation")?.scrollIntoView();
+        document
+          .querySelector("#personnal-presentation")
+          ?.scrollIntoView({ behavior: "instant" });
+        const header = document.querySelector("header");
+        if (header) {
+          header.classList.remove("animate-out");
+          header.classList.add("animate-in");
+        }
+        document.getAnimations().forEach((a) => a.finish());
       });
     });
 

@@ -126,7 +126,7 @@ header.animate-in * {
 }
 
 header.animate-out * {
-  top: -100%;
+  animation: fadeOut 0.3s forwards;
 }
 
 @keyframes fadeIn {
