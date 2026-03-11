@@ -51,8 +51,6 @@ onMounted(() => {
       ? thePersonalPresentation.scrollIntoView({ behavior: "smooth" })
       : null;
   const scrollDownToHeroSection = (e: WheelEvent) => {
-    console.log(scrollUps);
-
     if (e.deltaY < 0) {
       scrollUps++;
     } else {
