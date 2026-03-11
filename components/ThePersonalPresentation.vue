@@ -1,6 +1,18 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
+const i18n = useI18n();
 const { t } = useI18n();
+
+const { data } = await useAsyncData(
+  `${i18n.locale.value}/portfolio-preview`,
+  () => {
+    return queryCollection("content")
+      .where("path", "LIKE", `%${i18n.locale.value}/portfolio%`)
+      .order("date", "DESC")
+      .limit(3)
+      .all();
+  },
+);
 </script>
 
 <template>
@@ -32,82 +44,74 @@ const { t } = useI18n();
           brand="github"
         />
       </div>
-      <div id="call-to-action">
-        <NuxtLink
-          :to="localePath('/portfolio')"
-          class="flex items-center rounded-md py-2 px-4 border border-transparent text-center text-sm shadow-sm"
-        >
-          {{ t("index.seeMyWork") }}
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-4 h-4 ml-1.5"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </NuxtLink>
-      </div>
     </div>
-    <div id="interrests">
-      <AppSimpleCard title="Full-stack">
-        <template #content>
-          <p>
-            {{ t("index.fullStack") }}
-          </p>
-        </template>
-      </AppSimpleCard>
-      <AppSimpleCard title="UI & UX">
-        <template #content>
-          <p>
-            {{ t("index.UIUX") }}
-          </p>
-        </template>
-      </AppSimpleCard>
+    <div id="portfolio-preview">
+      <div class="flex flex-row justify-between items-center">
+        <h2>{{ t("index.latestProjects") }}</h2>
+        <div>
+          <NuxtLink
+            :to="localePath('/portfolio')"
+            class="flex items-center rounded-md py-2 px-4 border border-transparent text-center text-sm shadow-sm"
+          >
+            {{ t("index.seeAll") }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4 ml-1.5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </NuxtLink>
+        </div>
+      </div>
+      <div id="projects-grid">
+        <AppCardHorizon
+          v-for="project in data"
+          :key="project.path"
+          :title="project.title"
+          :excerpt="project.description"
+          :tags="project.meta.tags"
+          :image="project.meta.image"
+          :more-link="project.path"
+          :date="project.date"
+        />
+      </div>
+      <div id="see-all"></div>
     </div>
   </div>
 </template>
 
 <style scoped>
 #personnal-presentation {
-  min-height: 100dvh;
   padding: 3rem;
   margin-top: 10rem;
   background-color: var(--surface);
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 3rem;
-  grid-auto-flow: column;
-  align-content: center;
 }
 
-#personnal,
-#interrests {
+#personnal {
   margin-top: 7rem;
-}
-
-@media (max-width: 980px) {
-  #personnal-presentation {
-    grid-auto-flow: row;
-  }
-
-  #interrests {
-    margin-top: 0;
-  }
+  width: 100%;
+  max-width: 1200px;
 }
 
 #personnal h1 {
   font-size: 3rem;
 }
 
-#interrests {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.job-title {
+  font-size: 1.1rem;
+  color: var(--on-surface-secondary, var(--on-surface));
+  margin-top: 0.25rem;
+  opacity: 0.75;
 }
 
 #socials {
@@ -121,18 +125,41 @@ const { t } = useI18n();
   cursor: pointer;
 }
 
-#call-to-action > a {
-  margin-top: 2rem;
+#portfolio-preview {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+#portfolio-preview h2 {
+  font-size: 2rem;
+}
+
+#projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#see-all {
+  display: flex;
+  justify-content: center;
+}
+
+#see-all > a {
   color: var(--on-primary);
   background-color: var(--primary);
   width: fit-content;
 }
 
-#call-to-action > a svg {
+#see-all > a svg {
   transition: transform 0.2s ease-in-out;
 }
 
-#call-to-action > a:hover svg {
+#see-all > a:hover svg {
   transform: translateX(0.25rem);
 }
 </style>
