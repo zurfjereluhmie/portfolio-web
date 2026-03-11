@@ -30,14 +30,18 @@ jobs:
 
       - name: Auto-merge Dependabot patch updates
         if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
-        run: gh pr merge --merge --auto "$PR_URL"
+        run: |
+          gh pr checks "$PR_URL" --required --watch --fail-fast
+          gh pr merge --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Auto-merge Dependabot minor updates
         if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr merge --merge --auto "$PR_URL"
+        run: |
+          gh pr checks "$PR_URL" --required --watch --fail-fast
+          gh pr merge --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
