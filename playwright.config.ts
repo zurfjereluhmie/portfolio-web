@@ -33,9 +33,9 @@ export default defineConfig({
   },
 
   webServer: {
-    command: "npm run dev",
+    command: "npm run build && node .output/server/index.mjs",
     url: "http://localhost:3000/",
-    timeout: 120000,
+    timeout: 180000,
     reuseExistingServer: !process.env.CI,
   },
 
