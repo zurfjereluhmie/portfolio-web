@@ -61,11 +61,18 @@ function buildPages() {
 const PAGES = buildPages();
 
 test.describe("visual regression", () => {
+  // Font rendering varies across browsers and platforms
+  test.skip(
+    ({ browserName }) => browserName !== "chromium",
+    "Visual regression runs on Chromium only",
+  );
+
   test.beforeEach(async ({ page }) => {
     // Hide the custom cursor to avoid position-dependent flakiness
     await page.addInitScript(() => {
       const style = document.createElement("style");
-      style.textContent = ".cursor-ball, .cursor-outline { display: none !important; }";
+      style.textContent =
+        ".cursor-ball, .cursor-outline { display: none !important; }";
       document.head.appendChild(style);
     });
   });
