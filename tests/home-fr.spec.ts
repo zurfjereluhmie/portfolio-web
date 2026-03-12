@@ -61,12 +61,10 @@ test.describe("navigation", () => {
     await expect(page).toHaveURL(/fr\/about$/);
   });
 
-  test("click 'See my work' to be redirected to /portfolio", async ({
+  test("click 'See all projects' to be redirected to /portfolio", async ({
     page,
   }) => {
-    await page
-      .getByRole("link", { name: "Voir quelques-unes de mes réalisations" })
-      .click();
+    await page.getByRole("link", { name: "Voir tous les projets" }).click();
     await expect(page).toHaveURL(/fr\/portfolio$/);
   });
 });

@@ -54,7 +54,6 @@ export default class Keyboard {
     const callbackOnce = (data: string) => {
       this.removeListener(event, callbackOnce);
       callback(data);
-      console.log("once");
     };
     this.addListener(event, callbackOnce);
     return () => this.removeListener(event, callbackOnce);
