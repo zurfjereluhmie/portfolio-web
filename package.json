@@ -34,7 +34,7 @@
     "@playwright/test": "^1.58.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^25.5.0",
-    "@vue/typescript-plugin": "^3.2.5",
+    "@vue/typescript-plugin": "^3.2.6",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
