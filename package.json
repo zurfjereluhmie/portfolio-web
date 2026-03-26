@@ -12,7 +12,8 @@
     "test:ui": "playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets,tests}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\""
+    "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets,tests}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@intlify/core-base": "^11.3.0",
