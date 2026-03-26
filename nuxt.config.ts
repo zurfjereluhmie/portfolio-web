@@ -24,11 +24,7 @@ export default defineNuxtConfig({
     baseUrl: "https://jeremie-zurfluh.ch",
     defaultLocale: "en",
     strategy: "prefix_and_default",
-    lazy: true,
     langDir: "locales/",
-    bundle: {
-      optimizeTranslationDirective: false,
-    },
   },
   content: {
     build: {
