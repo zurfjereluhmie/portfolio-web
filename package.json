@@ -12,7 +12,8 @@
     "test:ui": "playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets,tests}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\""
+    "format": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets,tests}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@intlify/core-base": "^11.3.0",
@@ -20,12 +21,12 @@
     "@nuxt/content": "^3.12.0",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.0",
-    "@nuxtjs/i18n": "^10.2.3",
+    "@nuxtjs/i18n": "^10.2.4",
     "@nuxtjs/seo": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "better-sqlite3": "^12.6.2",
-    "lucide-vue-next": "^0.577.0",
-    "nuxt": "^4.3.1",
+    "better-sqlite3": "^12.8.0",
+    "@lucide/vue": "^1.7.0",
+    "nuxt": "^4.4.2",
     "vue": "latest",
     "vue-router": "^5"
   },
@@ -33,12 +34,12 @@
     "@nuxt/eslint": "^1.15.2",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^25.4.0",
-    "@vue/typescript-plugin": "^3.2.5",
-    "eslint": "^9.39.3",
+    "@types/node": "^25.5.0",
+    "@vue/typescript-plugin": "^3.2.6",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.1",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   }
 }
