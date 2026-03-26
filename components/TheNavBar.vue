@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sun, Moon } from "lucide-vue-next";
+import { Sun, Moon } from "@lucide/vue";
 
 const { t } = useI18n();
 const localePath = useLocalePath();
