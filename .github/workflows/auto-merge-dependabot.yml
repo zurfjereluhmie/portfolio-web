@@ -28,20 +28,60 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Auto-merge Dependabot patch updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+      - name: Auto-merge Dependabot patch / minor updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: |
-          gh pr checks "$PR_URL" --required --watch --fail-fast
-          gh pr merge --merge "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          set -euo pipefail
 
-      - name: Auto-merge Dependabot minor updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: |
-          gh pr checks "$PR_URL" --required --watch --fail-fast
-          gh pr merge --merge "$PR_URL"
+          start="$(date +%s)"
+          timeout_seconds=$((45 * 60)) # 45 minutes
+
+          while true; do
+            now="$(date +%s)"
+            if (( now - start > timeout_seconds )); then
+              echo "Timed out waiting for checks/workflows on $HEAD_SHA"
+              exit 1
+            fi
+
+            # Check-runs not completed
+            INCOMPLETE_CHECKS="$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              "/repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/check-runs" \
+              --jq '[.check_runs[] | select(.status != "completed")] | length')"
+
+            # Workflow runs not completed (exclude this run to avoid deadlock)
+            INCOMPLETE_WF="$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              "/repos/${GITHUB_REPOSITORY}/actions/runs?head_sha=${HEAD_SHA}" \
+              --jq "[.workflow_runs[] | select(.id != ${GITHUB_RUN_ID}) | select(.status != \"completed\")] | length")"
+
+            if [[ "$INCOMPLETE_CHECKS" == "0" && "$INCOMPLETE_WF" == "0" ]]; then
+              echo "All checks/workflows completed for $HEAD_SHA"
+              break
+            fi
+
+            echo "Waiting... pending check-runs: $INCOMPLETE_CHECKS, pending workflows: $INCOMPLETE_WF"
+            sleep 15
+          done
+
+          # Fail fast if anything concluded unsuccessfully
+          FAILED_CHECKS="$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/check-runs" \
+            --jq '[.check_runs[] | select(.conclusion != null and (.conclusion != "success" and .conclusion != "neutral" and .conclusion != "skipped"))] | length')"
+
+          FAILED_WF="$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/actions/runs?head_sha=${HEAD_SHA}" \
+            --jq "[.workflow_runs[] | select(.id != ${GITHUB_RUN_ID}) | select(.conclusion != null and .conclusion != \"success\")] | length")"
+
+          if [[ "$FAILED_CHECKS" != "0" || "$FAILED_WF" != "0" ]]; then
+            echo "Some checks/workflows failed for $HEAD_SHA (failed check-runs: $FAILED_CHECKS, failed workflows: $FAILED_WF). Not merging."
+            exit 1
+          fi
+
+          gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
