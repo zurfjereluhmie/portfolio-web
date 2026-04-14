@@ -12,16 +12,6 @@ const isActive = (path: string) => {
 };
 
 const colorMode = useColorMode();
-
-const updateColor = (mode: string) => {
-  document.querySelector("html")!.dataset.theme = mode;
-};
-
-onMounted(() => {
-  watchEffect(() => {
-    updateColor(colorMode.value);
-  });
-});
 </script>
 
 <template>
