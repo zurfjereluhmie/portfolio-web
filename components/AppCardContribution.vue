@@ -2,7 +2,7 @@
 const props = defineProps<{
   name: string;
   description?: string;
-  language?: string;
+  languages?: string[];
   url: string;
 }>();
 
@@ -30,9 +30,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
   Nix: "#7e7eff",
 };
 
-const languageColor = computed(
-  () => (props.language && LANGUAGE_COLORS[props.language]) || "#6e7f8d",
-);
+const languageColor = (lang: string) => LANGUAGE_COLORS[lang] ?? "#6e7f8d";
 </script>
 
 <template>
@@ -45,13 +43,22 @@ const languageColor = computed(
     <div
       class="card-inner relative flex flex-col shadow-sm rounded-lg w-full h-full p-5 gap-3"
     >
-      <div v-if="language" class="language flex items-center gap-2">
-        <span
-          class="language-dot shrink-0 rounded-full"
-          :style="{ backgroundColor: languageColor }"
-          aria-hidden="true"
-        />
-        <span class="language-label text-sm">{{ language }}</span>
+      <div
+        v-if="languages?.length"
+        class="languages flex flex-wrap items-center gap-x-3 gap-y-1"
+      >
+        <div
+          v-for="lang in languages"
+          :key="lang"
+          class="flex items-center gap-1.5"
+        >
+          <span
+            class="language-dot shrink-0 rounded-full"
+            :style="{ backgroundColor: languageColor(lang) }"
+            aria-hidden="true"
+          />
+          <span class="language-label text-sm">{{ lang }}</span>
+        </div>
       </div>
       <h2 class="card-name font-semibold text-xl leading-snug">{{ name }}</h2>
       <p

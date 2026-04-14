@@ -106,7 +106,7 @@ const contributions = computed(
           :key="contrib.url"
           :name="contrib.name"
           :description="contrib.description"
-          :language="contrib.language"
+          :languages="contrib.languages"
           :url="contrib.url"
         />
       </div>
