@@ -2,9 +2,8 @@
 const { t } = useI18n();
 const personalPresentationRef = ref<HTMLElement | null>(null);
 const navBarRef = ref<HTMLElement | null>(null);
-const mainRef = ref<HTMLElement | null>(null);
 
-// Navbar animation
+// Navbar animation: hidden on hero, fades in when personal presentation enters view
 onMounted(() => {
   personalPresentationRef.value = document.querySelector<HTMLElement>(
     "#personnal-presentation",
@@ -35,56 +34,6 @@ onMounted(() => {
   });
 });
 
-// Smooth scroll
-onMounted(() => {
-  mainRef.value = document.querySelector<HTMLElement>("main");
-  const theHeroSection =
-    mainRef.value!.querySelector<HTMLElement>("#hero-container")!;
-  const thePersonalPresentation = mainRef.value!.querySelector<HTMLElement>(
-    "#personnal-presentation",
-  )!;
-  const scrollUpsLimit = 5;
-  let scrollUps = 0;
-
-  const scrollDownToPersonalPresentation = (e: WheelEvent | MouseEvent) =>
-    (e as WheelEvent).deltaY > 0 || (e as WheelEvent).deltaY == undefined
-      ? thePersonalPresentation.scrollIntoView({ behavior: "smooth" })
-      : null;
-  const scrollDownToHeroSection = (e: WheelEvent) => {
-    if (e.deltaY < 0) {
-      scrollUps++;
-    } else {
-      scrollUps = 0;
-    }
-    if (scrollUps >= scrollUpsLimit) {
-      theHeroSection.scrollIntoView({ behavior: "smooth" });
-      scrollUps = 0;
-    }
-  };
-
-  theHeroSection.addEventListener("wheel", (e) =>
-    scrollDownToPersonalPresentation(e),
-  );
-  theHeroSection.addEventListener("click", (e) =>
-    scrollDownToPersonalPresentation(e),
-  );
-  thePersonalPresentation.addEventListener("wheel", (e) =>
-    scrollDownToHeroSection(e),
-  );
-
-  onUnmounted(() => {
-    theHeroSection.removeEventListener("wheel", (e) =>
-      scrollDownToPersonalPresentation(e),
-    );
-    theHeroSection.removeEventListener("click", (e) =>
-      scrollDownToPersonalPresentation(e),
-    );
-    thePersonalPresentation.removeEventListener("wheel", (e) =>
-      scrollDownToHeroSection(e),
-    );
-  });
-});
-
 useSeoMeta({
   title: t("index.meta.title"),
   description: t("index.meta.description"),
@@ -112,6 +61,8 @@ useSeoMeta({
 <style scoped>
 main {
   height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   background-color: var(--surface);
 }
 
