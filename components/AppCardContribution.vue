@@ -83,6 +83,9 @@ const languageColor = computed(
 <style scoped>
 .app-card {
   display: flex;
+  /* Override the global a[href] underline animation from main.css */
+  background-image: none !important;
+  background-size: unset !important;
 }
 
 .card-inner {
