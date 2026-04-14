@@ -8,7 +8,40 @@ on:
     branches:
       - dev
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.filter.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            changed:
+              - 'app.vue'
+              - 'error.vue'
+              - 'content.config.ts'
+              - 'nuxt.config.ts'
+              - 'tailwind.config.ts'
+              - 'package.json'
+              - 'package-lock.json'
+              - 'playwright.config.ts'
+              - 'tsconfig.json'
+              - 'assets/**'
+              - 'components/**'
+              - 'composables/**'
+              - 'content/**'
+              - 'i18n/**'
+              - 'pages/**'
+              - 'public/**'
+              - 'server/**'
+              - 'tests/**'
+              - '.github/workflows/test.yml'
+
   playwright-tests:
+    needs: [changes]
+    if: ${{ needs.changes.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' }}
     name: Run tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -49,8 +82,8 @@ jobs:
 
   merge-reports:
     name: Merge reports
-    if: ${{ !cancelled() }}
-    needs: [playwright-tests]
+    if: ${{ !cancelled() && needs.playwright-tests.result != 'skipped' }}
+    needs: [changes, playwright-tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -79,6 +112,7 @@ jobs:
   alls-green-playwright: # This job does nothing and is only used for the branch protection
     if: always()
     needs:
+      - changes
       - playwright-tests
       - merge-reports
     runs-on: ubuntu-latest
@@ -87,4 +121,4 @@ jobs:
         uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
-          allowed-skips: merge-reports
+          allowed-skips: playwright-tests, merge-reports
