@@ -36,8 +36,6 @@ const { t } = useI18n();
 <style scoped>
 #hero-container {
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   height: 100dvh;
   display: flex;
   flex-direction: column;

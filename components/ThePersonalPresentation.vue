@@ -116,7 +116,6 @@ const contributions = computed(
 
 <style scoped>
 #personnal-presentation {
-  scroll-snap-align: start;
   min-height: 100dvh;
   padding: 3rem;
   margin-top: 10rem;

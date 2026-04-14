@@ -9,6 +9,7 @@ onMounted(() => {
     "#personnal-presentation",
   );
   navBarRef.value = document.querySelector<HTMLElement>("header");
+  const main = document.querySelector<HTMLElement>("main");
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -22,7 +23,8 @@ onMounted(() => {
         }
       });
     },
-    { threshold: 0 },
+    // root must be the scroll container, not the viewport
+    { root: main, threshold: 0 },
   );
 
   if (personalPresentationRef.value)
@@ -31,6 +33,65 @@ onMounted(() => {
   onUnmounted(() => {
     if (personalPresentationRef.value)
       observer.unobserve(personalPresentationRef.value);
+  });
+});
+
+// Smooth snap scroll: intercept wheel events only while the hero is the most
+// visible section. Once the user has scrolled past it, native scroll takes over
+// so they can freely reach the footer.
+onMounted(() => {
+  const main = document.querySelector<HTMLElement>("main");
+  if (!main) return;
+
+  let isSnapping = false;
+
+  const onWheel = (e: WheelEvent) => {
+    // Only handle vertical wheel
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+    const hero = main.querySelector<HTMLElement>("#hero-container");
+    const presentation = main.querySelector<HTMLElement>(
+      "#personnal-presentation",
+    );
+    if (!hero || !presentation) return;
+
+    if (isSnapping) {
+      e.preventDefault();
+      return;
+    }
+
+    const mainRect = main.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    const heroOverlap =
+      Math.min(heroRect.bottom, mainRect.bottom) -
+      Math.max(heroRect.top, mainRect.top);
+
+    // Hero is not the dominant section — let native scroll handle it
+    if (heroOverlap <= 0) return;
+
+    if (e.deltaY > 0) {
+      // Scrolling down while hero is visible → snap to presentation
+      e.preventDefault();
+      isSnapping = true;
+      presentation.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        isSnapping = false;
+      }, 700);
+    } else if (e.deltaY < 0) {
+      // Scrolling up while hero is still (partially) visible → snap back to hero top
+      e.preventDefault();
+      isSnapping = true;
+      hero.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        isSnapping = false;
+      }, 700);
+    }
+  };
+
+  main.addEventListener("wheel", onWheel, { passive: false });
+
+  onUnmounted(() => {
+    main.removeEventListener("wheel", onWheel);
   });
 });
 
@@ -62,7 +123,6 @@ useSeoMeta({
 main {
   height: 100dvh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   background-color: var(--surface);
 }
