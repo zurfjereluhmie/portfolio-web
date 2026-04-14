@@ -18,7 +18,7 @@ export default defineContentConfig({
             name: z.string(),
             url: z.string(),
             description: z.string().optional(),
-            language: z.string().optional(),
+            languages: z.array(z.string()).optional(),
           }),
         ),
       }),
