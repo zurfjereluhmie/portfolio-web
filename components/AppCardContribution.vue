@@ -40,7 +40,7 @@ const languageColor = computed(
     :href="url"
     target="_blank"
     rel="noopener noreferrer"
-    class="no-animation app-card cursor-pointer group shadow-sm rounded-lg w-full hover:shadow-lg transition-shadow duration-300"
+    class="app-card cursor-pointer group shadow-sm rounded-lg w-full hover:shadow-lg transition-shadow duration-300"
   >
     <div
       class="card-inner relative flex flex-col shadow-sm rounded-lg w-full h-full p-5 gap-3"
@@ -83,10 +83,15 @@ const languageColor = computed(
 <style scoped>
 .app-card {
   display: flex;
-  /* no-animation skips the global a[href] rule which sets text-decoration: none,
-     so we must set it explicitly here */
-  text-decoration: none;
-  background-image: none;
+  /* Neutralise the global gradient underline animation — keep text-decoration: none
+     from the global rule but suppress the background-image hover effect */
+  background-size: 0% 0 !important;
+}
+
+.app-card:hover,
+.app-card:focus,
+.app-card:active {
+  background-size: 0% 0 !important;
 }
 
 .card-inner {
