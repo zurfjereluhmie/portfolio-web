@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
-const i18n = useI18n();
 const { t } = useI18n();
 
-const { data } = await useAsyncData(
-  `${i18n.locale.value}/portfolio-preview`,
-  () => {
-    return queryCollection("content")
-      .where("path", "LIKE", `%${i18n.locale.value}/portfolio%`)
-      .order("date", "DESC")
-      .limit(3)
-      .all();
-  },
+// ─── Tune how many contributions are shown on the home page ───────────────────
+const CONTRIBUTIONS_TO_SHOW = 3;
+// ─────────────────────────────────────────────────────────────────────────────
+
+const { data } = await useAsyncData("github-contributions", () =>
+  queryCollection("github").first(),
+);
+
+const contributions = computed(
+  () => data.value?.contributions?.slice(0, CONTRIBUTIONS_TO_SHOW) ?? [],
 );
 </script>
 
@@ -47,7 +47,7 @@ const { data } = await useAsyncData(
     </div>
     <div id="portfolio-preview">
       <div class="flex flex-row justify-between items-center">
-        <h2>{{ t("index.latestProjects") }}</h2>
+        <h2>{{ t("index.latestContributions") }}</h2>
         <div>
           <NuxtLink
             :to="localePath('/portfolio')"
@@ -70,24 +70,22 @@ const { data } = await useAsyncData(
         </div>
       </div>
       <div id="projects-grid">
-        <AppCardHorizon
-          v-for="project in data"
-          :key="project.path"
-          :title="project.title"
-          :excerpt="project.description"
-          :tags="project.meta.tags"
-          :image="project.meta.image"
-          :more-link="project.path"
-          :date="project.date"
+        <AppCardContribution
+          v-for="contrib in contributions"
+          :key="contrib.url"
+          :name="contrib.name"
+          :description="contrib.description"
+          :language="contrib.language"
+          :url="contrib.url"
         />
       </div>
-      <div id="see-all"></div>
     </div>
   </div>
 </template>
 
 <style scoped>
 #personnal-presentation {
+  scroll-snap-align: start;
   padding: 3rem;
   margin-top: 10rem;
   background-color: var(--surface);
@@ -139,27 +137,8 @@ const { data } = await useAsyncData(
 }
 
 #projects-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 1.5rem;
-}
-
-#see-all {
-  display: flex;
-  justify-content: center;
-}
-
-#see-all > a {
-  color: var(--on-primary);
-  background-color: var(--primary);
-  width: fit-content;
-}
-
-#see-all > a svg {
-  transition: transform 0.2s ease-in-out;
-}
-
-#see-all > a:hover svg {
-  transform: translateX(0.25rem);
 }
 </style>
