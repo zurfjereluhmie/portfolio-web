@@ -83,9 +83,10 @@ const languageColor = computed(
 <style scoped>
 .app-card {
   display: flex;
-  /* Override the global a[href] underline animation from main.css */
-  background-image: none !important;
-  background-size: unset !important;
+  /* no-animation skips the global a[href] rule which sets text-decoration: none,
+     so we must set it explicitly here */
+  text-decoration: none;
+  background-image: none;
 }
 
 .card-inner {
