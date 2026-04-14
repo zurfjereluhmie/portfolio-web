@@ -11,13 +11,28 @@ const { t } = useI18n();
       <p>{{ t("index.education") }}</p>
       <p>{{ t("index.job") }}</p>
     </div>
+    <div id="scroll-indicator" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-7 h-7"
+      >
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </div>
   </div>
 </template>
 
 <style scoped>
 #hero-container {
   position: relative;
-  background-color: var(--surface);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -72,6 +87,30 @@ const { t } = useI18n();
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+
+#scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--on-surface);
+
+  /* Fade in after pro-infos, then bounce forever */
+  opacity: 0;
+  animation:
+    enter 1s 2.5s forwards,
+    bounce 2s 3.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
 }
 
 h1 {
