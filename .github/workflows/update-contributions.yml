@@ -17,7 +17,6 @@ jobs:
 
       - name: Fetch and write contributions
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USERNAME: zurfjereluhmie
           # Maximum events to scan from the GitHub API (max allowed: 100)
           MAX_EVENTS: 100
@@ -28,7 +27,6 @@ jobs:
           const https = require("https");
 
           const USERNAME  = process.env.GH_USERNAME;
-          const TOKEN     = process.env.GITHUB_TOKEN;
           const MAX_EVENTS = parseInt(process.env.MAX_EVENTS, 10);
           const MAX_REPOS  = parseInt(process.env.MAX_REPOS,  10);
           const OUT_FILE   = "content/github/contributions.md";
@@ -38,7 +36,6 @@ jobs:
               const opts = {
                 headers: {
                   "User-Agent": "portfolio-contributions-action",
-                  "Authorization": `Bearer ${TOKEN}`,
                   "Accept": "application/vnd.github+json",
                 },
               };
