@@ -47,7 +47,7 @@ const colorMode = useColorMode();
       role="button"
       aria-label="Switch to light mode"
       tabindex="0"
-      @click="colorMode.value = 'light'"
+      @click="colorMode.preference = 'light'"
     />
     <Sun
       v-else-if="colorMode.value === 'light'"
@@ -55,7 +55,7 @@ const colorMode = useColorMode();
       role="button"
       aria-label="Switch to dark mode"
       tabindex="0"
-      @click="colorMode.value = 'dark'"
+      @click="colorMode.preference = 'dark'"
     />
   </div>
 </template>
