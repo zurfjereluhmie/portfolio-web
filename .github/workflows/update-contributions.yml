@@ -76,21 +76,34 @@ jobs:
               if (repos.length >= MAX_REPOS) break;
             }
 
-            // 3. Enrich each repo with description + language
-            const contributions = [];
-            for (const name of repos) {
-              try {
-                const info = await get(`https://api.github.com/repos/${name}`);
-                contributions.push({
-                  name,
-                  url:         `https://github.com/${name}`,
-                  description: info.description ?? "",
-                  language:    info.language    ?? "",
-                });
-              } catch (err) {
-                console.warn(`Failed to fetch ${name}:`, err.message);
-              }
-            }
+            // 3. Enrich all repos in parallel
+            const IGNORE_LANGS = new Set(["Makefile", "Dockerfile", "Shell", "Batchfile"]);
+
+            const contributions = (
+              await Promise.all(
+                repos.map(async (name) => {
+                  try {
+                    const [info, langsRaw] = await Promise.all([
+                      get(`https://api.github.com/repos/${name}`),
+                      get(`https://api.github.com/repos/${name}/languages`),
+                    ]);
+                    // Keys are ordered by bytes descending; filter noise
+                    const languages = Object.keys(langsRaw).filter(
+                      (l) => !IGNORE_LANGS.has(l),
+                    );
+                    return {
+                      name,
+                      url:         `https://github.com/${name}`,
+                      description: info.description ?? "",
+                      languages,
+                    };
+                  } catch (err) {
+                    console.warn(`Failed to fetch ${name}:`, err.message);
+                    return null;
+                  }
+                }),
+              )
+            ).filter(Boolean);
 
             // 4. Build frontmatter YAML
             const lines = ["---", "contributions:"];
@@ -98,7 +111,10 @@ jobs:
               lines.push(`  - name: ${JSON.stringify(c.name)}`);
               lines.push(`    url: ${JSON.stringify(c.url)}`);
               if (c.description) lines.push(`    description: ${JSON.stringify(c.description)}`);
-              if (c.language)    lines.push(`    language: ${JSON.stringify(c.language)}`);
+              if (c.languages.length) {
+                lines.push(`    languages:`);
+                for (const l of c.languages) lines.push(`      - ${JSON.stringify(l)}`);
+              }
             }
             lines.push("---", "");
 
