@@ -11,7 +11,12 @@ const { t } = useI18n();
       <p>{{ t("index.education") }}</p>
       <p>{{ t("index.job") }}</p>
     </div>
-    <div id="scroll-indicator" aria-hidden="true">
+    <a
+      href="#personnal-presentation"
+      id="scroll-indicator"
+      class="no-animation"
+      aria-label="Scroll to main content"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -24,7 +29,7 @@ const { t } = useI18n();
       >
         <path d="M6 9l6 6 6-6" />
       </svg>
-    </div>
+    </a>
   </div>
 </template>
 

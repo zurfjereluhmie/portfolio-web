@@ -63,6 +63,7 @@ main {
   height: 100dvh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   background-color: var(--surface);
 }
 
