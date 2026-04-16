@@ -18,8 +18,6 @@ jobs:
       - name: Fetch and write contributions
         env:
           GH_USERNAME: zurfjereluhmie
-          # Maximum events to scan from the GitHub API (max allowed: 100)
-          MAX_EVENTS: 100
           # How many unique repos to keep (most recent first)
           MAX_REPOS: 10
         run: |
@@ -27,10 +25,10 @@ jobs:
           const https = require("https");
 
           const USERNAME  = process.env.GH_USERNAME;
-          const MAX_EVENTS = parseInt(process.env.MAX_EVENTS, 10);
           const MAX_REPOS  = parseInt(process.env.MAX_REPOS,  10);
           const OUT_FILE   = "content/github/contributions.md";
 
+          // Returns { status, body } — body is parsed JSON (or null on 422/empty)
           function get(url) {
             return new Promise((resolve, reject) => {
               const opts = {
@@ -40,23 +38,37 @@ jobs:
                 },
               };
               https.get(url, opts, (res) => {
-                let body = "";
-                res.on("data", (chunk) => (body += chunk));
-                res.on("end", () => resolve(JSON.parse(body)));
+                let raw = "";
+                res.on("data", (chunk) => (raw += chunk));
+                res.on("end", () => {
+                  try {
+                    resolve({ status: res.statusCode, body: JSON.parse(raw) });
+                  } catch {
+                    resolve({ status: res.statusCode, body: null });
+                  }
+                });
               }).on("error", reject);
             });
           }
 
           async function main() {
-            // 1. Fetch public events
-            const events = await get(
-              `https://api.github.com/users/${USERNAME}/events/public?per_page=${MAX_EVENTS}`
-            );
+            // 1. Fetch all pages of public events until API returns 422
+            const events = [];
+            let page = 0;
+            let status, body;
+            do {
+              page++;
+              ({ status, body } = await get(
+                `https://api.github.com/users/${USERNAME}/events/public?per_page=100&page=${page}`
+              ));
+              if (Array.isArray(body) && body.length > 0) {
+                events.push(...body);
+                console.log(`Fetched page ${page}: ${body.length} events`);
+              }
+            } while (status !== 422 && Array.isArray(body) && body.length > 0);
+            console.log(`Stopped at page ${page} (status ${status})`);
 
-            if (!Array.isArray(events)) {
-              console.error("Unexpected API response:", events);
-              process.exit(1);
-            }
+            console.log(`Total events fetched: ${events.length}`);
 
             // 2. Filter for push/PR events, extract unique repo names (order = most recent first)
             const RELEVANT = new Set(["PushEvent", "PullRequestEvent"]);
@@ -80,10 +92,12 @@ jobs:
               await Promise.all(
                 repos.map(async (name) => {
                   try {
-                    const [info, langsRaw] = await Promise.all([
+                    const [infoRes, langsRes] = await Promise.all([
                       get(`https://api.github.com/repos/${name}`),
                       get(`https://api.github.com/repos/${name}/languages`),
                     ]);
+                    const info = infoRes.body;
+                    const langsRaw = langsRes.body ?? {};
                     // Keys are ordered by bytes descending; filter noise
                     const languages = Object.keys(langsRaw).filter(
                       (l) => !IGNORE_LANGS.has(l),
