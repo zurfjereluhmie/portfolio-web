@@ -13,6 +13,9 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+      branch: ${{ steps.branch.outputs.name }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -145,53 +148,44 @@ jobs:
         run: |
           git diff --quiet content/github/contributions.md && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - uses: actions/setup-node@v6
+      - name: Create branch and commit contributions
+        id: branch
         if: steps.check.outputs.changed == 'true'
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: Install dependencies
-        if: steps.check.outputs.changed == 'true'
-        run: npm ci
-
-      - name: Cache Playwright browsers
-        if: steps.check.outputs.changed == 'true'
-        uses: actions/cache@v5
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Playwright Browsers
-        if: steps.check.outputs.changed == 'true' && steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium
-
-      - name: Install Playwright OS dependencies
-        if: steps.check.outputs.changed == 'true' && steps.playwright-cache.outputs.cache-hit == 'true'
-        run: npx playwright install-deps chromium
-
-      - name: Regenerate visual snapshots
-        if: steps.check.outputs.changed == 'true'
-        run: npx playwright test visual-regression --project=chromium --update-snapshots
-
-      - name: Open PR with contributions + snapshots
-        if: steps.check.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           BRANCH="chore/update-contributions-$(date +%Y%m%d%H%M%S)"
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
           git checkout -b "$BRANCH"
-
-          git add content/github/contributions.md tests/visual-regression.spec.ts-snapshots/
-          git commit -m "chore: update github contributions and visual snapshots"
-
+          git add content/github/contributions.md
+          git commit -m "chore: update github contributions"
           git push origin "$BRANCH"
+
+  regenerate-snapshots:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/update-snapshots.yml
+    with:
+      ref: ${{ needs.update.outputs.branch }}
+
+  open-pr:
+    needs: [update, regenerate-snapshots]
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.update.outputs.branch }}
+
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           gh pr create \
             --base dev \
-            --head "$BRANCH" \
+            --head "${{ needs.update.outputs.branch }}" \
             --title "chore: update github contributions" \
             --body "Automated weekly update of OSS contributions data and regenerated visual regression snapshots."
