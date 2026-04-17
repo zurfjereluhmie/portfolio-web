@@ -68,11 +68,18 @@ test.describe("visual regression", () => {
   );
 
   test.beforeEach(async ({ page }) => {
-    // Hide the custom cursor to avoid position-dependent flakiness
     await page.addInitScript(() => {
       const style = document.createElement("style");
-      style.textContent =
-        ".cursor-ball, .cursor-outline { display: none !important; }";
+      style.textContent = `
+        /* Hide custom cursor to avoid position-dependent flakiness */
+        .cursor-ball, .cursor-outline { display: none !important; }
+        /*
+         * <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
+         * Playwright's fullPage screenshot only captures the viewport in that case.
+         * Override it so the full content renders as one tall document.
+         */
+        main { height: auto !important; overflow-y: visible !important; }
+      `;
       document.head.appendChild(style);
     });
   });
