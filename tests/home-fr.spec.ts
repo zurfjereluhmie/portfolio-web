@@ -12,15 +12,26 @@ test.describe("navigation", () => {
   test.describe("nav", () => {
     test.beforeEach(async ({ page }) => {
       await page.evaluate(() => {
-        document
-          .querySelector("#personnal-presentation")
-          ?.scrollIntoView({ behavior: "instant" });
+        // scrollIntoView({ behavior: "instant" }) throws InvalidStateError in WebKit.
+        // Scroll the actual scroll container (<main>) directly instead.
+        const main = document.querySelector("main");
+        const target = document.querySelector<HTMLElement>(
+          "#personnal-presentation",
+        );
+        if (main && target) main.scrollTop = target.offsetTop;
         const header = document.querySelector("header");
         if (header) {
           header.classList.remove("animate-out");
           header.classList.add("animate-in");
         }
-        document.getAnimations().forEach((a) => a.finish());
+        // finish() throws on infinite animations — skip them
+        document.getAnimations().forEach((a) => {
+          if (
+            a.effect &&
+            (a.effect as KeyframeEffect).getTiming().iterations !== Infinity
+          )
+            a.finish();
+        });
       });
     });
 
