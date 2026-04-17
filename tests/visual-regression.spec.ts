@@ -40,17 +40,15 @@ function buildPages() {
 
   for (const { path, route } of STATIC_PAGES) {
     for (const locale of LOCALES) {
-      const prefix = locale === "en" ? "" : "/fr";
-      pages.push({ name: `${path}-${locale}`, url: `${prefix}${route}` });
+      pages.push({ name: `${path}-${locale}`, url: `/${locale}${route}` });
     }
   }
 
   for (const slug of getPortfolioSlugs()) {
     for (const locale of LOCALES) {
-      const prefix = locale === "en" ? "" : "/fr";
       pages.push({
         name: `portfolio-${slug}-${locale}`,
-        url: `${prefix}/portfolio/${slug}`,
+        url: `/${locale}/portfolio/${slug}`,
       });
     }
   }
@@ -68,18 +66,11 @@ test.describe("visual regression", () => {
   );
 
   test.beforeEach(async ({ page }) => {
+    // Hide the custom cursor to avoid position-dependent flakiness
     await page.addInitScript(() => {
       const style = document.createElement("style");
-      style.textContent = `
-        /* Hide custom cursor to avoid position-dependent flakiness */
-        .cursor-ball, .cursor-outline { display: none !important; }
-        /*
-         * <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
-         * Playwright's fullPage screenshot only captures the viewport in that case.
-         * Override it so the full content renders as one tall document.
-         */
-        main { height: auto !important; overflow-y: visible !important; }
-      `;
+      style.textContent =
+        ".cursor-ball, .cursor-outline { display: none !important; }";
       document.head.appendChild(style);
     });
   });
@@ -88,6 +79,14 @@ test.describe("visual regression", () => {
     test(name, async ({ page }) => {
       await page.goto(url);
       await page.waitForLoadState("networkidle");
+
+      // <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
+      // Playwright's fullPage screenshot only captures the viewport in that case.
+      // Inject after hydration so Nuxt doesn't overwrite it.
+      await page.addStyleTag({
+        content:
+          "main { height: auto !important; overflow-y: visible !important; }",
+      });
 
       await expect(page).toHaveScreenshot(`${name}.png`, {
         fullPage: true,
