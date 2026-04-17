@@ -68,3 +68,31 @@ test.describe("navigation", () => {
     await expect(page).toHaveURL(/fr\/portfolio$/);
   });
 });
+
+test.describe("latest projects section", () => {
+  test("shows 'Derniers projets' heading", async ({ page }) => {
+    await expect(
+      page.getByRole("heading", { name: "Derniers projets" }),
+    ).toBeVisible();
+  });
+
+  test("shows at least one project card", async ({ page }) => {
+    await expect(page.locator(".projects-list > *").first()).toBeVisible();
+  });
+});
+
+test.describe("latest OSS contributions section", () => {
+  test("shows 'Dernières contributions open source' heading", async ({
+    page,
+  }) => {
+    await expect(
+      page.getByRole("heading", {
+        name: "Dernières contributions open source",
+      }),
+    ).toBeVisible();
+  });
+
+  test("shows at least one contribution card", async ({ page }) => {
+    await expect(page.locator(".contributions-grid > *").first()).toBeVisible();
+  });
+});
