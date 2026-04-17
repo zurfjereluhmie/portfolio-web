@@ -175,7 +175,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      actions: write
     steps:
       - uses: actions/checkout@v6
         with:
@@ -190,10 +189,3 @@ jobs:
             --head "${{ needs.update.outputs.branch }}" \
             --title "chore: update github contributions" \
             --body "Automated weekly update of OSS contributions data and regenerated visual regression snapshots."
-
-      - name: Trigger test suite on PR branch
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh workflow run test.yml \
-            --ref "${{ needs.update.outputs.branch }}"
