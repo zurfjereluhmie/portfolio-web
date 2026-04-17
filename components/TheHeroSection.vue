@@ -12,8 +12,8 @@ const { t } = useI18n();
       <p>{{ t("index.job") }}</p>
     </div>
     <a
-      href="#personnal-presentation"
       id="scroll-indicator"
+      href="#personnal-presentation"
       class="no-animation"
       aria-label="Scroll to main content"
     >
