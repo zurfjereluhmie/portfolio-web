@@ -12,16 +12,6 @@ const isActive = (path: string) => {
 };
 
 const colorMode = useColorMode();
-
-const updateColor = (mode: string) => {
-  document.querySelector("html")!.dataset.theme = mode;
-};
-
-onMounted(() => {
-  watchEffect(() => {
-    updateColor(colorMode.value);
-  });
-});
 </script>
 
 <template>
@@ -57,7 +47,7 @@ onMounted(() => {
       role="button"
       aria-label="Switch to light mode"
       tabindex="0"
-      @click="colorMode.value = 'light'"
+      @click="colorMode.preference = 'light'"
     />
     <Sun
       v-else-if="colorMode.value === 'light'"
@@ -65,7 +55,7 @@ onMounted(() => {
       role="button"
       aria-label="Switch to dark mode"
       tabindex="0"
-      @click="colorMode.value = 'dark'"
+      @click="colorMode.preference = 'dark'"
     />
   </div>
 </template>

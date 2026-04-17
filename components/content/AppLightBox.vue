@@ -9,6 +9,7 @@ const props = withDefaults(
   }>(),
   {
     startIndex: 0,
+    alts: undefined,
   },
 );
 

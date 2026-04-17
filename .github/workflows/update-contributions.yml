@@ -1,0 +1,148 @@
+name: Update GitHub Contributions
+
+on:
+  schedule:
+    # Every Sunday at 01:00 UTC
+    - cron: "0 1 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and write contributions
+        env:
+          GH_USERNAME: zurfjereluhmie
+          # How many unique repos to keep (most recent first)
+          MAX_REPOS: 10
+        run: |
+          node - <<'EOF'
+          const https = require("https");
+
+          const USERNAME  = process.env.GH_USERNAME;
+          const MAX_REPOS  = parseInt(process.env.MAX_REPOS,  10);
+          const OUT_FILE   = "content/github/contributions.md";
+
+          // Returns { status, body } — body is parsed JSON (or null on 422/empty)
+          function get(url) {
+            return new Promise((resolve, reject) => {
+              const opts = {
+                headers: {
+                  "User-Agent": "portfolio-contributions-action",
+                  "Accept": "application/vnd.github+json",
+                },
+              };
+              https.get(url, opts, (res) => {
+                let raw = "";
+                res.on("data", (chunk) => (raw += chunk));
+                res.on("end", () => {
+                  try {
+                    resolve({ status: res.statusCode, body: JSON.parse(raw) });
+                  } catch {
+                    resolve({ status: res.statusCode, body: null });
+                  }
+                });
+              }).on("error", reject);
+            });
+          }
+
+          async function main() {
+            // 1. Fetch all pages of public events until API returns 422
+            const events = [];
+            let page = 0;
+            let status, body;
+            do {
+              page++;
+              ({ status, body } = await get(
+                `https://api.github.com/users/${USERNAME}/events/public?per_page=100&page=${page}`
+              ));
+              if (Array.isArray(body) && body.length > 0) {
+                events.push(...body);
+                console.log(`Fetched page ${page}: ${body.length} events`);
+              }
+            } while (status !== 422 && Array.isArray(body) && body.length > 0);
+            console.log(`Stopped at page ${page} (status ${status})`);
+
+            console.log(`Total events fetched: ${events.length}`);
+
+            // 2. Filter for push/PR events, extract unique repo names (order = most recent first)
+            const RELEVANT = new Set(["PushEvent", "PullRequestEvent"]);
+            const seen = new Set();
+            const repos = [];
+
+            for (const event of events) {
+              const repoName = event.repo?.name;
+              if (!repoName || !RELEVANT.has(event.type) || seen.has(repoName)) continue;
+              // Skip the portfolio repo itself
+              if (repoName === `${USERNAME}/portfolio-web`) continue;
+              seen.add(repoName);
+              repos.push(repoName);
+              if (repos.length >= MAX_REPOS) break;
+            }
+
+            // 3. Enrich all repos in parallel
+            const IGNORE_LANGS = new Set(["Makefile", "Dockerfile", "Shell", "Batchfile"]);
+
+            const contributions = (
+              await Promise.all(
+                repos.map(async (name) => {
+                  try {
+                    const [infoRes, langsRes] = await Promise.all([
+                      get(`https://api.github.com/repos/${name}`),
+                      get(`https://api.github.com/repos/${name}/languages`),
+                    ]);
+                    const info = infoRes.body;
+                    const langsRaw = langsRes.body ?? {};
+                    // Keys are ordered by bytes descending; filter noise
+                    const languages = Object.keys(langsRaw).filter(
+                      (l) => !IGNORE_LANGS.has(l),
+                    );
+                    return {
+                      name,
+                      url:         `https://github.com/${name}`,
+                      description: info.description ?? "",
+                      languages,
+                    };
+                  } catch (err) {
+                    console.warn(`Failed to fetch ${name}:`, err.message);
+                    return null;
+                  }
+                }),
+              )
+            ).filter(Boolean);
+
+            // 4. Build frontmatter YAML
+            const lines = ["---", "contributions:"];
+            for (const c of contributions) {
+              lines.push(`  - name: ${JSON.stringify(c.name)}`);
+              lines.push(`    url: ${JSON.stringify(c.url)}`);
+              if (c.description) lines.push(`    description: ${JSON.stringify(c.description)}`);
+              if (c.languages.length) {
+                lines.push(`    languages:`);
+                for (const l of c.languages) lines.push(`      - ${JSON.stringify(l)}`);
+              }
+            }
+            lines.push("---", "");
+
+            // 5. Write file
+            require("fs").writeFileSync(OUT_FILE, lines.join("\n"), "utf8");
+            console.log(`Wrote ${contributions.length} contributions to ${OUT_FILE}`);
+          }
+
+          main().catch((err) => { console.error(err); process.exit(1); });
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet content/github/contributions.md || (
+            git add content/github/contributions.md &&
+            git commit -m "chore: update github contributions [skip ci]" &&
+            git push
+          )
