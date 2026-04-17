@@ -80,6 +80,20 @@ test.describe("visual regression", () => {
       await page.goto(url);
       await page.waitForLoadState("networkidle");
 
+      // Wait for all images to finish decoding so they don't reflow between
+      // the two consecutive screenshots toHaveScreenshot takes internally.
+      await page.evaluate(() =>
+        Promise.all(
+          Array.from(document.images).map(
+            (img) =>
+              img.complete ||
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              }),
+          ),
+        ),
+      );
+
       // <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
       // Playwright's fullPage screenshot only captures the viewport in that case.
       // Inject after hydration so Nuxt doesn't overwrite it.
