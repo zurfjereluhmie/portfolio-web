@@ -8,12 +8,18 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+      branch: ${{ steps.branch.outputs.name }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          ref: dev
 
       - name: Fetch and write contributions
         env:
@@ -137,12 +143,49 @@ jobs:
           main().catch((err) => { console.error(err); process.exit(1); });
           EOF
 
-      - name: Commit if changed
+      - name: Check for changes
+        id: check
+        run: |
+          git diff --quiet content/github/contributions.md && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Create branch and commit contributions
+        id: branch
+        if: steps.check.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git diff --quiet content/github/contributions.md || (
-            git add content/github/contributions.md &&
-            git commit -m "chore: update github contributions [skip ci]" &&
-            git push
-          )
+          BRANCH="chore/update-contributions-$(date +%Y%m%d%H%M%S)"
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
+          git checkout -b "$BRANCH"
+          git add content/github/contributions.md
+          git commit -m "chore: update github contributions"
+          git push origin "$BRANCH"
+
+  regenerate-snapshots:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/update-snapshots.yml
+    with:
+      ref: ${{ needs.update.outputs.branch }}
+
+  open-pr:
+    needs: [update, regenerate-snapshots]
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.update.outputs.branch }}
+
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base dev \
+            --head "${{ needs.update.outputs.branch }}" \
+            --title "chore: update github contributions" \
+            --body "Automated weekly update of OSS contributions data and regenerated visual regression snapshots."
