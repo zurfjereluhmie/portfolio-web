@@ -12,15 +12,26 @@ test.describe("navigation", () => {
   test.describe("nav", () => {
     test.beforeEach(async ({ page }) => {
       await page.evaluate(() => {
-        document
-          .querySelector("#personnal-presentation")
-          ?.scrollIntoView({ behavior: "instant" });
+        // scrollIntoView({ behavior: "instant" }) throws InvalidStateError in WebKit.
+        // Scroll the actual scroll container (<main>) directly instead.
+        const main = document.querySelector("main");
+        const target = document.querySelector<HTMLElement>(
+          "#personnal-presentation",
+        );
+        if (main && target) main.scrollTop = target.offsetTop;
         const header = document.querySelector("header");
         if (header) {
           header.classList.remove("animate-out");
           header.classList.add("animate-in");
         }
-        document.getAnimations().forEach((a) => a.finish());
+        // finish() throws on infinite animations — skip them
+        document.getAnimations().forEach((a) => {
+          if (
+            a.effect &&
+            (a.effect as KeyframeEffect).getTiming().iterations !== Infinity
+          )
+            a.finish();
+        });
       });
     });
 
@@ -66,5 +77,29 @@ test.describe("navigation", () => {
   }) => {
     await page.getByRole("link", { name: "See all projects" }).click();
     await expect(page).toHaveURL(/\/portfolio$/);
+  });
+});
+
+test.describe("latest projects section", () => {
+  test("shows 'Latest projects' heading", async ({ page }) => {
+    await expect(
+      page.getByRole("heading", { name: "Latest projects" }),
+    ).toBeVisible();
+  });
+
+  test("shows at least one project card", async ({ page }) => {
+    await expect(page.locator(".projects-list > *").first()).toBeVisible();
+  });
+});
+
+test.describe("latest OSS contributions section", () => {
+  test("shows 'Latest OSS contributions' heading", async ({ page }) => {
+    await expect(
+      page.getByRole("heading", { name: "Latest OSS contributions" }),
+    ).toBeVisible();
+  });
+
+  test("shows at least one contribution card", async ({ page }) => {
+    await expect(page.locator(".contributions-grid > *").first()).toBeVisible();
   });
 });

@@ -40,17 +40,15 @@ function buildPages() {
 
   for (const { path, route } of STATIC_PAGES) {
     for (const locale of LOCALES) {
-      const prefix = locale === "en" ? "" : "/fr";
-      pages.push({ name: `${path}-${locale}`, url: `${prefix}${route}` });
+      pages.push({ name: `${path}-${locale}`, url: `/${locale}${route}` });
     }
   }
 
   for (const slug of getPortfolioSlugs()) {
     for (const locale of LOCALES) {
-      const prefix = locale === "en" ? "" : "/fr";
       pages.push({
         name: `portfolio-${slug}-${locale}`,
-        url: `${prefix}/portfolio/${slug}`,
+        url: `/${locale}/portfolio/${slug}`,
       });
     }
   }
@@ -81,6 +79,28 @@ test.describe("visual regression", () => {
     test(name, async ({ page }) => {
       await page.goto(url);
       await page.waitForLoadState("networkidle");
+
+      // Wait for all images to finish decoding so they don't reflow between
+      // the two consecutive screenshots toHaveScreenshot takes internally.
+      await page.evaluate(() =>
+        Promise.all(
+          Array.from(document.images).map(
+            (img) =>
+              img.complete ||
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              }),
+          ),
+        ),
+      );
+
+      // <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
+      // Playwright's fullPage screenshot only captures the viewport in that case.
+      // Inject after hydration so Nuxt doesn't overwrite it.
+      await page.addStyleTag({
+        content:
+          "main { height: auto !important; overflow-y: visible !important; }",
+      });
 
       await expect(page).toHaveScreenshot(`${name}.png`, {
         fullPage: true,

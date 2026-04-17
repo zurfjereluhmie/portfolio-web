@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxt/eslint",
   ],
+  colorMode: {
+    // Write data-theme="dark|light" on <html> — matches themes.css selectors
+    dataValue: "theme",
+    // Default to system preference
+    preference: "system",
+    fallback: "light",
+  },
   css: [
     "~/assets/css/reset.css",
     "~/assets/css/main.css",
