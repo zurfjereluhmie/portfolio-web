@@ -10,6 +10,11 @@ on:
         required: false
         type: string
         default: ""
+      called_by_workflow:
+        description: "Set to true when called by another workflow; skips branch creation and PR opening"
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   update-snapshots:
@@ -50,9 +55,6 @@ jobs:
         run: npx playwright test visual-regression --project=chromium --update-snapshots
 
       - name: Commit and push updated snapshots
-        # Only run this step when triggered manually (workflow_dispatch),
-        # not when called by another workflow (which handles its own commit/PR).
-        if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -61,6 +63,11 @@ jobs:
           git add tests/visual-regression.spec.ts-snapshots/
           if git diff --staged --quiet; then
             echo "No snapshot changes."
+          elif [ "${{ inputs.called_by_workflow }}" = "true" ]; then
+            # Called by another workflow: commit directly to the current branch.
+            # The calling workflow is responsible for opening the PR.
+            git commit -m "chore: update visual regression snapshots"
+            git push
           else
             BRANCH="chore/update-snapshots-$(date +%Y%m%d%H%M%S)"
             git checkout -b "$BRANCH"

@@ -24,10 +24,10 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
     :to="moreLink"
     class="app-card cursor-pointer group shadow-sm rounded-lg w-full hover:shadow-lg transition-shadow duration-300"
   >
-    <div class="relative flex flex-row shadow-sm rounded-lg w-full">
+    <div class="relative flex flex-col sm:flex-row shadow-sm rounded-lg w-full">
       <div
         v-if="image"
-        class="relative shrink-0 w-48 m-2.5 overflow-hidden rounded-md"
+        class="relative shrink-0 w-full h-48 sm:w-48 sm:h-auto sm:m-2.5 overflow-hidden rounded-t-lg sm:rounded-md"
       >
         <NuxtImg
           :src="`/img/${image}`"

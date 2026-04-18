@@ -40,7 +40,7 @@ const colorMode = useColorMode();
       </li>
     </ul>
   </nav>
-  <div class="time-widget sm:hidden md:block">
+  <div class="theme-toggle">
     <Moon
       v-if="colorMode.value === 'dark'"
       class="h-6"
@@ -63,21 +63,37 @@ const colorMode = useColorMode();
 <style scoped>
 nav {
   position: fixed;
-  left: 50%;
+  left: 1rem;
   top: 1rem;
-  transform: translateX(-50%);
+  transform: none;
   background-color: var(--nav-background);
   padding: 1rem;
   z-index: 1000;
-  @apply rounded-xl backdrop-blur-sm shadow-lg;
+  @apply rounded-xl backdrop-blur-sm shadow-lg w-[calc(100%-6rem)] sm:w-auto sm:left-1/2 sm:transform sm:-translate-x-1/2;
+}
+
+@media (max-width: 319px) {
+  nav {
+    left: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .theme-toggle {
+    display: none !important;
+  }
+
+  ul .theme-toggle {
+    display: none;
+  }
 }
 
 ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  @apply sm:justify-center;
 }
 
 li {
@@ -94,11 +110,12 @@ li a[aria-current="page"] {
   background-image: linear-gradient(var(--on-surface), var(--on-surface));
 }
 
-.time-widget {
+.theme-toggle {
   position: fixed;
   top: 1rem;
-  left: 50%;
-  transform: translateX(calc(-50% + 12rem));
+  right: 1rem;
+  left: auto;
+  transform: none;
   background-color: var(--nav-background);
 
   height: calc(3.5rem);
@@ -110,6 +127,14 @@ li a[aria-current="page"] {
 
   z-index: 1000;
 
-  @apply rounded-xl backdrop-blur-sm shadow-lg hidden sm:flex;
+  @apply rounded-xl backdrop-blur-sm shadow-lg;
+}
+
+@media (min-width: 640px) {
+  .theme-toggle {
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + 12rem));
+  }
 }
 </style>

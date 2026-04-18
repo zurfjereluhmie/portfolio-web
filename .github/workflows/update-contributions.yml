@@ -167,6 +167,7 @@ jobs:
     uses: ./.github/workflows/update-snapshots.yml
     with:
       ref: ${{ needs.update.outputs.branch }}
+      called_by_workflow: true
 
   open-pr:
     needs: [update, regenerate-snapshots]
@@ -183,9 +184,24 @@ jobs:
       - name: Open PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ needs.update.outputs.branch }}
         run: |
+          BODY="Automated weekly update of OSS contributions data and regenerated visual regression snapshots.
+
+          ## Trigger CI
+
+          To trigger the CI, copy/paste in your terminal:
+
+          \`\`\`sh
+          git fetch origin
+          git checkout ${BRANCH}
+          git commit --allow-empty -m \"trigger ci\"
+          git push
+          \`\`\`"
+
           gh pr create \
             --base dev \
-            --head "${{ needs.update.outputs.branch }}" \
+            --head "${BRANCH}" \
             --title "chore: update github contributions" \
-            --body "Automated weekly update of OSS contributions data and regenerated visual regression snapshots."
+            --reviewer zurfjereluhmie \
+            --body "${BODY}"
