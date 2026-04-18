@@ -167,6 +167,7 @@ jobs:
     uses: ./.github/workflows/update-snapshots.yml
     with:
       ref: ${{ needs.update.outputs.branch }}
+      called_by_workflow: true
 
   open-pr:
     needs: [update, regenerate-snapshots]
