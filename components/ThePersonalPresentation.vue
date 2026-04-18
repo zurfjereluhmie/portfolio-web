@@ -5,7 +5,7 @@ const { t } = useI18n();
 
 // ─── Tune how many items are shown on the home page ───────────────────────────
 const PROJECTS_TO_SHOW = 3;
-const CONTRIBUTIONS_TO_SHOW = 3;
+const CONTRIBUTIONS_TO_SHOW = 6;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const { data: projects } = await useAsyncData(
@@ -64,7 +64,7 @@ const contributions = computed(
         <h2>{{ t("index.latestProjects") }}</h2>
         <NuxtLink
           :to="localePath('/portfolio')"
-          class="flex items-center rounded-md py-2 px-4 border border-transparent text-center text-sm shadow-sm"
+          class="flex items-center text-center text-sm"
         >
           {{ t("index.seeAll") }}
           <svg
@@ -82,7 +82,7 @@ const contributions = computed(
         </NuxtLink>
       </div>
       <div class="projects-list">
-        <AppCardHorizon
+        <AppCardCompact
           v-for="project in projects"
           :key="project.path"
           :title="project.title"
@@ -162,9 +162,18 @@ const contributions = computed(
 
 .section-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 425px) {
+  .section-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
 }
 
 .section-header h2 {
