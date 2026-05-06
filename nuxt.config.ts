@@ -75,6 +75,7 @@ export default defineNuxtConfig({
   linkChecker: {
     enabled: true,
     failOnError: false,
+    skipInspections: ["no-javascript"],
     report: {
       markdown: true,
     },
