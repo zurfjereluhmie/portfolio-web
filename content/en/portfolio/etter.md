@@ -1,7 +1,7 @@
 ---
 image: "portfolio/etter/cover.png"
 title: "etter"
-description: "Teaching machines to understand 'where': Bridging Natural Language and Geographic Search using LLMs"
+description: "Teaching machines to understand 'where': bridging natural language and geographic search using LLMs"
 date: 2026-05-06
 gallery-slug: "etter"
 tags: "AI / LLMs, NLP, Geospatial, Python"

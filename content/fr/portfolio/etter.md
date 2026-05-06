@@ -1,3 +1,12 @@
+---
+image: "portfolio/etter/cover.png"
+title: "etter"
+description: "Apprendre aux machines à comprendre la notion de 'lieu' : faire le lien entre le langage naturel et la recherche géographique à l'aide des LLMs"
+date: 2026-05-06
+gallery-slug: "etter"
+tags: "AI / LLMs, NLP, Geospatial, Python"
+---
+
 # {{ $doc.title }}
 
 ::AppMdLinks{:links='["https://pypi.org/project/etter/", "https://github.com/geoblocks/etter", "https://geoblocks.github.io/etter/"]'}
