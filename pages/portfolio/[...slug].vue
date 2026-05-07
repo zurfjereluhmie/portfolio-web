@@ -63,7 +63,6 @@ main {
 main > div {
   width: min(var(--max-width), 100dvw);
   margin-top: 7rem;
-  overflow: clip;
 }
 
 aside.toc {
@@ -72,6 +71,7 @@ aside.toc {
   right: 0;
   height: 100%;
   max-width: 200px;
+  overflow-y: clip;
 }
 
 aside.toc :deep(.toc-container) {
