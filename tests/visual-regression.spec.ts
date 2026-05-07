@@ -70,7 +70,7 @@ test.describe("visual regression", () => {
     await page.addInitScript(() => {
       const style = document.createElement("style");
       style.textContent =
-        ".cursor-ball, .cursor-outline { display: none !important; }";
+        ".cursor-ball, .cursor-outline, aside.toc { display: none !important; }";
       document.head.appendChild(style);
     });
   });
