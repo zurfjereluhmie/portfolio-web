@@ -9,7 +9,7 @@ tags: "AI / LLMs, NLP, Geospatial, Python"
 
 # {{ $doc.title }}
 
-::AppMdLinks{:links='["https://pypi.org/project/etter/", "https://github.com/geoblocks/etter", "https://geoblocks.github.io/etter/"]'}
+::AppMdLinks{:links='["https://pypi.org/project/etter/", "https://github.com/geoblocks/etter", "https://geoblocks.github.io/etter/", "https://spatialists.ch/posts/2026/05/06-etter-natural-language-location/"]'}
 ::
 
 ## TL;DR
@@ -19,6 +19,12 @@ tags: "AI / LLMs, NLP, Geospatial, Python"
 **The Problem:** Standard geocoders only understand exact addresses, completely failing at spatial relationships like "near", "inside", or "south of".
 
 **The Solution:** A provider-agnostic tool that extracts these complex spatial relationships and outputs strictly typed Pydantic models ready for downstream spatial databases like PostGIS.
+
+---
+
+> **Note:** This project was featured in **[Spatialists - geospatial news](https://spatialists.ch/posts/2026/05/06-etter-natural-language-location/)**, highlighting its role in the evolution of natural language interfaces for GIS.
+
+---
 
 ## Teaching machines to understand "Where"
 

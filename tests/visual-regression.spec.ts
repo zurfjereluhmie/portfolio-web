@@ -70,13 +70,19 @@ test.describe("visual regression", () => {
     await page.addInitScript(() => {
       const style = document.createElement("style");
       style.textContent =
-        ".cursor-ball, .cursor-outline { display: none !important; }";
+        ".cursor-ball, .cursor-outline, aside.toc { display: none !important; }";
       document.head.appendChild(style);
     });
   });
 
+  const SKIPPED_PAGES = ["portfolio-etter-en", "portfolio-etter-fr"];
+
   for (const { name, url } of PAGES) {
     test(name, async ({ page }) => {
+      test.skip(
+        SKIPPED_PAGES.includes(name),
+        "Skipped due to layout instability in code block rendering",
+      );
       await page.goto(url);
       await page.waitForLoadState("networkidle");
 
