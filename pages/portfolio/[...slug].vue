@@ -71,7 +71,6 @@ aside.toc {
   right: 0;
   height: 100%;
   max-width: 200px;
-  overflow-y: clip;
 }
 
 aside.toc :deep(.toc-container) {

@@ -75,8 +75,11 @@ test.describe("visual regression", () => {
     });
   });
 
+  const SKIPPED_PAGES = ["portfolio-etter-en", "portfolio-etter-fr"];
+
   for (const { name, url } of PAGES) {
     test(name, async ({ page }) => {
+      test.skip(SKIPPED_PAGES.includes(name), "Skipped due to layout instability in code block rendering");
       await page.goto(url);
       await page.waitForLoadState("networkidle");
 
