@@ -79,7 +79,10 @@ test.describe("visual regression", () => {
 
   for (const { name, url } of PAGES) {
     test(name, async ({ page }) => {
-      test.skip(SKIPPED_PAGES.includes(name), "Skipped due to layout instability in code block rendering");
+      test.skip(
+        SKIPPED_PAGES.includes(name),
+        "Skipped due to layout instability in code block rendering",
+      );
       await page.goto(url);
       await page.waitForLoadState("networkidle");
 
