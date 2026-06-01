@@ -1,5 +1,8 @@
 ---
 contributions:
+  - name: "zurfjereluhmie/zurfjereluhmie"
+    url: "https://github.com/zurfjereluhmie/zurfjereluhmie"
+    description: "Config files for my GitHub profile."
   - name: "swissgeo/web-portal"
     url: "https://github.com/swissgeo/web-portal"
     description: "The next gen SWISSGEO web portal"
