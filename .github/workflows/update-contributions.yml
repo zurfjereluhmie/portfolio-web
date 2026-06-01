@@ -87,6 +87,8 @@ jobs:
               if (repoName === `${USERNAME}/portfolio-web`) continue;
               // Skip tir-lavigny org repos
               if (repoName.startsWith("tir-lavigny/")) continue;
+              // Skip user's own name repo (e.g. lorem/lorem)
+              if (repoName === `${USERNAME}/${USERNAME}`) continue;
               seen.add(repoName);
               repos.push(repoName);
               if (repos.length >= MAX_REPOS) break;
