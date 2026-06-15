@@ -13,7 +13,7 @@ jobs:
     outputs:
       changed: ${{ steps.filter.outputs.changed }}
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
       - uses: dorny/paths-filter@v4
         id: filter
         with:
@@ -51,7 +51,7 @@ jobs:
         shardIndex: [1, 2, 3, 4]
         shardTotal: [4]
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
@@ -86,7 +86,7 @@ jobs:
     needs: [changes, playwright-tests]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
