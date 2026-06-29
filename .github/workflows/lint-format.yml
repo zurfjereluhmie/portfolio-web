@@ -35,6 +35,6 @@ jobs:
         run: npm run lint:fix
 
       - name: Auto-commit lint & format changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@v7.1.0
         with:
           commit_message: "chore: auto lint & format"
