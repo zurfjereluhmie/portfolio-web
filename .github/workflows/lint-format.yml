@@ -16,7 +16,7 @@ jobs:
   lint-format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
@@ -35,6 +35,6 @@ jobs:
         run: npm run lint:fix
 
       - name: Auto-commit lint & format changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@v7.1.0
         with:
           commit_message: "chore: auto lint & format"

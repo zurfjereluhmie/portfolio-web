@@ -16,7 +16,7 @@ jobs:
       changed: ${{ steps.check.outputs.changed }}
       branch: ${{ steps.branch.outputs.name }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           ref: dev
 
@@ -180,7 +180,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           ref: ${{ needs.update.outputs.branch }}
 
