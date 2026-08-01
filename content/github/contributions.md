@@ -11,9 +11,15 @@ contributions:
       - "HTML"
   - name: "geoblocks/etter"
     url: "https://github.com/geoblocks/etter"
-    description: "etter transforms natural language location queries into structured geographic filters that can be used by search engines and spatial databases. It uses Large Language Models (LLMs) to understand multilingual queries and extract spatial relationships."
+    description: "etter transforms natural language location queries into structured geographic filters that can be used by search engines and spatial databases. It uses LLMs to understand multilingual queries and extract spatial relationships."
     languages:
       - "Python"
+  - name: "camptocamp/charts-gs"
+    url: "https://github.com/camptocamp/charts-gs"
+    description: "Helm charts for the geoSpatial department"
+    languages:
+      - "Go Template"
+      - "Mustache"
   - name: "zurfjereluhmie/evalwire"
     url: "https://github.com/zurfjereluhmie/evalwire"
     description: "Systematic, reproducible evaluation of LangGraph nodes and subgraphs against human-curated testsets, tracked in Arize Phoenix."
