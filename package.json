@@ -34,7 +34,7 @@
     "@nuxt/eslint": "^1.16.0",
     "@playwright/test": "^1.61.1",
     "@tailwindcss/typography": "^0.5.20",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "@vue/typescript-plugin": "^3.3.7",
     "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
