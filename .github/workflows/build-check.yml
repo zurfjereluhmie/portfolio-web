@@ -21,19 +21,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
+      - name: Generate
+        run: npm run generate
         env:
           NITRO_PRESET: github_pages
-      - name: Ensure client assets are in output
-        run: |
-          if [ ! -d ".output/public/_nuxt" ] || [ -z "$(ls -A .output/public/_nuxt)" ]; then
-            echo "::warning::_nuxt assets missing from .output/public — copying from build cache"
-            cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
-          fi
-      - name: Ensure public assets are in output
-        run: |
-          cp -rn public/* .output/public/ 2>/dev/null || true
       - name: Verify deployment output
         run: |
           echo "Checking .output/public/_nuxt contains JS/CSS bundles..."

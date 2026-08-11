@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
+  ssr: true,
   devtools: { enabled: true },
   modules: [
     "@nuxt/image",
@@ -42,6 +43,12 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  routeRules: {
+    "/**": { prerender: true },
+  },
+  image: {
+    provider: "ipx",
   },
   app: {
     head: {
