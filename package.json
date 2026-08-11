@@ -18,28 +18,39 @@
   "dependencies": {
     "@intlify/core-base": "^11.4.6",
     "@intlify/shared": "^11.4.8",
+    "@lucide/vue": "^1.31.0",
     "@nuxt/content": "^3.15.2",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.1",
-    "@nuxtjs/i18n": "^10.4.0",
-    "@nuxtjs/seo": "^3.4.0",
+    "@nuxtjs/i18n": "^10.6.0",
+    "@nuxtjs/seo": "^5.3.12",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "better-sqlite3": "^12.11.1",
-    "@lucide/vue": "^1.28.0",
-    "nuxt": "^4.5.1",
-    "vue": "latest",
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.41",
     "vue-router": "^5"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/typography": "^0.5.20",
-    "@types/node": "^26.1.2",
-    "@vue/typescript-plugin": "^3.3.7",
-    "eslint": "^10.7.0",
+    "@types/node": "^26.2.0",
+    "@vue/typescript-plugin": "^3.3.9",
+    "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.6",
     "typescript": "^6.0.3"
+  },
+  "optionalDependencies": {
+    "nuxt-og-image": "^6.7.8"
+  },
+  "overrides": {
+    "@tailwindcss/typography": {
+      "tailwindcss": "3.4.19"
+    },
+    "nuxt-og-image": {
+      "tailwindcss": "3.4.19"
+    }
   }
 }
