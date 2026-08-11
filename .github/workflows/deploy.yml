@@ -20,8 +20,23 @@ jobs:
       - run: npm run build
         env:
           NITRO_PRESET: github_pages
-      - name: Copy client assets
-        run: cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
+      - name: Ensure client assets are in output
+        run: |
+          if [ ! -d ".output/public/_nuxt" ] || [ -z "$(ls -A .output/public/_nuxt)" ]; then
+            echo "::warning::_nuxt assets missing from .output/public — copying from build cache"
+            cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
+          fi
+      - name: Ensure public assets are in output
+        run: |
+          cp -rn public/* .output/public/ 2>/dev/null || true
+      - name: Verify deployment output
+        run: |
+          js_count=$(ls .output/public/_nuxt/*.js 2>/dev/null | wc -l)
+          css_count=$(ls .output/public/_nuxt/*.css 2>/dev/null | wc -l)
+          if [ "$js_count" -eq 0 ] || [ "$css_count" -eq 0 ]; then
+            echo "::error::_nuxt directory is missing JS or CSS bundles. The build is broken."
+            exit 1
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
