@@ -22,4 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npx nuxt build --preset github_pages
+        run: npm run build
+        env:
+          NITRO_PRESET: github_pages
+      - name: Copy client assets
+        run: cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt

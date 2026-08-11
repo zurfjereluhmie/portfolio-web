@@ -17,7 +17,11 @@ jobs:
           cache: npm
       # Pick your own package manager and build script
       - run: npm ci
-      - run: npx nuxt build --preset github_pages
+      - run: npm run build
+        env:
+          NITRO_PRESET: github_pages
+      - name: Copy client assets
+        run: cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
