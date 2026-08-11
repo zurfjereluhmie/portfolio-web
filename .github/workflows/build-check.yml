@@ -31,6 +31,9 @@ jobs:
             echo "::warning::_nuxt assets missing from .output/public — copying from build cache"
             cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
           fi
+      - name: Ensure public assets are in output
+        run: |
+          cp -rn public/* .output/public/ 2>/dev/null || true
       - name: Verify deployment output
         run: |
           echo "Checking .output/public/_nuxt contains JS/CSS bundles..."
@@ -40,6 +43,17 @@ jobs:
           echo "  CSS files: $css_count"
           if [ "$js_count" -eq 0 ] || [ "$css_count" -eq 0 ]; then
             echo "::error::_nuxt directory is missing JS or CSS bundles. The build is broken."
+            exit 1
+          fi
+          echo "Checking public assets (images, favicons)..."
+          if [ ! -d ".output/public/img" ]; then
+            echo "::error::.output/public/img directory is missing. Static assets were not copied."
+            exit 1
+          fi
+          img_count=$(find .output/public/img -type f 2>/dev/null | wc -l)
+          echo "  Image files: $img_count"
+          if [ "$img_count" -eq 0 ]; then
+            echo "::error::.output/public/img directory is empty."
             exit 1
           fi
           echo "Checking that HTML files reference the built assets..."

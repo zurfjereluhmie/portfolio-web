@@ -26,6 +26,9 @@ jobs:
             echo "::warning::_nuxt assets missing from .output/public — copying from build cache"
             cp -r node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt .output/public/_nuxt
           fi
+      - name: Ensure public assets are in output
+        run: |
+          cp -rn public/* .output/public/ 2>/dev/null || true
       - name: Verify deployment output
         run: |
           js_count=$(ls .output/public/_nuxt/*.js 2>/dev/null | wc -l)
