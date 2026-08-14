@@ -6,7 +6,6 @@ const props = defineProps<{
   image?: string;
   moreLink: string;
   date?: string;
-  delayAnim?: string;
 }>();
 
 const tags = computed(() => {
@@ -15,8 +14,6 @@ const tags = computed(() => {
 });
 
 const commaSeparatedTags = computed(() => tags.value.join(", "));
-
-const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 </script>
 
 <template>
@@ -52,7 +49,16 @@ const animationStyle = computed(() => `enter 1s ${props.delayAnim} forwards`);
 
 <style scoped>
 .app-card {
-  animation: v-bind(animationStyle);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.app-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .app-card > div {
