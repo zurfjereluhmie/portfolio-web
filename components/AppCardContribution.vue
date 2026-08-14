@@ -14,6 +14,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
   Python: "#3572A5",
   Rust: "#dea584",
   Go: "#00ADD8",
+  "Go Template": "#00ADD8",
   Java: "#b07219",
   "C#": "#178600",
   "C++": "#f34b7d",
@@ -28,6 +29,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
   CSS: "#563d7c",
   SCSS: "#c6538c",
   Nix: "#7e7eff",
+  Mustache: "#724b3b",
 };
 
 const languageColor = (lang: string) => LANGUAGE_COLORS[lang] ?? "#6e7f8d";
@@ -89,10 +91,20 @@ const languageColor = (lang: string) => LANGUAGE_COLORS[lang] ?? "#6e7f8d";
 
 <style scoped>
 .app-card {
+  opacity: 0;
+  transform: translateY(20px);
   display: flex;
   /* Neutralise the global gradient underline animation — keep text-decoration: none
      from the global rule but suppress the background-image hover effect */
   background-size: 0% 0 !important;
+}
+
+.app-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .app-card:hover,

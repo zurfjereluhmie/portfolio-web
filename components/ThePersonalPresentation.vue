@@ -25,6 +25,34 @@ const { data: githubData } = await useAsyncData("github-contributions", () =>
 const contributions = computed(
   () => githubData.value?.contributions?.slice(0, CONTRIBUTIONS_TO_SHOW) ?? [],
 );
+
+const projectsList = ref<HTMLElement | null>(null);
+const contributionsGrid = ref<HTMLElement | null>(null);
+
+function animateCards(container: HTMLElement) {
+  const cards = container.querySelectorAll(".app-card");
+  cards.forEach((card, i) => {
+    (card as HTMLElement).style.transitionDelay = `${i * 100}ms`;
+    card.classList.add("animate-in");
+  });
+}
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCards(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  if (projectsList.value) observer.observe(projectsList.value);
+  if (contributionsGrid.value) observer.observe(contributionsGrid.value);
+});
 </script>
 
 <template>
@@ -81,7 +109,7 @@ const contributions = computed(
           </svg>
         </NuxtLink>
       </div>
-      <div class="projects-list">
+      <div ref="projectsList" class="projects-list">
         <AppCardCompact
           v-for="project in projects"
           :key="project.path"
@@ -100,7 +128,7 @@ const contributions = computed(
       <div class="section-header">
         <h2>{{ t("index.latestContributions") }}</h2>
       </div>
-      <div class="contributions-grid">
+      <div ref="contributionsGrid" class="contributions-grid">
         <AppCardContribution
           v-for="contrib in contributions"
           :key="contrib.url"
