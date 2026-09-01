@@ -30,6 +30,10 @@ const LANGUAGE_COLORS: Record<string, string> = {
   SCSS: "#c6538c",
   Nix: "#7e7eff",
   Mustache: "#724b3b",
+  PLpgSQL: "#336791",
+  Less: "#1d365d",
+  EJS: "#a91e50",
+  Mako: "#7e858d",
 };
 
 const languageColor = (lang: string) => LANGUAGE_COLORS[lang] ?? "#6e7f8d";
@@ -120,6 +124,7 @@ const languageColor = (lang: string) => LANGUAGE_COLORS[lang] ?? "#6e7f8d";
 .language-dot {
   width: 12px;
   height: 12px;
+  transform: translateY(-2px);
 }
 
 .language-label {
