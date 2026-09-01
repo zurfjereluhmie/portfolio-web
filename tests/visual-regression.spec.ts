@@ -100,6 +100,25 @@ test.describe("visual regression", () => {
         ),
       );
 
+      // On the home page, cards in .projects-list and .contributions-grid
+      // start at opacity: 0 and only become visible when the IntersectionObserver
+      // fires (.animate-in). Force-trigger the animation by adding the class
+      // directly so all cards are visible for the full-page screenshot.
+      const hasObserverCards =
+        (await page.locator(".projects-list").count()) > 0 ||
+        (await page.locator(".contributions-grid").count()) > 0;
+      if (hasObserverCards) {
+        await page.evaluate(() => {
+          document.querySelectorAll(".app-card").forEach((card, i) => {
+            (card as HTMLElement).style.transitionDelay = `${i * 100}ms`;
+            card.classList.add("animate-in");
+          });
+        });
+
+        // Wait for CSS transitions to finish (0.6s + stagger delay)
+        await page.waitForTimeout(1500);
+      }
+
       // <main> is a fixed-height scroll container (height: 100dvh, overflow-y: scroll).
       // Playwright's fullPage screenshot only captures the viewport in that case.
       // Inject after hydration so Nuxt doesn't overwrite it.
