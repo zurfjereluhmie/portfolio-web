@@ -43,7 +43,7 @@
     "typescript": "^6.0.3"
   },
   "optionalDependencies": {
-    "nuxt-og-image": "^6.7.8"
+    "nuxt-og-image": "^6.8.0"
   },
   "overrides": {
     "@tailwindcss/typography": {
