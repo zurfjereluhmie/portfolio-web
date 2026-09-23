@@ -16,7 +16,7 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@intlify/core-base": "^11.4.6",
+    "@intlify/core-base": "^11.4.10",
     "@intlify/shared": "^11.4.8",
     "@lucide/vue": "^1.46.0",
     "@nuxt/content": "^3.16.0",
