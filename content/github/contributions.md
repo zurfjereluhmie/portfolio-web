@@ -9,6 +9,11 @@ contributions:
       - "CSS"
       - "JavaScript"
       - "HTML"
+  - name: "geoblocks/etter"
+    url: "https://github.com/geoblocks/etter"
+    description: "etter transforms natural language location queries into structured geographic filters that can be used by search engines and spatial databases. It uses LLMs to understand multilingual queries and extract spatial relationships."
+    languages:
+      - "Python"
   - name: "Geoportail-Luxembourg/luxembourg-geoportail"
     url: "https://github.com/Geoportail-Luxembourg/luxembourg-geoportail"
     languages:
@@ -32,9 +37,4 @@ contributions:
       - "TypeScript"
       - "SCSS"
       - "Mako"
-  - name: "geoblocks/etter"
-    url: "https://github.com/geoblocks/etter"
-    description: "etter transforms natural language location queries into structured geographic filters that can be used by search engines and spatial databases. It uses LLMs to understand multilingual queries and extract spatial relationships."
-    languages:
-      - "Python"
 ---
