@@ -2,7 +2,13 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@12.8.1",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.8.1",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
