@@ -7,11 +7,11 @@ Directory snapshot of the `tests/visual-regression.spec.ts-snapshots` folder. Th
 Run specificly the visual regression tests :
 
 ```bash
-npx playwright test visual-regression
+pnpm exec playwright test visual-regression
 ```
 
 Update the snapshots for the visual regression tests :
 
 ```bash
-npx playwright test visual-regression --update-snapshots
+pnpm exec playwright test visual-regression --update-snapshots
 ```
