@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@12.8.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -44,13 +45,5 @@
   },
   "optionalDependencies": {
     "nuxt-og-image": "^6.8.0"
-  },
-  "overrides": {
-    "@tailwindcss/typography": {
-      "tailwindcss": "3.4.19"
-    },
-    "nuxt-og-image": {
-      "tailwindcss": "3.4.19"
-    }
   }
 }
