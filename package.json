@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@12.8.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -36,7 +37,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^26.2.0",
     "@vue/typescript-plugin": "^3.3.10",
-    "eslint": "^10.9.1",
+    "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "prettier": "^3.9.6",
@@ -44,13 +45,5 @@
   },
   "optionalDependencies": {
     "nuxt-og-image": "^6.8.0"
-  },
-  "overrides": {
-    "@tailwindcss/typography": {
-      "tailwindcss": "3.4.19"
-    },
-    "nuxt-og-image": {
-      "tailwindcss": "3.4.19"
-    }
   }
 }

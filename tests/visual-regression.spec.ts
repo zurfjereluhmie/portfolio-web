@@ -12,7 +12,7 @@ import { test, expect } from "@playwright/test";
  *   MAX_DIFF_PIXEL_RATIO of pixels differ.
  *
  * To update the reference screenshots after intentional UI changes, run:
- *   npx playwright test visual-regression --update-snapshots
+ *   pnpm exec playwright test visual-regression --update-snapshots
  */
 
 const MAX_DIFF_PIXEL_RATIO = 0.05; // 5% of pixels allowed to differ
