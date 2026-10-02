@@ -33,7 +33,7 @@ export default defineConfig({
   },
 
   webServer: {
-    command: "npm run generate && npx serve .output/public",
+    command: "pnpm run generate && pnpm dlx serve .output/public",
     url: "http://localhost:3000/",
     timeout: 180000,
     reuseExistingServer: !process.env.CI,

@@ -28,31 +28,33 @@ jobs:
         with:
           ref: ${{ inputs.ref || github.ref }}
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: lts/*
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Cache Playwright browsers
         uses: actions/cache@v6.1.0
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: Install Playwright OS dependencies
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: npx playwright install-deps chromium
+        run: pnpm exec playwright install-deps chromium
 
       - name: Regenerate snapshots
-        run: npx playwright test visual-regression --project=chromium --update-snapshots
+        run: pnpm exec playwright test visual-regression --project=chromium --update-snapshots
 
       - name: Commit and push updated snapshots
         env:

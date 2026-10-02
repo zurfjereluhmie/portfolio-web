@@ -14,10 +14,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: lts/*
-          cache: npm
-      # Pick your own package manager and build script
-      - run: npm ci
-      - run: npm run generate
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run generate
         env:
           NITRO_PRESET: github_pages
       - name: Verify deployment output
