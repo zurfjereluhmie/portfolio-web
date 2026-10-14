@@ -170,8 +170,8 @@ importers:
   .:
     dependencies:
       '@intlify/core-base':
-        specifier: ^11.4.6
-        version: 11.4.8
+        specifier: ^11.4.13
+        version: 11.4.13
       '@intlify/shared':
         specifier: ^11.4.8
         version: 11.4.8
@@ -1062,12 +1062,20 @@ packages:
       vue-i18n:
         optional: true
 
+  '@intlify/core-base@11.4.13':
+    resolution: {integrity: sha512-3qGv1/j0fl6ZSeehGaznE78A4i3hCaOeOyDh7jq7SV6ch/XGoy96xIrYuALTV3xhIqj2rktsIKcwlLZ3CbOhkA==}
+    engines: {node: '>= 22'}
+
   '@intlify/core-base@11.4.8':
     resolution: {integrity: sha512-A+Q7SKm5oEcy1E/cghqd7n/St4XjTqLhiiyDuieNcMrJcrHlkY5n0jp7Q9dD3txvVHzvsmBVV5M9wD5/s1zfzw==}
     engines: {node: '>= 22'}
 
   '@intlify/core@11.4.8':
     resolution: {integrity: sha512-TGFCWeunb0mmKWpX7UXRAS2enMtucTC+NG9dT+RMfxFDCAIvXF33Wb2yJUbeNczxER4f0uMt0b9g1MCsROfKyA==}
+    engines: {node: '>= 22'}
+
+  '@intlify/devtools-types@11.4.13':
+    resolution: {integrity: sha512-f38d2yvjNc1/c+BnTLsxTB0729clTtyy7kTxHu4FFlvI6FpmBOp7b9sLYtsKJpXSZ70kIEexvNwDSzLkIlYnlQ==}
     engines: {node: '>= 22'}
 
   '@intlify/devtools-types@11.4.8':
@@ -1078,8 +1086,16 @@ packages:
     resolution: {integrity: sha512-BtL5+U3Dd9Qz6so+ArOMQWZ+nV21rOqqYUXnqwvW6J3VUXr66A9+9+vUFb/NAQvOU4kdfkO3c/9LMRGU9WZ8vw==}
     engines: {node: '>= 20'}
 
+  '@intlify/message-compiler@11.4.13':
+    resolution: {integrity: sha512-cjKsDeWUD/i3mj0QtC8hydLCFP5mgZtTU1xZZaN9/O3FG94EXc0rTbecYpifglp26rpoJoIjSlW137VejLKsZw==}
+    engines: {node: '>= 22'}
+
   '@intlify/message-compiler@11.4.8':
     resolution: {integrity: sha512-vbzk17dYwduYiv52EK61+FDCyhfVg1uPUtPmiD/d45W99uJIcXywrweOBcHv7n9/iEqmXiMGT52bgJbZDQqK3w==}
+    engines: {node: '>= 22'}
+
+  '@intlify/shared@11.4.13':
+    resolution: {integrity: sha512-ZjcNgEED1FtTCFb+ohWBdR21k5kvleKtM9peobQtLB83mNIfEhJK86dEbhfk+OcUrybrEbc4eDeE9UbFUVHsjQ==}
     engines: {node: '>= 22'}
 
   '@intlify/shared@11.4.8':
@@ -7679,6 +7695,12 @@ snapshots:
     optionalDependencies:
       vue-i18n: 11.4.8(vue@3.5.41(typescript@6.0.3))
 
+  '@intlify/core-base@11.4.13':
+    dependencies:
+      '@intlify/devtools-types': 11.4.13
+      '@intlify/message-compiler': 11.4.13
+      '@intlify/shared': 11.4.13
+
   '@intlify/core-base@11.4.8':
     dependencies:
       '@intlify/devtools-types': 11.4.8
@@ -7690,6 +7712,11 @@ snapshots:
       '@intlify/core-base': 11.4.8
       '@intlify/shared': 11.4.8
 
+  '@intlify/devtools-types@11.4.13':
+    dependencies:
+      '@intlify/core-base': 11.4.13
+      '@intlify/shared': 11.4.13
+
   '@intlify/devtools-types@11.4.8':
     dependencies:
       '@intlify/core-base': 11.4.8
@@ -7700,10 +7727,17 @@ snapshots:
       '@intlify/core': 11.4.8
       '@intlify/utils': 0.13.0
 
+  '@intlify/message-compiler@11.4.13':
+    dependencies:
+      '@intlify/shared': 11.4.13
+      source-map-js: 1.2.1
+
   '@intlify/message-compiler@11.4.8':
     dependencies:
       '@intlify/shared': 11.4.8
       source-map-js: 1.2.1
+
+  '@intlify/shared@11.4.13': {}
 
   '@intlify/shared@11.4.8': {}
 
