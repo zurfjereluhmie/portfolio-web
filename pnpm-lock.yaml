@@ -231,8 +231,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-prettier:
-        specifier: ^5.5.6
-        version: 5.5.6(eslint-config-prettier@10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.9.6)
+        specifier: ^5.5.7
+        version: 5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.9.6)
       prettier:
         specifier: ^3.9.6
         version: 3.9.6
@@ -449,6 +449,9 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       postcss-selector-parser: ^7.0.0
+
+  '@dual-bundle/import-meta-resolve@4.2.1':
+    resolution: {integrity: sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==}
 
   '@dxup/nuxt@0.5.6':
     resolution: {integrity: sha512-uZjAFoocWtWHr7YP9jm6FqwI8kjX2QN9bjcncoZt0GS+zExIAP3Ewv6EqEUvVP7w9pjZE+T19QxLHeoacN/MNg==}
@@ -3776,8 +3779,8 @@ packages:
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
 
-  eslint-plugin-prettier@5.5.6:
-    resolution: {integrity: sha512-ifetmTcxWfz+4qRW3pH/ujdTq2jQIj59AxJMIN26K5avYgU8dxycUETQonWiW+wPrYXA0j3Try0l1CnwVQtDqQ==}
+  eslint-plugin-prettier@5.5.7:
+    resolution: {integrity: sha512-WjHyn3GrFd+ZR0rzsLiM4zJZ35PZMOE0SUIxzGmnWNG0126yNfJKJzObmmkYDwHJfGlkz3PSlzyG9ez/LJntwg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       '@types/eslint': '>=8.0.0'
@@ -6338,8 +6341,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  synckit@0.11.13:
-    resolution: {integrity: sha512-eNRKgb3z66Yp3D2CixVujOUvXLFUTij/zVnV8KRyvFdQwpz7I5DS8UfRkTeLzb64u+dkzDSdelE24izu+zSSUg==}
+  synckit@0.12.3:
+    resolution: {integrity: sha512-U+/AXT6LWsxnj2vz9HeUuPWBNgdWxjyIEjEPdbJARC9txmgPzo2VEdqnFo4hHaNyMPtycyVJrSaQYeQv/PoyyA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
   tagged-tag@1.0.0:
@@ -7367,6 +7370,8 @@ snapshots:
   '@csstools/selector-specificity@5.0.0(postcss-selector-parser@7.1.5)':
     dependencies:
       postcss-selector-parser: 7.1.5
+
+  '@dual-bundle/import-meta-resolve@4.2.1': {}
 
   '@dxup/nuxt@0.5.6(esbuild@0.28.2)(magicast@0.5.5)(oxc-parser@0.149.0)(rolldown@1.2.3)(rollup@4.60.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.37.0)(yaml@2.9.0))':
     dependencies:
@@ -10980,12 +10985,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.9.6):
+  eslint-plugin-prettier@5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.9.6):
     dependencies:
       eslint: 10.12.0(jiti@2.7.0)(supports-color@10.2.2)
       prettier: 3.9.6
       prettier-linter-helpers: 1.0.1
-      synckit: 0.11.13
+      synckit: 0.12.3
     optionalDependencies:
       eslint-config-prettier: 10.1.8(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))
 
@@ -14482,8 +14487,9 @@ snapshots:
       picocolors: 1.1.1
       sax: 1.6.1
 
-  synckit@0.11.13:
+  synckit@0.12.3:
     dependencies:
+      '@dual-bundle/import-meta-resolve': 4.2.1
       '@pkgr/core': 0.3.6
 
   tagged-tag@1.0.0: {}
